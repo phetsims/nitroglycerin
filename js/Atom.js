@@ -7,7 +7,7 @@
  */
 
 define( function( require ) {
-  "use strict";
+  'use strict';
   
   var Atom = function( element ) {
     this.element = element;
