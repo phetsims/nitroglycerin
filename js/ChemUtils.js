@@ -66,7 +66,7 @@ define( function() {
     // TODO: if it's a performance issue, we should put these in Element itself
     // yes, will totally fail if our Unicode code point of the 2nd character is >1000. Agile coding? We like to live on the edge
     var value = 1000 * element.symbol.charCodeAt( 0 );
-    if ( element.symbol.length() > 1 ) {
+    if ( element.symbol.length > 1 ) {
       value += element.symbol.charCodeAt( 1 );
     }
     return value;
