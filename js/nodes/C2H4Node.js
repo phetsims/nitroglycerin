@@ -15,7 +15,7 @@ define( function ( require ) {
   var Vector2 = require( 'DOT/Vector2' );
   var Element = require( 'NITROGLYCERIN/Element' );
 
-  return inherit( Node, function CNode() {
+  return inherit( Node, function C2H4Node() {
     Node.call( this, {} );
 
     var bigLeftNode = new AtomNode( Element.C );
