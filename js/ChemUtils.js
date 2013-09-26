@@ -70,7 +70,7 @@ define( function() {
       value += element.symbol.charCodeAt( 1 );
     }
     return value;
-  }
+  };
   
   /**
    * Returns an integer that can be used for sorting atom symbols for the Hill system when the molecule contains
@@ -88,7 +88,7 @@ define( function() {
     } else {
       return ChemUtils.nonCarbonHillSortValue( element );
     }
-  }
+  };
 
   /**
    * Handles HTML subscript formatting for molecule symbols.
@@ -132,9 +132,9 @@ define( function() {
    */
   ChemUtils.hillOrderedSymbol = function( atoms ) {
     var containsCarbon = _.some( atoms, function( atom ) { return atom.isCarbon(); } );
-    var sortedAtoms = _.sortBy( atoms, containsCarbon
-                                       ? ChemUtils.carbonHillSortValue    // carbon first, then hydrogen, then others alphabetically
-                                       : ChemUtils.nonCarbonHillSortValue // compare alphabetically since there is no carbon
+    var sortedAtoms = _.sortBy( atoms, containsCarbon ?
+                                       ChemUtils.carbonHillSortValue :  // carbon first, then hydrogen, then others alphabetically
+                                       ChemUtils.nonCarbonHillSortValue // compare alphabetically since there is no carbon
                                        );
     return ChemUtils.createSymbol( sortedAtoms );
   };

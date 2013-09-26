@@ -20,9 +20,9 @@ define( function ( require ) {
 
     // atom nodes
     var centerNode = new AtomNode( Element.P );
-    var leftNode = new AtomNode( F );
-    var rightNode = new AtomNode( F );
-    var bottomNode = new AtomNode( F );
+    var leftNode = new AtomNode( Element.F );
+    var rightNode = new AtomNode( Element.F );
+    var bottomNode = new AtomNode( Element.F );
 
     // rendering order
     var parentNode = new Node();
