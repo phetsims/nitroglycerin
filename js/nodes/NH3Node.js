@@ -19,7 +19,7 @@ define( function ( require ) {
     Node.call( this, {} );
 
     // atom nodes
-    var bigNode = new AtomNode( N );
+    var bigNode = new AtomNode( Element.N );
     var smallLeftNode = new AtomNode( Element.H );
     var smallRightNode = new AtomNode( Element.H );
     var smallBottomNode = new AtomNode( Element.H );

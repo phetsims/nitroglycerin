@@ -27,10 +27,12 @@ define( function ( require ) {
     return modelToViewScale * adjustedRadius;
   }
 
-  var AtomNode = function AtomNode( element ) {
-    ShadedSphereNode.call( this, 2 * radiusScalingFunction( element.radius ), {
-      mainColor: element.color
-    } );
+  var AtomNode = function AtomNode( element, options ) {
+    options = _.extend( {
+      mainColor: element.color // passed to ShadedSphereNode
+    }, options );
+    
+    ShadedSphereNode.call( this, 2 * radiusScalingFunction( element.radius ), options );
   };
 
   return inherit( ShadedSphereNode, AtomNode );

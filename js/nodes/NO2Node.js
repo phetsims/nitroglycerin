@@ -19,7 +19,7 @@ define( function ( require ) {
     Node.call( this, {} );
 
     // atom nodes
-    var centerNode = new AtomNode( N );
+    var centerNode = new AtomNode( Element.N );
     var leftNode = new AtomNode( Element.O );
     var rightNode = new AtomNode( Element.O );
 
