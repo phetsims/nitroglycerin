@@ -61,17 +61,16 @@ define( function( require ) {
     Element.B, Element.Be, Element.Br, Element.C, Element.Cl, Element.F, Element.H,
     Element.I, Element.N, Element.O, Element.P, Element.S, Element.Si, Element.Xe
   ];
+  
+  // maps symbol => element
+  Element.elementMap = {};
+  _.each( Element.elements, function( element ) {
+    Element.elementMap[element.symbol] = element;
+  } );
 
   Element.getElementBySymbol = function( symbol ) {
-    for ( var i in Element.elements ) {
-      if ( Element.elements.hasOwnProperty( i ) ) {
-        var element = Element.elements[i];
-        if ( element.symbol === symbol ) {
-          return element;
-        }
-      }
-    }
-    throw new Error( 'Element not found with symbol: ' + symbol );
+    assert && assert( Element.elementMap[symbol], 'Element not found: ' + symbol );
+    return Element.elementMap[symbol];
   };
   
   return Element;
