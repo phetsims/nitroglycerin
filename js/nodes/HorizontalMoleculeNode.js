@@ -16,7 +16,6 @@ define( function ( require ) {
 
   var inherit = require( 'PHET_CORE/inherit' );
   var AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
-  var Element = require( 'NITROGLYCERIN/Element' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Vector2 = require( 'DOT/Vector2' );
 

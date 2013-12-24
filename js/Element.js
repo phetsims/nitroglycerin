@@ -6,7 +6,7 @@
  * @author Jonathan Olson <olsonsjc@gmail.com>
  */
 
-define( function( require ) {
+define( function() {
   'use strict';
   
   var Element = function( symbol, radius, electronegativity, atomicWeight, color ) {

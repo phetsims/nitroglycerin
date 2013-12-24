@@ -10,7 +10,6 @@ define( function ( require ) {
   'use strict';
 
   var inherit = require( 'PHET_CORE/inherit' );
-  var AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
   var HorizontalMoleculeNode = require( 'NITROGLYCERIN/nodes/HorizontalMoleculeNode' );
   var Element = require( 'NITROGLYCERIN/Element' );
 
