@@ -17,7 +17,7 @@ define( function ( require ) {
   var Element = require( 'NITROGLYCERIN/Element' );
 
   return inherit( Node, function PCl5Node() {
-    Node.call( this, {} );
+    Node.call( this );
 
     // atom nodes
     var centerNode = new AtomNode( Element.P );

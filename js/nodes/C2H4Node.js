@@ -16,7 +16,7 @@ define( function ( require ) {
   var Element = require( 'NITROGLYCERIN/Element' );
 
   return inherit( Node, function C2H4Node() {
-    Node.call( this, {} );
+    Node.call( this );
 
     var bigLeftNode = new AtomNode( Element.C );
     var bigRightNode = new AtomNode( Element.C );

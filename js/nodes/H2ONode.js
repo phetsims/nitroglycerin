@@ -16,7 +16,7 @@ define( function ( require ) {
   var Element = require( 'NITROGLYCERIN/Element' );
 
   return inherit( Node, function H2ONode() {
-    Node.call( this, {} );
+    Node.call( this );
 
     // atom nodes
     var smallLeftNode = new AtomNode( Element.H );

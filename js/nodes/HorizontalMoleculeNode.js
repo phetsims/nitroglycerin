@@ -23,7 +23,7 @@ define( function ( require ) {
    * @param elements... {Element} - provide elements as parameters, we inspect arguments
    */
   var HorizontalMoleculeNode = function HorizontalMoleculeNode() {
-    Node.call( this, {} );
+    Node.call( this );
 
     var elements = Array.prototype.slice.apply( arguments );
 
