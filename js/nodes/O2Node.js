@@ -13,7 +13,7 @@ define( function ( require ) {
   var HorizontalMoleculeNode = require( 'NITROGLYCERIN/nodes/HorizontalMoleculeNode' );
   var Element = require( 'NITROGLYCERIN/Element' );
 
-  return inherit( HorizontalMoleculeNode, function O2Node() {
-    HorizontalMoleculeNode.call( this, Element.O, Element.O );
+  return inherit( HorizontalMoleculeNode, function O2Node( options ) {
+    HorizontalMoleculeNode.call( this, [ Element.O, Element.O ], options );
   } );
 } );

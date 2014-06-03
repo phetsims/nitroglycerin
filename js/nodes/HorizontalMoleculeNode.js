@@ -20,12 +20,10 @@ define( function ( require ) {
   var Vector2 = require( 'DOT/Vector2' );
 
   /*
-   * @param elements... {Element} - provide elements as parameters, we inspect arguments
+   * @param {Array<Element>} elements
    */
-  var HorizontalMoleculeNode = function HorizontalMoleculeNode() {
+  var HorizontalMoleculeNode = function HorizontalMoleculeNode( elements, options ) {
     Node.call( this );
-
-    var elements = Array.prototype.slice.apply( arguments );
 
     var parentNode = new Node();
     this.addChild( parentNode );
@@ -34,7 +32,7 @@ define( function ( require ) {
     var x = 0;
     var previousNode = null;
     _.each( elements, function ( element ) {
-      var currentNode = new AtomNode( element );
+      var currentNode = new AtomNode( element, options );
       parentNode.addChild( currentNode );
       if ( previousNode !== null ) {
         x = previousNode.right + ( 0.25 * currentNode.width );

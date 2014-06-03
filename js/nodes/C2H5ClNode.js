@@ -16,18 +16,18 @@ define( function ( require ) {
   var Vector2 = require( 'DOT/Vector2' );
   var Element = require( 'NITROGLYCERIN/Element' );
 
-  return inherit( Node, function C2H5ClNode() {
+  return inherit( Node, function C2H5ClNode( options ) {
     Node.call( this );
 
     // atom nodes
-    var leftNode = new AtomNode( Element.C );
-    var centerNode = new AtomNode( Element.C );
-    var smallTopLeftNode = new AtomNode( Element.H );
-    var smallBottomLeftNode = new AtomNode( Element.H );
-    var smallLeftNode = new AtomNode( Element.H );
-    var smallTopRightNode = new AtomNode( Element.H );
-    var smallBottomRightNode = new AtomNode( Element.H );
-    var rightNode = new AtomNode( Element.Cl );
+    var leftNode = new AtomNode( Element.C, options );
+    var centerNode = new AtomNode( Element.C, options );
+    var smallTopLeftNode = new AtomNode( Element.H, options );
+    var smallBottomLeftNode = new AtomNode( Element.H, options );
+    var smallLeftNode = new AtomNode( Element.H, options );
+    var smallTopRightNode = new AtomNode( Element.H, options );
+    var smallBottomRightNode = new AtomNode( Element.H, options );
+    var rightNode = new AtomNode( Element.Cl, options );
 
     // rendering order
     var parentNode = new Node();

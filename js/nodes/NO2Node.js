@@ -15,13 +15,13 @@ define( function ( require ) {
   var Vector2 = require( 'DOT/Vector2' );
   var Element = require( 'NITROGLYCERIN/Element' );
 
-  return inherit( Node, function NO2Node() {
+  return inherit( Node, function NO2Node( options ) {
     Node.call( this );
 
     // atom nodes
-    var centerNode = new AtomNode( Element.N );
-    var leftNode = new AtomNode( Element.O );
-    var rightNode = new AtomNode( Element.O );
+    var centerNode = new AtomNode( Element.N, options );
+    var leftNode = new AtomNode( Element.O, options );
+    var rightNode = new AtomNode( Element.O, options );
 
     // rendering order
     var parentNode = new Node();
