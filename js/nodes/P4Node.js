@@ -4,7 +4,7 @@
  * P4 Molecule
  * Structure is tetrahedral
  *
- * @author Chris Malley (cmalley@pixelzoom.com)
+ * @author Chris Malley (PixelZoom, Inc.)
  */
 
 define( function ( require ) {

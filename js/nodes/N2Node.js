@@ -3,7 +3,7 @@
 /**
  * N2 Molecule
  *
- * @author Chris Malley (cmalley@pixelzoom.com)
+ * @author Chris Malley (PixelZoom, Inc.)
  */
 
 define( function ( require ) {

@@ -4,7 +4,7 @@
  * C2H5Cl Molecule
  * Structure is similar to C2H6, but with Cl replacing one of the H's.
  *
- * @author Chris Malley (cmalley@pixelzoom.com)
+ * @author Chris Malley (PixelZoom, Inc.)
  */
 
 define( function ( require ) {

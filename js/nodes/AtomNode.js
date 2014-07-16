@@ -4,7 +4,7 @@
  * Atoms look like shaded spheres.
  * Origin is at geometric center of bounding rectangle.
  *
- * @author Chris Malley (cmalley@pixelzoom.com)
+ * @author Chris Malley (PixelZoom, Inc.)
  */
 
 define( function ( require ) {
