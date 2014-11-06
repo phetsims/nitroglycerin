@@ -23,6 +23,9 @@ define( function ( require ) {
    * @param {Array<Element>} elements
    */
   var HorizontalMoleculeNode = function HorizontalMoleculeNode( elements, options ) {
+
+    options = _.extend( { atomOptions: {} }, options );
+
     Node.call( this );
 
     var parentNode = new Node();
@@ -32,7 +35,7 @@ define( function ( require ) {
     var x = 0;
     var previousNode = null;
     _.each( elements, function ( element ) {
-      var currentNode = new AtomNode( element, options );
+      var currentNode = new AtomNode( element, options.atomOptions );
       parentNode.addChild( currentNode );
       if ( previousNode !== null ) {
         x = previousNode.right + ( 0.25 * currentNode.width );

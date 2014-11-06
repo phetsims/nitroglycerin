@@ -17,18 +17,21 @@ define( function ( require ) {
   var Element = require( 'NITROGLYCERIN/Element' );
 
   return inherit( Node, function C2H5OHNode( options ) {
+
+    options = _.extend( { atomOptions: {} }, options );
+
     Node.call( this );
 
     // atom nodes
-    var leftNode = new AtomNode( Element.C, options );
-    var centerNode = new AtomNode( Element.C, options );
-    var smallTopLeftNode = new AtomNode( Element.H, options );
-    var smallBottomLeftNode = new AtomNode( Element.H, options );
-    var smallLeftNode = new AtomNode( Element.H, options );
-    var smallTopRightNode = new AtomNode( Element.H, options );
-    var smallBottomRightNode = new AtomNode( Element.H, options );
-    var rightNode = new AtomNode( Element.O, options );
-    var smallRightNode = new AtomNode( Element.H, options );
+    var leftNode = new AtomNode( Element.C, options.atomOptions );
+    var centerNode = new AtomNode( Element.C, options.atomOptions );
+    var smallTopLeftNode = new AtomNode( Element.H, options.atomOptions );
+    var smallBottomLeftNode = new AtomNode( Element.H, options.atomOptions );
+    var smallLeftNode = new AtomNode( Element.H, options.atomOptions );
+    var smallTopRightNode = new AtomNode( Element.H, options.atomOptions );
+    var smallBottomRightNode = new AtomNode( Element.H, options.atomOptions );
+    var rightNode = new AtomNode( Element.O, options.atomOptions );
+    var smallRightNode = new AtomNode( Element.H, options.atomOptions );
 
     // rendering order
     var parentNode = new Node();

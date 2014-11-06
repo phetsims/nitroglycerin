@@ -16,14 +16,17 @@ define( function ( require ) {
   var Element = require( 'NITROGLYCERIN/Element' );
 
   return inherit( Node, function CH4Node( options ) {
+
+    options = _.extend( { atomOptions: {} }, options );
+
     Node.call( this );
 
     // atom nodes
-    var bigNode = new AtomNode( Element.C, options );
-    var smallTopLeftNode = new AtomNode( Element.H, options );
-    var smallTopRightNode = new AtomNode( Element.H, options );
-    var smallBottomLeftNode = new AtomNode( Element.H, options );
-    var smallBottomRightNode = new AtomNode( Element.H, options );
+    var bigNode = new AtomNode( Element.C, options.atomOptions );
+    var smallTopLeftNode = new AtomNode( Element.H, options.atomOptions );
+    var smallTopRightNode = new AtomNode( Element.H, options.atomOptions );
+    var smallBottomLeftNode = new AtomNode( Element.H, options.atomOptions );
+    var smallBottomRightNode = new AtomNode( Element.H, options.atomOptions );
 
     // rendering order
     var parentNode = new Node();
