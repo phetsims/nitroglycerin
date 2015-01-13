@@ -7,7 +7,7 @@
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-define( function ( require ) {
+define( function( require ) {
   'use strict';
 
   var inherit = require( 'PHET_CORE/inherit' );
@@ -31,7 +31,7 @@ define( function ( require ) {
     options = _.extend( {
       mainColor: element.color // passed to ShadedSphereNode
     }, options );
-    
+
     ShadedSphereNode.call( this, 2 * radiusScalingFunction( element.radius ), options );
   };
 

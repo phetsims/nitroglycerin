@@ -8,11 +8,11 @@
 
 define( function( require ) {
   'use strict';
-  
+
   var Element = require( 'NITROGLYCERIN/Element' );
-  
+
   var idCounter = 1;
-  
+
   var Atom = function( element ) {
     this.element = element;
     this.symbol = element.symbol;
@@ -21,7 +21,7 @@ define( function( require ) {
     this.electronegativity = element.electronegativity;
     this.atomicWeight = element.atomicWeight;
     this.color = element.color;
-    
+
     // IDs for uniqueness and fast lookups
     this.reference = (idCounter++).toString( 16 );
     this.id = this.symbol + '_' + this.reference;
@@ -50,10 +50,10 @@ define( function( require ) {
       return this.symbol;
     }
   };
-  
+
   Atom.createAtomFromSymbol = function( symbol ) {
     return new Atom( Element.getElementBySymbol( symbol ) );
   };
-  
+
   return Atom;
 } );

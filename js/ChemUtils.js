@@ -7,7 +7,7 @@ define( function() {
   'use strict';
 
   function ChemUtils() {}
-  
+
   /*
    * Creates a symbol (HTML fragment) based on the list of atoms in the molecule.
    * The atoms must be specified in order of appearance in the symbol.
@@ -18,7 +18,7 @@ define( function() {
   ChemUtils.createSymbol = function( elements ) {
     return ChemUtils.toSubscript( ChemUtils.createSymbolWithoutSubscripts( elements ) );
   };
-  
+
   /*
    * Creates a symbol (text) based on the list of atoms in the molecule.
    * The atoms must be specified in order of appearance in the symbol.
@@ -33,18 +33,20 @@ define( function() {
     for ( var i = 0; i < length; i++ ) {
       if ( i === 0 ) {
         // first atom is treated differently
-        result += elements[i].symbol;
-      } else if ( elements[i] === elements[i - 1] ) {
+        result += elements[ i ].symbol;
+      }
+      else if ( elements[ i ] === elements[ i - 1 ] ) {
         // this atom is the same as the previous atom
         atomCount++;
-      } else {
+      }
+      else {
         // this atom is NOT the same
         if ( atomCount > 1 ) {
           // create a subscript
           result += atomCount;
         }
         atomCount = 1;
-        result += elements[i].symbol;
+        result += elements[ i ].symbol;
       }
     }
     if ( atomCount > 1 ) {
@@ -53,7 +55,7 @@ define( function() {
     }
     return result;
   };
-  
+
   /**
    * Return an integer that can be used for sorting atom symbols alphabetically. Lower values will be returned for
    * symbols that should go first. Two-letter symbols will come after a one-letter symbol with the same first
@@ -71,7 +73,7 @@ define( function() {
     }
     return value;
   };
-  
+
   /**
    * Returns an integer that can be used for sorting atom symbols for the Hill system when the molecule contains
    * carbon. See http://en.wikipedia.org/wiki/Hill_system
@@ -83,9 +85,11 @@ define( function() {
     // TODO: if it's a performance issue, we should put these in Element itself
     if ( element.isCarbon() ) {
       return 0;
-    } else if ( element.isHydrogen() ) {
+    }
+    else if ( element.isHydrogen() ) {
       return 1;
-    } else {
+    }
+    else {
       return ChemUtils.nonCarbonHillSortValue( element );
     }
   };
@@ -124,9 +128,9 @@ define( function() {
     }
     return outString;
   };
-  
+
   /**
-   * @param atoms A collection of atoms in a molecule. NOTE: in Java, they were Element objects! 
+   * @param atoms A collection of atoms in a molecule. NOTE: in Java, they were Element objects!
    * @return The molecular formula of the molecule in the Hill system. Returned as an HTML fragment. See
    *         http://en.wikipedia.org/wiki/Hill_system for more information.
    */
@@ -135,7 +139,7 @@ define( function() {
     var sortedAtoms = _.sortBy( atoms, containsCarbon ?
                                        ChemUtils.carbonHillSortValue :  // carbon first, then hydrogen, then others alphabetically
                                        ChemUtils.nonCarbonHillSortValue // compare alphabetically since there is no carbon
-                                       );
+    );
     return ChemUtils.createSymbol( sortedAtoms );
   };
 

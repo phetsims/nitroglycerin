@@ -11,7 +11,7 @@
  * @author Jonathan Olson <jonathan.olson@colorado.edu>
  */
 
-define( function ( require ) {
+define( function( require ) {
   'use strict';
 
   var inherit = require( 'PHET_CORE/inherit' );
@@ -34,7 +34,7 @@ define( function ( require ) {
     // add each node from left to right, overlapping consistently
     var x = 0;
     var previousNode = null;
-    _.each( elements, function ( element ) {
+    _.each( elements, function( element ) {
       var currentNode = new AtomNode( element, options.atomOptions );
       parentNode.addChild( currentNode );
       if ( previousNode !== null ) {
