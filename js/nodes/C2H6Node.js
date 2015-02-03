@@ -23,58 +23,42 @@ define( function( require ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
-    Node.call( this );
-
-    // atom nodes
+    // atoms
     var leftNode = new AtomNode( Element.C, options.atomOptions );
-    var rightNode = new AtomNode( Element.C, options.atomOptions );
-    var smallTopLeftNode = new AtomNode( Element.H, options.atomOptions );
-    var smallBottomLeftNode = new AtomNode( Element.H, options.atomOptions );
-    var smallLeftNode = new AtomNode( Element.H, options.atomOptions );
-    var smallTopRightNode = new AtomNode( Element.H, options.atomOptions );
-    var smallBottomRightNode = new AtomNode( Element.H, options.atomOptions );
-    var smallRightNode = new AtomNode( Element.H, options.atomOptions );
+    var rightNode = new AtomNode( Element.C, _.extend( {
+      x: leftNode.right + ( 0.25 * leftNode.width ),
+      y: leftNode.y
+    }, options.atomOptions ) );
+    var smallTopLeftNode = new AtomNode( Element.H, _.extend( {
+      x: leftNode.x,
+      y: leftNode.top
+    }, options.atomOptions ) );
+    var smallBottomLeftNode = new AtomNode( Element.H, _.extend( {
+      x: smallTopLeftNode.x,
+      y: leftNode.bottom
+    }, options.atomOptions ) );
+    var smallLeftNode = new AtomNode( Element.H, _.extend( {
+      x: leftNode.left,
+      y: leftNode.y
+    }, options.atomOptions ) );
+    var smallTopRightNode = new AtomNode( Element.H, _.extend( {
+      x: rightNode.x,
+      y: rightNode.top
+    }, options.atomOptions ) );
+    var smallBottomRightNode = new AtomNode( Element.H, _.extend( {
+      x: rightNode.x,
+      y: rightNode.bottom
+    }, options.atomOptions ) );
+    var smallRightNode = new AtomNode( Element.H, _.extend( {
+      x: rightNode.right,
+      y: rightNode.y
+    }, options.atomOptions ) );
 
-    // rendering order
-    var parentNode = new Node();
-    this.addChild( parentNode );
-    parentNode.addChild( smallBottomRightNode );
-    parentNode.addChild( smallTopRightNode );
-    parentNode.addChild( rightNode );
-    parentNode.addChild( smallRightNode );
-    parentNode.addChild( smallLeftNode );
-    parentNode.addChild( leftNode );
-    parentNode.addChild( smallBottomLeftNode );
-    parentNode.addChild( smallTopLeftNode );
-
-    // layout
-    var x = 0;
-    var y = 0;
-    leftNode.setTranslation( x, y );
-    x = leftNode.right + ( 0.25 * rightNode.width );
-    y = leftNode.y;
-    rightNode.setTranslation( x, y );
-    x = leftNode.x;
-    y = leftNode.top;
-    smallTopLeftNode.setTranslation( x, y );
-    x = smallTopLeftNode.x;
-    y = leftNode.bottom;
-    smallBottomLeftNode.setTranslation( x, y );
-    x = leftNode.left;
-    y = leftNode.y;
-    smallLeftNode.setTranslation( x, y );
-    x = rightNode.right;
-    y = rightNode.y;
-    smallRightNode.setTranslation( x, y );
-    x = rightNode.x;
-    y = rightNode.top;
-    smallTopRightNode.setTranslation( x, y );
-    x = rightNode.x;
-    y = rightNode.bottom;
-    smallBottomRightNode.setTranslation( x, y );
-
-    // move origin to geometric center
-    parentNode.center = Vector2.ZERO;
+    options.children = [ new Node( {
+      children: [ smallBottomRightNode, smallTopRightNode, rightNode, smallRightNode, smallLeftNode, leftNode, smallBottomLeftNode, smallTopLeftNode ],
+      center: Vector2.ZERO // origin at geometric center
+    } ) ];
+    Node.call( this, options );
   }
 
   return inherit( Node, C2H6Node );

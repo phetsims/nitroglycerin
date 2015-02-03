@@ -32,39 +32,24 @@ define( function( require ) {
     var smallBottomLeftNode = new AtomNode( Element.H, options.atomOptions );
     var smallBottomRightNode = new AtomNode( Element.H, options.atomOptions );
 
-    // rendering order
-    var parentNode = new Node();
-    this.addChild( parentNode );
-    parentNode.addChild( smallTopRightNode );
-    parentNode.addChild( smallTopLeftNode );
-    parentNode.addChild( bigLeftNode );
-    parentNode.addChild( bigRightNode );
-    parentNode.addChild( smallBottomLeftNode );
-    parentNode.addChild( smallBottomRightNode );
-
     // layout
     var offsetSmall = smallTopLeftNode.width / 4;
-    var x = 0;
-    var y = 0;
-    bigLeftNode.setTranslation( x, y );
-    x = bigLeftNode.right + ( 0.25 * bigRightNode.width );
-    y = bigLeftNode.y;
-    bigRightNode.setTranslation( x, y );
-    x = bigLeftNode.left + offsetSmall;
-    y = bigLeftNode.top + offsetSmall;
-    smallTopLeftNode.setTranslation( x, y );
-    x = bigRightNode.right - offsetSmall;
-    y = bigRightNode.top + offsetSmall;
-    smallTopRightNode.setTranslation( x, y );
-    x = bigLeftNode.left + offsetSmall;
-    y = bigLeftNode.bottom - offsetSmall;
-    smallBottomLeftNode.setTranslation( x, y );
-    x = bigRightNode.right - offsetSmall;
-    y = bigRightNode.bottom - offsetSmall;
-    smallBottomRightNode.setTranslation( x, y );
+    bigRightNode.x = bigLeftNode.right + ( 0.25 * bigRightNode.width );
+    bigRightNode.y = bigLeftNode.y;
+    smallTopLeftNode.x = bigLeftNode.left + offsetSmall;
+    smallTopLeftNode.y = bigLeftNode.top + offsetSmall;
+    smallTopRightNode.x = bigRightNode.right - offsetSmall;
+    smallTopRightNode.y = bigRightNode.top + offsetSmall;
+    smallBottomLeftNode.x = bigLeftNode.left + offsetSmall;
+    smallBottomLeftNode.y = bigLeftNode.bottom - offsetSmall;
+    smallBottomRightNode.x = bigRightNode.right - offsetSmall;
+    smallBottomRightNode.y = bigRightNode.bottom - offsetSmall;
 
-    // move origin to geometric center
-    parentNode.center = Vector2.ZERO;
+    options.children = [ new Node( {
+      children: [ smallTopRightNode, smallTopLeftNode, bigLeftNode, bigRightNode, smallBottomLeftNode, smallBottomRightNode ],
+      center: Vector2.ZERO // origin at geometric center
+    } ) ];
+    Node.call( this, options );
   }
 
   return inherit( Node, C2H4Node );
