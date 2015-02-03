@@ -24,41 +24,26 @@ define( function( require ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
-    Node.call( this );
-
-    // atom nodes
+    // atoms
     var topNode = new AtomNode( Element.P, options.atomOptions );
-    var bottomLeftNode = new AtomNode( Element.P, options.atomOptions );
-    var bottomRightNode = new AtomNode( Element.P, options.atomOptions );
-    var bottomBackNode = new AtomNode( Element.P, options.atomOptions );
+    var bottomLeftNode = new AtomNode( Element.P, _.extend( {
+      x: topNode.left + ( 0.3 * topNode.width ),
+      y: topNode.bottom + ( 0.2 * topNode.width )
+    }, options.atomOptions ) );
+    var bottomRightNode = new AtomNode( Element.P, _.extend( {
+      x: topNode.right,
+      y: topNode.bottom
+    }, options.atomOptions ) );
+    var bottomBackNode = new AtomNode( Element.P, _.extend( {
+      x: topNode.left,
+      y: topNode.centerY + ( 0.2 * topNode.height )
+    }, options.atomOptions ) );
 
-    // rendering order
-    var parentNode = new Node();
-    this.addChild( parentNode );
-    parentNode.addChild( bottomBackNode );
-    parentNode.addChild( bottomRightNode );
-    parentNode.addChild( bottomLeftNode );
-    parentNode.addChild( topNode );
-
-    // layout
-    var x = 0;
-    var y = 0;
-    topNode.setTranslation( x, y );
-
-    x = topNode.left + ( 0.3 * topNode.width );
-    y = topNode.bottom + ( 0.2 * topNode.width );
-    bottomLeftNode.setTranslation( x, y );
-
-    x = topNode.right;
-    y = topNode.bottom;
-    bottomRightNode.setTranslation( x, y );
-
-    x = topNode.left;
-    y = topNode.centerY + ( 0.2 * topNode.height );
-    bottomBackNode.setTranslation( x, y );
-
-    // move origin to geometric center
-    parentNode.center = Vector2.ZERO;
+    options.children = [ new Node( {
+      children: [ bottomBackNode, bottomRightNode, bottomLeftNode, topNode ],
+      center: Vector2.ZERO // origin at geometric center
+    } ) ];
+    Node.call( this, options );
   }
 
   return inherit( Node, P4Node );
