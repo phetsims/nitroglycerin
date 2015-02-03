@@ -1,4 +1,4 @@
-// Copyright 2002-2014, University of Colorado
+// Copyright 2002-2015, University of Colorado
 
 /**
  * Base class for molecules with N atoms aligned on the horizontal axis, for N > 0.
@@ -14,8 +14,9 @@
 define( function( require ) {
   'use strict';
 
-  var inherit = require( 'PHET_CORE/inherit' );
+  // modules
   var AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Vector2 = require( 'DOT/Vector2' );
 
@@ -26,26 +27,23 @@ define( function( require ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
-    Node.call( this );
-
-    var parentNode = new Node();
-    this.addChild( parentNode );
-
-    // add each node from left to right, overlapping consistently
-    var x = 0;
+    // add each atom from left to right, overlapping consistently
+    var children = [];
     var previousNode = null;
     _.each( elements, function( element ) {
       var currentNode = new AtomNode( element, options.atomOptions );
-      parentNode.addChild( currentNode );
+      children.push( currentNode );
       if ( previousNode !== null ) {
-        x = previousNode.right + ( 0.25 * currentNode.width );
+        currentNode.left = previousNode.right - ( 0.25 * currentNode.width );
       }
-      currentNode.x = x;
       previousNode = currentNode;
     } );
 
-    // move origin to geometric center
-    parentNode.center = Vector2.ZERO;
+    options.children = [ new Node( {
+      children: children,
+      center: Vector2.ZERO // origin at geometric center
+    } ) ];
+    Node.call( this, options );
   };
 
   return inherit( Node, HorizontalMoleculeNode );

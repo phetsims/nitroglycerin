@@ -1,4 +1,4 @@
-// Copyright 2002-2014, University of Colorado
+// Copyright 2002-2015, University of Colorado
 
 /**
  * H2O Molecule
@@ -9,42 +9,38 @@
 define( function( require ) {
   'use strict';
 
-  var inherit = require( 'PHET_CORE/inherit' );
+  // modules
   var AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
+  var Element = require( 'NITROGLYCERIN/Element' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Vector2 = require( 'DOT/Vector2' );
-  var Element = require( 'NITROGLYCERIN/Element' );
 
-  return inherit( Node, function H2ONode( options ) {
+  /**
+   * @param {Object} [options]
+   * @constructor
+   */
+  function H2ONode( options ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
-    Node.call( this );
-
-    // atom nodes
-    var smallLeftNode = new AtomNode( Element.H, options.atomOptions );
-    var smallRightNode = new AtomNode( Element.H, options.atomOptions );
+    // atoms
     var bigNode = new AtomNode( Element.O, options.atomOptions );
+    var smallLeftNode = new AtomNode( Element.H, _.extend( {
+      x: bigNode.left,
+      y: bigNode.bottom - ( 0.25 * bigNode.height )
+    }, options.atomOptions ) );
+    var smallRightNode = new AtomNode( Element.H, _.extend( {
+      x: bigNode.right,
+      y: smallLeftNode.y
+    }, options.atomOptions ) );
 
-    // rendering order
-    var parentNode = new Node();
-    this.addChild( parentNode );
-    parentNode.addChild( bigNode );
-    parentNode.addChild( smallLeftNode );
-    parentNode.addChild( smallRightNode );
+    options.children = [ new Node( {
+      children: [ bigNode, smallLeftNode, smallRightNode ],
+      center: Vector2.ZERO // origin at geometric center
+    } ) ];
+    Node.call( this, options );
+  };
 
-    // layout
-    var x = 0;
-    var y = 0;
-    bigNode.setTranslation( x, y );
-    x = bigNode.left;
-    y = bigNode.bottom - ( 0.25 * bigNode.height );
-    smallLeftNode.setTranslation( x, y );
-    x = bigNode.right;
-    y = smallLeftNode.y;
-    smallRightNode.setTranslation( x, y );
-
-    // move origin to geometric center
-    parentNode.center = Vector2.ZERO;
-  } );
+  return inherit( Node, H2ONode );
 } );
