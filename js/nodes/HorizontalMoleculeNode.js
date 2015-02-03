@@ -28,7 +28,7 @@ define( function( require ) {
     options = _.extend( {
       atomOptions: {},
       direction: 'leftToRight', // {string} direction of overlap, leftToRight or rightToLeft
-      overlapPercent: 0.25
+      overlapPercent: 0.25 // {number} amount of overlap between atoms
     }, options );
 
     // add each atom from left to right, overlapping consistently
