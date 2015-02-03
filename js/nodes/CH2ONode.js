@@ -1,21 +1,25 @@
-// Copyright 2002-2014, University of Colorado
+// Copyright 2002-2015, University of Colorado
 
 /**
  * CH2O Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
-
 define( function( require ) {
   'use strict';
 
-  var inherit = require( 'PHET_CORE/inherit' );
+  // modules
   var AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
+  var Element = require( 'NITROGLYCERIN/Element' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Vector2 = require( 'DOT/Vector2' );
-  var Element = require( 'NITROGLYCERIN/Element' );
 
-  return inherit( Node, function CH2ONode( options ) {
+  /**
+   * @param {Object} [options]
+   * @constructor
+   */
+  function CH2ONode( options ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
@@ -52,5 +56,7 @@ define( function( require ) {
 
     // move origin to geometric center
     parentNode.center = Vector2.ZERO;
-  } );
+  }
+
+  return inherit( Node, CH2ONode );
 } );

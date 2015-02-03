@@ -8,13 +8,18 @@
 define( function( require ) {
   'use strict';
 
-  var inherit = require( 'PHET_CORE/inherit' );
+  // modules
   var AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
+  var Element = require( 'NITROGLYCERIN/Element' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Vector2 = require( 'DOT/Vector2' );
-  var Element = require( 'NITROGLYCERIN/Element' );
 
-  return inherit( Node, function SO3Node( options ) {
+  /**
+   * @param {Object} [options]
+   * @constructor
+   */
+  function SO3Node( options ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
@@ -50,5 +55,7 @@ define( function( require ) {
 
     // move origin to geometric center
     parentNode.center = Vector2.ZERO;
-  } );
+  }
+
+  return inherit( Node, SO3Node );
 } );
