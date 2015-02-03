@@ -23,34 +23,26 @@ define( function( require ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
-    Node.call( this );
-
+    // atoms
     var bigLeftNode = new AtomNode( Element.C, options.atomOptions );
-    var bigRightNode = new AtomNode( Element.C, options.atomOptions );
-    var smallLeftNode = new AtomNode( Element.H, options.atomOptions );
-    var smallRightNode = new AtomNode( Element.H, options.atomOptions );
+    var bigRightNode = new AtomNode( Element.C, _.extend( {
+      x: bigLeftNode.right + ( 0.25 * bigLeftNode.width ),
+      y: bigLeftNode.y
+    }, options.atomOptions ) );
+    var smallLeftNode = new AtomNode( Element.H, _.extend( {
+      x: bigLeftNode.left,
+      y: bigLeftNode.y
+    }, options.atomOptions ) );
+    var smallRightNode = new AtomNode( Element.H, _.extend( {
+      x: bigRightNode.right,
+      y: bigLeftNode.y
+    }, options.atomOptions ) );
 
-    // rendering order
-    var parentNode = new Node();
-    this.addChild( parentNode );
-    parentNode.addChild( smallLeftNode );
-    parentNode.addChild( bigLeftNode );
-    parentNode.addChild( bigRightNode );
-    parentNode.addChild( smallRightNode );
-
-    // layout
-    var x = 0;
-    var y = 0;
-    bigLeftNode.setTranslation( x, y );
-    x = bigLeftNode.right + ( 0.25 * bigRightNode.width );
-    bigRightNode.setTranslation( x, y );
-    x = bigLeftNode.left;
-    smallLeftNode.setTranslation( x, y );
-    x = bigRightNode.right;
-    smallRightNode.setTranslation( x, y );
-
-    // move origin to geometric center
-    parentNode.center = Vector2.ZERO;
+    options.children = [ new Node( {
+      children: [ smallLeftNode, bigLeftNode, bigRightNode, smallRightNode ],
+      center: Vector2.ZERO // origin at geometric center
+    } ) ];
+    Node.call( this, options );
   }
 
   return inherit( Node, C2H2Node );
