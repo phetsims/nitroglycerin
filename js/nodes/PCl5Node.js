@@ -24,8 +24,6 @@ define( function( require ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
-    Node.call( this );
-
     // atoms
     var centerNode = new AtomNode( Element.P, options.atomOptions );
     var topNode = new AtomNode( Element.Cl, _.extend( {
