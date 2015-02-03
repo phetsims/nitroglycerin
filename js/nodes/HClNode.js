@@ -12,9 +12,8 @@ define( function( require ) {
   var Element = require( 'NITROGLYCERIN/Element' );
   var HorizontalMoleculeNode = require( 'NITROGLYCERIN/nodes/HorizontalMoleculeNode' );
   var inherit = require( 'PHET_CORE/inherit' );
-  var Node = require( 'SCENERY/nodes/Node' );
 
-  return inherit( Node, function HClNode( options ) {
+  return inherit( HorizontalMoleculeNode, function HClNode( options ) {
     options = options || {};
     options.direction = 'rightToLeft';
     options.overlapPercent = 0.5;
