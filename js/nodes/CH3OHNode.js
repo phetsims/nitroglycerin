@@ -23,48 +23,34 @@ define( function( require ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
-    Node.call( this );
-
-    // atom nodes
+    // atoms
     var leftNode = new AtomNode( Element.C, options.atomOptions );
-    var smallTopNode = new AtomNode( Element.H, options.atomOptions );
-    var smallBottomNode = new AtomNode( Element.H, options.atomOptions );
-    var smallLeftNode = new AtomNode( Element.H, options.atomOptions );
-    var rightNode = new AtomNode( Element.O, options.atomOptions );
-    var smallRightNode = new AtomNode( Element.H, options.atomOptions );
+    var smallTopNode = new AtomNode( Element.H, _.extend( {
+      x: leftNode.x,
+      y: leftNode.top
+    }, options.atomOptions ) );
+    var smallBottomNode = new AtomNode( Element.H, _.extend( {
+      x: smallTopNode.x,
+      y: leftNode.bottom
+    }, options.atomOptions ) );
+    var smallLeftNode = new AtomNode( Element.H, _.extend( {
+      x: leftNode.left,
+      y: leftNode.y
+    }, options.atomOptions ) );
+    var rightNode = new AtomNode( Element.O, _.extend( {
+      x: leftNode.right + ( 0.25 * leftNode.width ),
+      y: leftNode.y
+    }, options.atomOptions ) );
+    var smallRightNode = new AtomNode( Element.H, _.extend( {
+      x: rightNode.right,
+      y: rightNode.y
+    }, options.atomOptions ) );
 
-    // rendering order
-    var parentNode = new Node();
-    this.addChild( parentNode );
-    parentNode.addChild( smallBottomNode );
-    parentNode.addChild( smallTopNode );
-    parentNode.addChild( leftNode );
-    parentNode.addChild( smallLeftNode );
-    parentNode.addChild( smallRightNode );
-    parentNode.addChild( rightNode );
-
-    // layout
-    var x = 0;
-    var y = 0;
-    leftNode.setTranslation( x, y );
-    x = leftNode.right + ( 0.25 * rightNode.width );
-    y = leftNode.y;
-    rightNode.setTranslation( x, y );
-    x = leftNode.x;
-    y = leftNode.top;
-    smallTopNode.setTranslation( x, y );
-    x = smallTopNode.x;
-    y = leftNode.bottom;
-    smallBottomNode.setTranslation( x, y );
-    x = leftNode.left;
-    y = leftNode.y;
-    smallLeftNode.setTranslation( x, y );
-    x = rightNode.right;
-    y = rightNode.y;
-    smallRightNode.setTranslation( x, y );
-
-    // move origin to geometric center
-    parentNode.center = Vector2.ZERO;
+    options.children = [ new Node( {
+      children: [ smallBottomNode, smallTopNode, leftNode, smallLeftNode, smallRightNode, rightNode ],
+      center: Vector2.ZERO // origin at geometric center
+    } ) ];
+    Node.call( this, options );
   }
 
   return inherit( Node, CH3OHNode );
