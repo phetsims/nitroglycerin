@@ -1,19 +1,25 @@
-// Copyright 2002-2014, University of Colorado
+// Copyright 2002-2015, University of Colorado
 
 /**
  * CO2 Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
-
 define( function( require ) {
   'use strict';
 
-  var inherit = require( 'PHET_CORE/inherit' );
-  var HorizontalMoleculeNode = require( 'NITROGLYCERIN/nodes/HorizontalMoleculeNode' );
+  // modules
   var Element = require( 'NITROGLYCERIN/Element' );
+  var HorizontalMoleculeNode = require( 'NITROGLYCERIN/nodes/HorizontalMoleculeNode' );
+  var inherit = require( 'PHET_CORE/inherit' );
 
-  return inherit( HorizontalMoleculeNode, function CO2Node( options ) {
+  /**
+   * @param {Object} [options]
+   * @constructor
+   */
+  function CO2Node( options ) {
     HorizontalMoleculeNode.call( this, [ Element.O, Element.C, Element.O ], options );
-  } );
+  }
+
+  return inherit( HorizontalMoleculeNode, CO2Node );
 } );

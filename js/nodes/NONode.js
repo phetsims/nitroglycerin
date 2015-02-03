@@ -1,19 +1,25 @@
-// Copyright 2002-2014, University of Colorado
+// Copyright 2002-2015, University of Colorado
 
 /**
  * NO Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
-
 define( function( require ) {
   'use strict';
 
-  var inherit = require( 'PHET_CORE/inherit' );
-  var HorizontalMoleculeNode = require( 'NITROGLYCERIN/nodes/HorizontalMoleculeNode' );
+  // modules
   var Element = require( 'NITROGLYCERIN/Element' );
+  var HorizontalMoleculeNode = require( 'NITROGLYCERIN/nodes/HorizontalMoleculeNode' );
+  var inherit = require( 'PHET_CORE/inherit' );
 
-  return inherit( HorizontalMoleculeNode, function NONode( options ) {
+  /**
+   * @param {Object} [options]
+   * @constructor
+   */
+  function NONode( options ) {
     HorizontalMoleculeNode.call( this, [ Element.N, Element.O ], options );
-  } );
+  }
+
+  return inherit( HorizontalMoleculeNode, NONode );
 } );
