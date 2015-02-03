@@ -25,36 +25,26 @@ define( function( require ) {
 
     Node.call( this );
 
-    // atom nodes
+    // atoms
     var centerNode = new AtomNode( Element.P, options.atomOptions );
-    var leftNode = new AtomNode( Element.Cl, options.atomOptions );
-    var rightNode = new AtomNode( Element.Cl, options.atomOptions );
-    var bottomNode = new AtomNode( Element.Cl, options.atomOptions );
+    var leftNode = new AtomNode( Element.Cl, _.extend( {
+      x: centerNode.left,
+      y: centerNode.bottom - ( 0.25 * centerNode.height )
+    }, options.atomOptions ) );
+    var rightNode = new AtomNode( Element.Cl, _.extend( {
+      x: centerNode.right,
+      y: leftNode.y
+    }, options.atomOptions ) );
+    var bottomNode = new AtomNode( Element.Cl, _.extend( {
+      x: centerNode.x,
+      y: centerNode.bottom
+    }, options.atomOptions ) );
 
-    // rendering order
-    var parentNode = new Node();
-    this.addChild( parentNode );
-    parentNode.addChild( leftNode );
-    parentNode.addChild( rightNode );
-    parentNode.addChild( centerNode );
-    parentNode.addChild( bottomNode );
-
-    // layout
-    var x = 0;
-    var y = 0;
-    centerNode.setTranslation( x, y );
-    x = centerNode.left;
-    y = centerNode.bottom - ( 0.25 * centerNode.height );
-    leftNode.setTranslation( x, y );
-    x = centerNode.right;
-    y = leftNode.y;
-    rightNode.setTranslation( x, y );
-    x = centerNode.x;
-    y = centerNode.bottom;
-    bottomNode.setTranslation( x, y );
-
-    // move origin to geometric center
-    parentNode.center = Vector2.ZERO;
+    options.children = [ new Node( {
+      children: [ leftNode, rightNode, centerNode, bottomNode ],
+      center: Vector2.ZERO // origin at geometric center
+    } ) ];
+    Node.call( this, options );
   }
 
   return inherit( Node, PCl3Node );

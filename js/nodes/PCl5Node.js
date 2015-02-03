@@ -26,46 +26,34 @@ define( function( require ) {
 
     Node.call( this );
 
-    // atom nodes
+    // atoms
     var centerNode = new AtomNode( Element.P, options.atomOptions );
-    var topNode = new AtomNode( Element.Cl, options.atomOptions );
-    var bottomNode = new AtomNode( Element.Cl, options.atomOptions );
-    var rightNode = new AtomNode( Element.Cl, options.atomOptions );
-    var topLeftNode = new AtomNode( Element.Cl, options.atomOptions );
-    var bottomLeftNode = new AtomNode( Element.Cl, options.atomOptions );
+    var topNode = new AtomNode( Element.Cl, _.extend( {
+      x: centerNode.centerX,
+      y: centerNode.top
+    }, options.atomOptions ) );
+    var bottomNode = new AtomNode( Element.Cl, _.extend( {
+      x: centerNode.centerX,
+      y: centerNode.bottom
+    }, options.atomOptions ) );
+    var rightNode = new AtomNode( Element.Cl, _.extend( {
+      x: centerNode.right,
+      y: centerNode.centerY
+    }, options.atomOptions ) );
+    var topLeftNode = new AtomNode( Element.Cl, _.extend( {
+      x: centerNode.left + ( 0.25 * centerNode.width ),
+      y: centerNode.top + ( 0.25 * centerNode.height )
+    }, options.atomOptions ) );
+    var bottomLeftNode = new AtomNode( Element.Cl, _.extend( {
+      x: centerNode.left + ( 0.1 * centerNode.width ),
+      y: centerNode.bottom - ( 0.1 * centerNode.height )
+    }, options.atomOptions ) );
 
-    // rendering order
-    var parentNode = new Node();
-    this.addChild( parentNode );
-    parentNode.addChild( rightNode );
-    parentNode.addChild( bottomNode );
-    parentNode.addChild( topLeftNode );
-    parentNode.addChild( centerNode );
-    parentNode.addChild( topNode );
-    parentNode.addChild( bottomLeftNode );
-
-    // layout
-    var x = 0;
-    var y = 0;
-    centerNode.setTranslation( x, y );
-    x = centerNode.centerX;
-    y = centerNode.top;
-    topNode.setTranslation( x, y );
-    x = centerNode.centerX;
-    y = centerNode.bottom;
-    bottomNode.setTranslation( x, y );
-    x = centerNode.right;
-    y = centerNode.centerY;
-    rightNode.setTranslation( x, y );
-    x = centerNode.left + ( 0.25 * centerNode.width );
-    y = centerNode.top + ( 0.25 * centerNode.height );
-    topLeftNode.setTranslation( x, y );
-    x = centerNode.left + ( 0.1 * centerNode.width );
-    y = centerNode.bottom - ( 0.1 * centerNode.height );
-    bottomLeftNode.setTranslation( x, y );
-
-    // move origin to geometric center
-    parentNode.center = Vector2.ZERO;
+    options.children = [ new Node( {
+      children: [ rightNode, bottomNode, topLeftNode, centerNode, topNode, bottomLeftNode ],
+      center: Vector2.ZERO // origin at geometric center
+    } ) ];
+    Node.call( this, options );
   }
 
   return inherit( Node, PCl5Node );
