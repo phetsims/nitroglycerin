@@ -40,7 +40,7 @@ define( function( require ) {
       center: Vector2.ZERO // origin at geometric center
     } ) ];
     Node.call( this, options );
-  };
+  }
 
   return inherit( Node, H2ONode );
 } );
