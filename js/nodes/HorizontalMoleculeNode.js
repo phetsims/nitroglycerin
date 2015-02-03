@@ -25,7 +25,11 @@ define( function( require ) {
    */
   var HorizontalMoleculeNode = function HorizontalMoleculeNode( elements, options ) {
 
-    options = _.extend( { atomOptions: {} }, options );
+    options = _.extend( {
+      atomOptions: {},
+      direction: 'leftToRight', // {string} direction of overlap, leftToRight or rightToLeft
+      overlapPercent: 0.25
+    }, options );
 
     // add each atom from left to right, overlapping consistently
     var children = [];
@@ -34,7 +38,13 @@ define( function( require ) {
       var currentNode = new AtomNode( element, options.atomOptions );
       children.push( currentNode );
       if ( previousNode !== null ) {
-        currentNode.left = previousNode.right - ( 0.25 * currentNode.width );
+        var overlap = ( options.overlapPercent * currentNode.width );
+        if ( options.direction === 'leftToRight' ) {
+          currentNode.left = previousNode.right - overlap;
+        }
+        else {
+          currentNode.right = previousNode.left + overlap;
+        }
       }
       previousNode = currentNode;
     } );
