@@ -23,38 +23,25 @@ define( function( require ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
-    Node.call( this );
-
     // atom nodes
     var centerNode = new AtomNode( Element.S, options.atomOptions );
     var leftNode = new AtomNode( Element.O, options.atomOptions );
     var rightNode = new AtomNode( Element.O, options.atomOptions );
     var topNode = new AtomNode( Element.O, options.atomOptions );
 
-    // rendering order
-    var parentNode = new Node();
-    this.addChild( parentNode );
-    parentNode.addChild( topNode );
-    parentNode.addChild( leftNode );
-    parentNode.addChild( centerNode );
-    parentNode.addChild( rightNode );
-
     // layout
-    var x = 0;
-    var y = 0;
-    centerNode.setTranslation( x, y );
-    x = centerNode.x + ( 0.1 * topNode.width );
-    y = centerNode.left + ( 0.1 * topNode.height );
-    topNode.setTranslation( x, y );
-    x = centerNode.left;
-    y = centerNode.y + ( 0.25 * leftNode.height );
-    leftNode.setTranslation( x, y );
-    x = centerNode.right;
-    y = centerNode.y + ( 0.25 * rightNode.height );
-    rightNode.setTranslation( x, y );
+    topNode.x = centerNode.x + ( 0.1 * topNode.width );
+    topNode.y = centerNode.left + ( 0.1 * topNode.height );
+    leftNode.x = centerNode.left;
+    leftNode.y = centerNode.y + ( 0.25 * leftNode.height );
+    rightNode.x = centerNode.right;
+    rightNode.y = centerNode.y + ( 0.25 * rightNode.height );
 
-    // move origin to geometric center
-    parentNode.center = Vector2.ZERO;
+    options.children = [ new Node( {
+      children: [ topNode, leftNode, centerNode, rightNode ],
+      center: Vector2.ZERO // origin at geometric center
+    } ) ];
+    Node.call( this, options );
   }
 
   return inherit( Node, SO3Node );
