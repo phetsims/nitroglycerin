@@ -13,10 +13,16 @@ define( function( require ) {
   var HorizontalMoleculeNode = require( 'NITROGLYCERIN/nodes/HorizontalMoleculeNode' );
   var inherit = require( 'PHET_CORE/inherit' );
 
-  return inherit( HorizontalMoleculeNode, function HClNode( options ) {
-    options = options || {};
+  /**
+   * @param {Object} [options]
+   * @constructor
+   */
+  function HClNode( options ) {
+    options = _.extend( {}, options );
     options.direction = 'rightToLeft';
     options.overlapPercent = 0.5;
     HorizontalMoleculeNode.call( this, [ Element.Cl, Element.H ], options );
-  } );
+  }
+
+  return inherit( HorizontalMoleculeNode, HClNode );
 } );

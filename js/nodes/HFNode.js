@@ -18,7 +18,7 @@ define( function( require ) {
    * @constructor
    */
   function HFNode( options ) {
-    options = options || {};
+    options = _.extend( {}, options );
     options.direction = 'rightToLeft';
     options.overlapPercent = 0.5;
     HorizontalMoleculeNode.call( this, [ Element.F, Element.H ], options );
