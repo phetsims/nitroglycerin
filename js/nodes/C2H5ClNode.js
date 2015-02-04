@@ -50,9 +50,10 @@ define( function( require ) {
       centerX: centerNode.centerX,
       centerY: centerNode.bottom
     }, options.atomOptions ) );
-    var rightNode = new AtomNode( Element.Cl, options.atomOptions );
-    rightNode.centerX = centerNode.right + ( 0.125 * rightNode.width );
-    rightNode.centerY = centerNode.centerY;
+    var rightNode = new AtomNode( Element.Cl, _.extend( {
+      left: centerNode.centerX + ( 0.11 * leftNode.width ),
+      centerY: centerNode.centerY
+    }, options.atomOptions ) );
 
     options.children = [ new Node( {
       children: [
