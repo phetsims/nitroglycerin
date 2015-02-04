@@ -25,24 +25,27 @@ define( function( require ) {
 
     // atoms
     var bigLeftNode = new AtomNode( Element.C, options.atomOptions );
-    var bigRightNode = new AtomNode( Element.C, options.atomOptions );
-    var smallTopLeftNode = new AtomNode( Element.H, options.atomOptions );
-    var smallTopRightNode = new AtomNode( Element.H, options.atomOptions );
-    var smallBottomLeftNode = new AtomNode( Element.H, options.atomOptions );
-    var smallBottomRightNode = new AtomNode( Element.H, options.atomOptions );
-
-    // layout
-    var offsetSmall = smallTopLeftNode.width / 4;
-    bigRightNode.x = bigLeftNode.right + ( 0.25 * bigRightNode.width );
-    bigRightNode.y = bigLeftNode.y;
-    smallTopLeftNode.x = bigLeftNode.left + offsetSmall;
-    smallTopLeftNode.y = bigLeftNode.top + offsetSmall;
-    smallTopRightNode.x = bigRightNode.right - offsetSmall;
-    smallTopRightNode.y = bigRightNode.top + offsetSmall;
-    smallBottomLeftNode.x = bigLeftNode.left + offsetSmall;
-    smallBottomLeftNode.y = bigLeftNode.bottom - offsetSmall;
-    smallBottomRightNode.x = bigRightNode.right - offsetSmall;
-    smallBottomRightNode.y = bigRightNode.bottom - offsetSmall;
+    var smallOffset = 0.165 * bigLeftNode.width;
+    var bigRightNode = new AtomNode( Element.C, _.extend( {
+      x: bigLeftNode.right + ( 0.25 * bigLeftNode.width ),
+      y: bigLeftNode.y
+    }, options.atomOptions ) );
+    var smallTopLeftNode = new AtomNode( Element.H, _.extend( {
+      x: bigLeftNode.left + smallOffset,
+      y: bigLeftNode.top + smallOffset
+    }, options.atomOptions ) );
+    var smallTopRightNode = new AtomNode( Element.H, _.extend( {
+      x: bigRightNode.right - smallOffset,
+      y: bigRightNode.top + smallOffset
+    }, options.atomOptions ) );
+    var smallBottomLeftNode = new AtomNode( Element.H, _.extend( {
+      x: bigLeftNode.left + smallOffset,
+      y: bigLeftNode.bottom - smallOffset
+    }, options.atomOptions ) );
+    var smallBottomRightNode = new AtomNode( Element.H, _.extend( {
+      x: bigRightNode.right - smallOffset,
+      y: bigRightNode.bottom - smallOffset
+    }, options.atomOptions ) );
 
     options.children = [ new Node( {
       children: [ smallTopRightNode, smallTopLeftNode, bigLeftNode, bigRightNode, smallBottomLeftNode, smallBottomRightNode ],
