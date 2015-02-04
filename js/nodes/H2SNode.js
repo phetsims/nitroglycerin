@@ -23,33 +23,22 @@ define( function( require ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
-    Node.call( this );
-
-    // atom nodes
-    var smallLeftNode = new AtomNode( Element.H, options.atomOptions );
-    var smallRightNode = new AtomNode( Element.H, options.atomOptions );
+    // atoms
     var bigNode = new AtomNode( Element.S, options.atomOptions );
+    var smallLeftNode = new AtomNode( Element.H, _.extend( {
+      x: bigNode.left,
+      y: bigNode.bottom - ( 0.25 * bigNode.height )
+    }, options.atomOptions ) );
+    var smallRightNode = new AtomNode( Element.H, _.extend( {
+      x: bigNode.right,
+      y: smallLeftNode.y
+    }, options.atomOptions ) );
 
-    // rendering order
-    var parentNode = new Node();
-    this.addChild( parentNode );
-    parentNode.addChild( bigNode );
-    parentNode.addChild( smallLeftNode );
-    parentNode.addChild( smallRightNode );
-
-    // layout
-    var x = 0;
-    var y = 0;
-    bigNode.setTranslation( x, y );
-    x = bigNode.left;
-    y = bigNode.bottom - ( 0.25 * bigNode.height );
-    smallLeftNode.setTranslation( x, y );
-    x = bigNode.right;
-    y = smallLeftNode.y;
-    smallRightNode.setTranslation( x, y );
-
-    // move origin to geometric center
-    parentNode.center = Vector2.ZERO;
+    options.children = [ new Node( {
+      children: [ bigNode, smallLeftNode, smallRightNode ],
+      center: Vector2.ZERO // origin at geometric center
+    } ) ];
+    Node.call( this, options );
   }
 
   return inherit( Node, H2SNode );
