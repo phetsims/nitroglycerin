@@ -25,17 +25,18 @@ define( function( require ) {
 
     // atoms
     var centerNode = new AtomNode( Element.S, options.atomOptions );
-    var leftNode = new AtomNode( Element.O, options.atomOptions );
-    var rightNode = new AtomNode( Element.O, options.atomOptions );
-    var topNode = new AtomNode( Element.O, options.atomOptions );
-
-    // layout
-    topNode.x = centerNode.x + ( 0.1 * topNode.width );
-    topNode.y = centerNode.left + ( 0.1 * topNode.height );
-    leftNode.x = centerNode.left;
-    leftNode.y = centerNode.y + ( 0.25 * leftNode.height );
-    rightNode.x = centerNode.right;
-    rightNode.y = centerNode.y + ( 0.25 * rightNode.height );
+    var leftNode = new AtomNode( Element.O, _.extend( {
+      x: centerNode.left,
+      y: centerNode.y + ( 0.2 * centerNode.height )
+    }, options.atomOptions ) );
+    var rightNode = new AtomNode( Element.O, _.extend( {
+      x: centerNode.right,
+      y: centerNode.y + ( 0.2 * centerNode.height )
+    }, options.atomOptions ) );
+    var topNode = new AtomNode( Element.O, _.extend( {
+      x: centerNode.x + ( 0.08 * centerNode.width ),
+      y: centerNode.left + ( 0.08 * centerNode.height )
+    }, options.atomOptions ) );
 
     options.children = [ new Node( {
       children: [ topNode, leftNode, centerNode, rightNode ],
