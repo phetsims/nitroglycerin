@@ -23,7 +23,7 @@ define( function( require ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
-    // atom nodes
+    // atoms
     var bigNode = new AtomNode( Element.C, options.atomOptions );
     var smallTopLeftNode = new AtomNode( Element.H, options.atomOptions );
     var smallTopRightNode = new AtomNode( Element.H, options.atomOptions );

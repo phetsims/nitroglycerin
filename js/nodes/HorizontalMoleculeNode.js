@@ -31,7 +31,7 @@ define( function( require ) {
       overlapPercent: 0.25 // {number} amount of overlap between atoms
     }, options );
 
-    // add each atom from left to right, overlapping consistently
+    // add atoms from left to right, overlapping consistently
     var children = [];
     var previousNode = null;
     _.each( elements, function( element ) {
