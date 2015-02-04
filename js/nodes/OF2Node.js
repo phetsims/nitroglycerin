@@ -26,12 +26,12 @@ define( function( require ) {
     // atoms
     var centerNode = new AtomNode( Element.O, options.atomOptions );
     var leftNode = new AtomNode( Element.F, _.extend( {
-      x: centerNode.left,
-      y: centerNode.y + ( 0.25 * centerNode.height )
+      centerX: centerNode.left,
+      centerY: centerNode.centerY + ( 0.25 * centerNode.height )
     }, options.atomOptions ) );
     var rightNode = new AtomNode( Element.F, _.extend( {
-      x: centerNode.right,
-      y: centerNode.y + ( 0.25 * centerNode.height )
+      centerX: centerNode.right,
+      centerY: centerNode.centerY + ( 0.25 * centerNode.height )
     }, options.atomOptions ) );
 
     options.children = [ new Node( {

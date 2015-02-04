@@ -27,20 +27,20 @@ define( function( require ) {
     var bigNode = new AtomNode( Element.C, options.atomOptions );
     var smallOffset = 0.165 * bigNode.width;
     var smallTopLeftNode = new AtomNode( Element.H, _.extend( {
-      x: bigNode.left + smallOffset,
-      y: bigNode.top + smallOffset
+      centerX: bigNode.left + smallOffset,
+      centerY: bigNode.top + smallOffset
     }, options.atomOptions ) );
     var smallTopRightNode = new AtomNode( Element.H, _.extend( {
-      x: bigNode.right - smallOffset,
-      y: smallTopLeftNode.y
+      centerX: bigNode.right - smallOffset,
+      centerY: smallTopLeftNode.centerY
     }, options.atomOptions ) );
     var smallBottomLeftNode = new AtomNode( Element.H, _.extend( {
-      x: smallTopLeftNode.x,
-      y: bigNode.bottom - smallOffset
+      centerX: smallTopLeftNode.centerX,
+      centerY: bigNode.bottom - smallOffset
     }, options.atomOptions ) );
     var smallBottomRightNode = new AtomNode( Element.H, _.extend( {
-      x: smallTopRightNode.x,
-      y: smallBottomLeftNode.y
+      centerX: smallTopRightNode.centerX,
+      centerY: smallBottomLeftNode.centerY
     }, options.atomOptions ) );
 
 

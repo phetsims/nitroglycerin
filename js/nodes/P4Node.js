@@ -27,16 +27,16 @@ define( function( require ) {
     // atoms
     var topNode = new AtomNode( Element.P, options.atomOptions );
     var bottomLeftNode = new AtomNode( Element.P, _.extend( {
-      x: topNode.left + ( 0.3 * topNode.width ),
-      y: topNode.bottom + ( 0.2 * topNode.width )
+      centerX: topNode.left + ( 0.3 * topNode.width ),
+      centerY: topNode.bottom + ( 0.2 * topNode.width )
     }, options.atomOptions ) );
     var bottomRightNode = new AtomNode( Element.P, _.extend( {
-      x: topNode.right,
-      y: topNode.bottom
+      centerX: topNode.right,
+      centerY: topNode.bottom
     }, options.atomOptions ) );
     var bottomBackNode = new AtomNode( Element.P, _.extend( {
-      x: topNode.left,
-      y: topNode.centerY + ( 0.2 * topNode.height )
+      centerX: topNode.left,
+      centerY: topNode.centerY + ( 0.2 * topNode.height )
     }, options.atomOptions ) );
 
     options.children = [ new Node( {
