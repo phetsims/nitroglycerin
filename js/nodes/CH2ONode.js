@@ -25,18 +25,19 @@ define( function( require ) {
 
     // atoms
     var leftNode = new AtomNode( Element.C, options.atomOptions );
-    var rightNode = new AtomNode( Element.O, options.atomOptions );
-    var smallTopNode = new AtomNode( Element.H, options.atomOptions );
-    var smallBottomNode = new AtomNode( Element.H, options.atomOptions );
-
-    // layout
-    var offsetSmall = smallTopNode.width / 4;
-    rightNode.x = leftNode.right + ( 0.25 * rightNode.width );
-    rightNode.y = leftNode.y;
-    smallTopNode.x = leftNode.left + offsetSmall;
-    smallTopNode.y = leftNode.top + offsetSmall;
-    smallBottomNode.x = smallTopNode.x;
-    smallBottomNode.y = leftNode.bottom - offsetSmall;
+    var smallOffset = 0.165 * leftNode.width;
+    var rightNode = new AtomNode( Element.O, _.extend( {
+      x: leftNode.right + ( 0.25 * leftNode.width ),
+      y: leftNode.y
+    }, options.atomOptions ) );
+    var smallTopNode = new AtomNode( Element.H, _.extend( {
+      x: leftNode.left + smallOffset,
+      y: leftNode.top + smallOffset
+    }, options.atomOptions ) );
+    var smallBottomNode = new AtomNode( Element.H, _.extend( {
+      x: smallTopNode.x,
+      y: leftNode.bottom - smallOffset
+    }, options.atomOptions ) );
 
     options.children = [ new Node( {
       children: [ smallTopNode, leftNode, rightNode, smallBottomNode ],
