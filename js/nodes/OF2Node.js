@@ -25,14 +25,14 @@ define( function( require ) {
 
     // atoms
     var centerNode = new AtomNode( Element.O, options.atomOptions );
-    var leftNode = new AtomNode( Element.F, options.atomOptions );
-    var rightNode = new AtomNode( Element.F, options.atomOptions );
-
-    // layout
-    leftNode.x = centerNode.left;
-    leftNode.y = centerNode.y + ( 0.25 * leftNode.height );
-    rightNode.x = centerNode.right;
-    rightNode.y = centerNode.y + ( 0.25 * rightNode.height );
+    var leftNode = new AtomNode( Element.F, _.extend( {
+      x: centerNode.left,
+      y: centerNode.y + ( 0.25 * centerNode.height )
+    }, options.atomOptions ) );
+    var rightNode = new AtomNode( Element.F, _.extend( {
+      x: centerNode.right,
+      y: centerNode.y + ( 0.25 * centerNode.height )
+    }, options.atomOptions ) );
 
     options.children = [ new Node( {
       children: [ leftNode, centerNode, rightNode ],
