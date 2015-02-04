@@ -23,33 +23,22 @@ define( function( require ) {
 
     options = _.extend( { atomOptions: {} }, options );
 
-    Node.call( this );
-
-    // atom nodes
+    // atoms
     var centerNode = new AtomNode( Element.O, options.atomOptions );
     var leftNode = new AtomNode( Element.F, options.atomOptions );
     var rightNode = new AtomNode( Element.F, options.atomOptions );
 
-    // rendering order
-    var parentNode = new Node();
-    this.addChild( parentNode );
-    parentNode.addChild( leftNode );
-    parentNode.addChild( centerNode );
-    parentNode.addChild( rightNode );
-
     // layout
-    var x = 0;
-    var y = 0;
-    centerNode.setTranslation( x, y );
-    x = centerNode.left;
-    y = centerNode.y + ( 0.25 * leftNode.height );
-    leftNode.setTranslation( x, y );
-    x = centerNode.right;
-    y = centerNode.y + ( 0.25 * rightNode.height );
-    rightNode.setTranslation( x, y );
+    leftNode.x = centerNode.left;
+    leftNode.y = centerNode.y + ( 0.25 * leftNode.height );
+    rightNode.x = centerNode.right;
+    rightNode.y = centerNode.y + ( 0.25 * rightNode.height );
 
-    // move origin to geometric center
-    parentNode.center = Vector2.ZERO;
+    options.children = [ new Node( {
+      children: [ leftNode, centerNode, rightNode ],
+      center: Vector2.ZERO // origin at geometric center
+    } ) ];
+    Node.call( this, options );
   }
 
   return inherit( Node, OF2Node );
