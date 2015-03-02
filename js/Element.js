@@ -9,6 +9,14 @@
 define( function() {
   'use strict';
 
+  /**
+   * @param symbol {string}
+   * @param radius {number} covalent radius, in pm
+   * @param electronegativity {number} in Pauling units
+   * @param atomicWeight {number}
+   * @param color {Color|string}
+   * @constructor
+   */
   var Element = function( symbol, radius, electronegativity, atomicWeight, color ) {
     this.symbol = symbol;
     this.radius = radius;
