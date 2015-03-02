@@ -11,10 +11,11 @@ define( function() {
 
   /**
    * @param symbol {string}
-   * @param radius {number} covalent radius, in pm
-   * @param electronegativity {number} in Pauling units
-   * @param atomicWeight {number}
-   * @param color {Color|string}
+   * @param radius {number} Covalent radius, in picometers. For a quick chart,
+   *                        see http://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)
+   * @param electronegativity {number} in Pauling units, see https://secure.wikimedia.org/wikipedia/en/wiki/Electronegativity
+   * @param atomicWeight {number} In atomic mass units (u). from http://www.webelements.com/periodicity/atomic_weight/
+   * @param color {Color|string} Color used in visual representations
    * @constructor
    */
   var Element = function( symbol, radius, electronegativity, atomicWeight, color ) {
