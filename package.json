@@ -2,7 +2,7 @@
   "name": "nitroglycerin",
   "version": "0.0.0",
   "license": "MIT",
-  "phetLibs": "nitroglycerin dot phetcore scenery",
+  "phetLibs": "nitroglycerin chipper dot phetcore scenery",
   "repository": {
     "type": "git",
     "url": "https://github.com/phetsims/nitroglycerin.git"
