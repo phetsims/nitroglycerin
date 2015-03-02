@@ -50,7 +50,7 @@ define( function() {
   Element.H = new Element( 'H', 37, 2.20, 1.00794, '#ffffff' );
   Element.I = new Element( 'I', 133, 2.66, 126.90447, '#940094' ); // dark violet, CPK coloring
   Element.N = new Element( 'N', 75, 3.04, 14.00674, '#0000ff' );
-  Element.O = new Element( 'O', 73, 3.44, 15.9994, 'rgb(255,85,0)' );
+  Element.O = new Element( 'O', 73, 3.44, 15.9994, 'rgb(255,85,0)' ); // color-blind red
   Element.P = new Element( 'P', 110, 2.19, 30.973762, 'rgb(255,128,0)' );
   Element.S = new Element( 'S', 103, 2.58, 32.066, 'rgb(212,181,59)' );
   Element.Si = new Element( 'Si', 118, 1.90, 28.0855, 'rgb(240,200,160)' ); // tan, Jmol coloring listed from https://secure.wikimedia.org/wikipedia/en/wiki/CPK_coloring
