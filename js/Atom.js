@@ -9,6 +9,8 @@
 define( function( require ) {
   'use strict';
 
+  // modules
+  var inherit = require( 'PHET_CORE/inherit' );
   var Element = require( 'NITROGLYCERIN/Element' );
 
   var idCounter = 1;
@@ -27,8 +29,7 @@ define( function( require ) {
     this.id = this.symbol + '_' + this.reference;
   };
 
-  Atom.prototype = {
-    constructor: Atom,
+  return inherit( Object, Atom, {
 
     hasSameElement: function( atom ) {
       return this.element.isSameElement( atom.element );
@@ -49,11 +50,11 @@ define( function( require ) {
     toString: function() {
       return this.symbol;
     }
-  };
+  }, {
 
-  Atom.createAtomFromSymbol = function( symbol ) {
-    return new Atom( Element.getElementBySymbol( symbol ) );
-  };
-
-  return Atom;
+    // @static
+    createAtomFromSymbol: function( symbol ) {
+      return new Atom( Element.getElementBySymbol( symbol ) );
+    }
+  } );
 } );
