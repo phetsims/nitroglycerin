@@ -10,6 +10,7 @@ define( function( require ) {
   'use strict';
 
   // modules
+  var inherit = require( 'PHET_CORE/inherit' );
   var PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
 
   /**
@@ -29,8 +30,7 @@ define( function( require ) {
     this.color = color;
   };
 
-  Element.prototype = {
-    constructor: Element,
+  inherit( Object, Element, {
 
     isSameElement: function( element ) {
       return element.symbol === this.symbol;
@@ -51,7 +51,8 @@ define( function( require ) {
     toString: function() {
       return this.symbol;
     }
-  };
+
+  } );
 
   Element.B = new Element( 'B', 85, 2.04, 10.811, 'rgb(255,170,119)' ); // peach/salmon colored, CPK coloring
   Element.Be = new Element( 'Be', 105, 1.57, 9.012182, '#c2ff00' ); // beryllium
