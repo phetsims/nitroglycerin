@@ -64,7 +64,7 @@ define( function( require ) {
   Element.H = new Element( 'H', 37, 2.20, 1.00794, '#ffffff' );
   Element.I = new Element( 'I', 133, 2.66, 126.90447, '#940094' ); // dark violet, CPK coloring
   Element.N = new Element( 'N', 75, 3.04, 14.00674, '#0000ff' );
-  Element.Ne = new Element( 'Ne', 69, null, 20.1797, '#70D4FF' );
+  Element.Ne = new Element( 'Ne', 69, null, 20.1797, '#1AFFFB' );
   Element.O = new Element( 'O', 73, 3.44, 15.9994, PhetColorScheme.RED_COLORBLIND );
   Element.P = new Element( 'P', 110, 2.19, 30.973762, 'rgb(255,128,0)' );
   Element.S = new Element( 'S', 103, 2.58, 32.066, 'rgb(212,181,59)' );
