@@ -1,4 +1,4 @@
-// Copyright 2002-2015, University of Colorado
+// Copyright 2002-2015, University of Colorado Boulder
 
 /**
  * Base class for molecules with N atoms aligned on the horizontal axis, for N > 0.
