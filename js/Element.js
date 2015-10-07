@@ -76,8 +76,8 @@ define( function( require ) {
   Element.Xe = new Element( 'Xe', 108, 216, 2.60, 131.293, '#429eb0' ); // radius is based on calculated (not empirical) data
 
   Element.elements = [
-    Element.B, Element.Be, Element.Br, Element.C, Element.Cl, Element.F, Element.H,
-    Element.I, Element.N, Element.O, Element.P, Element.S, Element.Si, Element.Xe
+    Element.Ar, Element.B, Element.Be, Element.Br, Element.C, Element.Cl, Element.F, Element.H, Element.I, Element.N,
+    Element.Ne, Element.O, Element.P, Element.S, Element.Si, Element.Sn, Element.Xe
   ];
 
   // maps symbol => element
