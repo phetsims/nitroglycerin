@@ -14,7 +14,7 @@ define( function( require ) {
   var Element = require( 'NITROGLYCERIN/Element' );
 
   var rateOfChange = 0.75; // >0 and <1, increase this to make small atoms appear smaller
-  var maxRadius = Element.P.radius; // not actually the maximum, but this is a constant from the previous version
+  var maxRadius = Element.P.covalentRadius; // not actually the maximum, but this is a constant from the previous version
   var modelToViewScale = 0.11;
 
   /*
@@ -31,7 +31,7 @@ define( function( require ) {
       mainColor: element.color // passed to ShadedSphereNode
     }, options );
 
-    ShadedSphereNode.call( this, 2 * radiusScalingFunction( element.radius ), options );
+    ShadedSphereNode.call( this, 2 * radiusScalingFunction( element.covalentRadius ), options );
   };
 
   return inherit( ShadedSphereNode, AtomNode );

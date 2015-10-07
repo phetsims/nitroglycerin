@@ -1,4 +1,4 @@
-// Copyright 2002-2014, University of Colorado Boulder
+// Copyright 2002-2015, University of Colorado Boulder
 
 /**
  * Object for actual element properties (symbol, radius, etc.)
@@ -15,16 +15,19 @@ define( function( require ) {
 
   /**
    * @param symbol {string}
-   * @param radius {number} Covalent radius, in picometers. For a quick chart,
-   *                        see http://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)
+   * @param covalentRadius {number} Covalent radius, in picometers. For a quick chart,
+   *        see http://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)
+   * @param vanDerWaalsRadius {number} Van der Waals radius, in picometers. See chart at
+   *        http://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)
    * @param electronegativity {number} in Pauling units, see https://secure.wikimedia.org/wikipedia/en/wiki/Electronegativity
    * @param atomicWeight {number} In atomic mass units (u). from http://www.webelements.com/periodicity/atomic_weight/
    * @param color {Color|string} Color used in visual representations
    * @constructor
    */
-  var Element = function( symbol, radius, electronegativity, atomicWeight, color ) {
+  var Element = function( symbol, covalentRadius, vanDerWaalsRadius, electronegativity, atomicWeight, color ) {
     this.symbol = symbol;
-    this.radius = radius;
+    this.covalentRadius = covalentRadius;
+    this.vanDerWaalsRadius = vanDerWaalsRadius;
     this.electronegativity = electronegativity;
     this.atomicWeight = atomicWeight;
     this.color = color;
@@ -54,23 +57,23 @@ define( function( require ) {
 
   } );
 
-  Element.Ar = new Element( 'Ar', 97, null, 39.948, '#FFAFAF' );
-  Element.B = new Element( 'B', 85, 2.04, 10.811, 'rgb(255,170,119)' ); // peach/salmon colored, CPK coloring
-  Element.Be = new Element( 'Be', 105, 1.57, 9.012182, '#c2ff00' ); // beryllium
-  Element.Br = new Element( 'Br', 114, 2.96, 79.904, 'rgb(190,30,20)' ); // brown
-  Element.C = new Element( 'C', 77, 2.55, 12.0107, 'rgb(178,178,178)' );
-  Element.Cl = new Element( 'Cl', 100, 3.16, 35.4527, 'rgb(153,242,57)' );
-  Element.F = new Element( 'F', 72, 3.98, 18.9984032, 'rgb(247,255,74)' );
-  Element.H = new Element( 'H', 37, 2.20, 1.00794, '#ffffff' );
-  Element.I = new Element( 'I', 133, 2.66, 126.90447, '#940094' ); // dark violet, CPK coloring
-  Element.N = new Element( 'N', 75, 3.04, 14.00674, '#0000ff' );
-  Element.Ne = new Element( 'Ne', 69, null, 20.1797, '#1AFFFB' );
-  Element.O = new Element( 'O', 73, 3.44, 15.9994, PhetColorScheme.RED_COLORBLIND );
-  Element.P = new Element( 'P', 110, 2.19, 30.973762, 'rgb(255,128,0)' );
-  Element.S = new Element( 'S', 103, 2.58, 32.066, 'rgb(212,181,59)' );
-  Element.Si = new Element( 'Si', 118, 1.90, 28.0855, 'rgb(240,200,160)' ); // tan, Jmol coloring listed from https://secure.wikimedia.org/wikipedia/en/wiki/CPK_coloring
-  Element.Sn = new Element( 'Sn', 145, 1.96, 118.710, '#668080' ); // tin
-  Element.Xe = new Element( 'Xe', 108, 2.60, 131.293, '#429eb0' ); // radius is based on calculated (not empirical) data
+  Element.Ar = new Element( 'Ar', 97, 188, null, 39.948, '#FFAFAF' );
+  Element.B = new Element( 'B', 85, 192, 2.04, 10.811, 'rgb(255,170,119)' ); // peach/salmon colored, CPK coloring
+  Element.Be = new Element( 'Be', 105, 153, 1.57, 9.012182, '#c2ff00' ); // beryllium
+  Element.Br = new Element( 'Br', 114, 185, 2.96, 79.904, 'rgb(190,30,20)' ); // brown
+  Element.C = new Element( 'C', 77, 170, 2.55, 12.0107, 'rgb(178,178,178)' );
+  Element.Cl = new Element( 'Cl', 100, 175, 3.16, 35.4527, 'rgb(153,242,57)' );
+  Element.F = new Element( 'F', 72, 147, 3.98, 18.9984032, 'rgb(247,255,74)' );
+  Element.H = new Element( 'H', 37, 120, 2.20, 1.00794, '#ffffff' );
+  Element.I = new Element( 'I', 133, 198, 2.66, 126.90447, '#940094' ); // dark violet, CPK coloring
+  Element.N = new Element( 'N', 75, 155, 3.04, 14.00674, '#0000ff' );
+  Element.Ne = new Element( 'Ne', 69, 154, null, 20.1797, '#1AFFFB' );
+  Element.O = new Element( 'O', 73, 152, 3.44, 15.9994, PhetColorScheme.RED_COLORBLIND );
+  Element.P = new Element( 'P', 110, 180, 2.19, 30.973762, 'rgb(255,128,0)' );
+  Element.S = new Element( 'S', 103, 180, 2.58, 32.066, 'rgb(212,181,59)' );
+  Element.Si = new Element( 'Si', 118, 210, 1.90, 28.0855, 'rgb(240,200,160)' ); // tan, Jmol coloring listed from https://secure.wikimedia.org/wikipedia/en/wiki/CPK_coloring
+  Element.Sn = new Element( 'Sn', 145, 217, 1.96, 118.710, '#668080' ); // tin
+  Element.Xe = new Element( 'Xe', 108, 216, 2.60, 131.293, '#429eb0' ); // radius is based on calculated (not empirical) data
 
   Element.elements = [
     Element.B, Element.Be, Element.Br, Element.C, Element.Cl, Element.F, Element.H,

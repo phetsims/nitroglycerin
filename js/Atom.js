@@ -18,7 +18,7 @@ define( function( require ) {
   var Atom = function( element ) {
     this.element = element;
     this.symbol = element.symbol;
-    this.radius = element.radius;
+    this.covalentRadius = element.covalentRadius;
     this.diameter = element.radius * 2;
     this.electronegativity = element.electronegativity;
     this.atomicWeight = element.atomicWeight;
