@@ -19,7 +19,9 @@ define( function( require ) {
    *        see http://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)
    * @param vanDerWaalsRadius {number} Van der Waals radius, in picometers. See chart at
    *        http://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)
-   * @param electronegativity {number} in Pauling units, see https://secure.wikimedia.org/wikipedia/en/wiki/Electronegativity
+   * @param electronegativity {number|null} in Pauling units, see
+   *        https://secure.wikimedia.org/wikipedia/en/wiki/Electronegativity, is null when undefined for an element
+   *        (as is the case for noble gasses)
    * @param atomicWeight {number} In atomic mass units (u). from http://www.webelements.com/periodicity/atomic_weight/
    * @param color {Color|string} Color used in visual representations
    * @constructor
