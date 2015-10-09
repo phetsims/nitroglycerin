@@ -19,7 +19,7 @@ define( function( require ) {
     this.element = element;
     this.symbol = element.symbol;
     this.covalentRadius = element.covalentRadius;
-    this.diameter = element.radius * 2;
+    this.covalentDiameter = element.covalentRadius * 2;
     this.electronegativity = element.electronegativity;
     this.atomicWeight = element.atomicWeight;
     this.color = element.color;
