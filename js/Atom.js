@@ -31,28 +31,33 @@ define( function( require ) {
 
   return inherit( Object, Atom, {
 
+    // @public
     hasSameElement: function( atom ) {
       return this.element.isSameElement( atom.element );
     },
 
+    // @public
     isHydrogen: function() {
       return this.element.isHydrogen();
     },
 
+    // @public
     isCarbon: function() {
       return this.element.isCarbon();
     },
 
+    // @public
     isOxygen: function() {
       return this.element.isOxygen();
     },
 
+    // @public
     toString: function() {
       return this.symbol;
     }
   }, {
 
-    // @static
+    // @public @static
     createAtomFromSymbol: function( symbol ) {
       return new Atom( Element.getElementBySymbol( symbol ) );
     }

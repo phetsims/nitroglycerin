@@ -8,23 +8,31 @@ define( function() {
 
   function ChemUtils() {}
 
-  /*
+  /**
    * Creates a symbol (HTML fragment) based on the list of atoms in the molecule.
    * The atoms must be specified in order of appearance in the symbol.
    * Examples:
    *    [C,C,H,H,H,H] becomes "C<sub>2</sub>H<sub>4</sub>"
    *    [H,H,O] becomes "H<sub>2</sub>O"
+   *
+   * @param {Element[]} elements
+   * @return {string}
+   * @public
    */
   ChemUtils.createSymbol = function( elements ) {
     return ChemUtils.toSubscript( ChemUtils.createSymbolWithoutSubscripts( elements ) );
   };
 
-  /*
+  /**
    * Creates a symbol (text) based on the list of atoms in the molecule.
    * The atoms must be specified in order of appearance in the symbol.
    * Examples:
    *    [C,C,H,H,H,H] becomes "C2H4"
    *    [H,H,O] becomes "H2O"
+   *
+   * @param {Element[]} elements
+   * @return {string}
+   * @public
    */
   ChemUtils.createSymbolWithoutSubscripts = function( elements ) {
     var result = '';
@@ -61,8 +69,9 @@ define( function() {
    * symbols that should go first. Two-letter symbols will come after a one-letter symbol with the same first
    * character (Br after B). See http://en.wikipedia.org/wiki/Hill_system, for without carbon
    *
-   * @param {Element} element An element
-   * @return {Number} Value for sorting
+   * @param {Element} element
+   * @return {number} Value for sorting
+   * @public
    */
   ChemUtils.nonCarbonHillSortValue = function( element ) {
     // TODO: if it's a performance issue, we should put these in Element itself
@@ -78,8 +87,9 @@ define( function() {
    * Returns an integer that can be used for sorting atom symbols for the Hill system when the molecule contains
    * carbon. See http://en.wikipedia.org/wiki/Hill_system
    *
-   * @param {Element} element An element
+   * @param {Element} element
    * @return {Number} Value for sorting (lowest is first)
+   * @public
    */
   ChemUtils.carbonHillSortValue = function( element ) {
     // TODO: if it's a performance issue, we should put these in Element itself
@@ -98,8 +108,9 @@ define( function() {
    * Handles HTML subscript formatting for molecule symbols.
    * All numbers in a string are assumed to be part of a subscript, and will be enclosed in a <sub> tag.
    * For example, 'C2H4' becomes 'C<sub>2</sub>H<sub>4</sub>'.
-   * @param {String} inString the input plaintext string
-   * @return {String} HTML fragment
+   * @param {string} inString the input plaintext string
+   * @return {string} HTML fragment
+   * @public
    */
   ChemUtils.toSubscript = function( inString ) {
     var outString = '';
@@ -130,9 +141,10 @@ define( function() {
   };
 
   /**
-   * @param atoms A collection of atoms in a molecule. NOTE: in Java, they were Element objects!
-   * @return The molecular formula of the molecule in the Hill system. Returned as an HTML fragment. See
+   * @param {Atom[]} atoms A collection of atoms in a molecule. NOTE: in Java, they were Element objects!
+   * @return {string} The molecular formula of the molecule in the Hill system. Returned as an HTML fragment. See
    *         http://en.wikipedia.org/wiki/Hill_system for more information.
+   * @public
    */
   ChemUtils.hillOrderedSymbol = function( atoms ) {
     var containsCarbon = _.some( atoms, function( atom ) { return atom.isCarbon(); } );

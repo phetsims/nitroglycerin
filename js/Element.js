@@ -37,28 +37,34 @@ define( function( require ) {
 
   inherit( Object, Element, {
 
+    // @public
     isSameElement: function( element ) {
       return element.symbol === this.symbol;
     },
 
+    // @public
     isHydrogen: function() {
       return this.isSameElement( Element.H );
     },
 
+    // @public
     isCarbon: function() {
       return this.isSameElement( Element.C );
     },
 
+    // @public
     isOxygen: function() {
       return this.isSameElement( Element.O );
     },
 
+    // @public
     toString: function() {
       return this.symbol;
     }
 
   } );
 
+  // @public @static
   Element.Ar = new Element( 'Ar', 97, 188, null, 39.948, '#FFAFAF' );
   Element.B = new Element( 'B', 85, 192, 2.04, 10.811, 'rgb(255,170,119)' ); // peach/salmon colored, CPK coloring
   Element.Be = new Element( 'Be', 105, 153, 1.57, 9.012182, '#c2ff00' ); // beryllium
@@ -77,17 +83,19 @@ define( function( require ) {
   Element.Sn = new Element( 'Sn', 145, 217, 1.96, 118.710, '#668080' ); // tin
   Element.Xe = new Element( 'Xe', 108, 216, 2.60, 131.293, '#429eb0' ); // radius is based on calculated (not empirical) data
 
+  // @public @static
   Element.elements = [
     Element.Ar, Element.B, Element.Be, Element.Br, Element.C, Element.Cl, Element.F, Element.H, Element.I, Element.N,
     Element.Ne, Element.O, Element.P, Element.S, Element.Si, Element.Sn, Element.Xe
   ];
 
-  // maps symbol => element
+  // @public @static maps symbol => element
   Element.elementMap = {};
   _.each( Element.elements, function( element ) {
     Element.elementMap[ element.symbol ] = element;
   } );
 
+  // @public @static
   Element.getElementBySymbol = function( symbol ) {
     assert && assert( Element.elementMap[ symbol ], 'Element not found: ' + symbol );
     return Element.elementMap[ symbol ];
