@@ -1,7 +1,7 @@
 // Copyright 2015, University of Colorado Boulder
 
 /**
- * Creates the namespace for this simulation.
+ * Creates the namespace for this repository.
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
