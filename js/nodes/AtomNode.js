@@ -9,10 +9,13 @@
 define( function( require ) {
   'use strict';
 
+  // modules
   var inherit = require( 'PHET_CORE/inherit' );
   var ShadedSphereNode = require( 'SCENERY_PHET/ShadedSphereNode' );
   var Element = require( 'NITROGLYCERIN/Element' );
+  var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
 
+  // constants
   var rateOfChange = 0.75; // >0 and <1, increase this to make small atoms appear smaller
   var maxRadius = Element.P.covalentRadius; // not actually the maximum, but this is a constant from the previous version
   var modelToViewScale = 0.11;
@@ -33,6 +36,8 @@ define( function( require ) {
 
     ShadedSphereNode.call( this, 2 * radiusScalingFunction( element.covalentRadius ), options );
   };
+
+  nitroglycerin.register( 'AtomNode', AtomNode );
 
   return inherit( ShadedSphereNode, AtomNode );
 } );

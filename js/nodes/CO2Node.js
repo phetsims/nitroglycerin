@@ -12,6 +12,7 @@ define( function( require ) {
   var Element = require( 'NITROGLYCERIN/Element' );
   var HorizontalMoleculeNode = require( 'NITROGLYCERIN/nodes/HorizontalMoleculeNode' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
 
   /**
    * @param {Object} [options]
@@ -20,6 +21,8 @@ define( function( require ) {
   function CO2Node( options ) {
     HorizontalMoleculeNode.call( this, [ Element.O, Element.C, Element.O ], options );
   }
+
+  nitroglycerin.register( 'CO2Node', CO2Node );
 
   return inherit( HorizontalMoleculeNode, CO2Node );
 } );

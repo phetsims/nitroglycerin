@@ -11,6 +11,7 @@ define( function( require ) {
 
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
+  var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
   var PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
 
   /**
@@ -34,6 +35,8 @@ define( function( require ) {
     this.atomicWeight = atomicWeight;
     this.color = color;
   };
+
+  nitroglycerin.register( 'Element', Element );
 
   inherit( Object, Element, {
 

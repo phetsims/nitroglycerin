@@ -14,6 +14,7 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Vector2 = require( 'DOT/Vector2' );
+  var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
 
   /**
    * @param {Object} [options]
@@ -40,6 +41,8 @@ define( function( require ) {
     } ) ];
     Node.call( this, options );
   }
+
+  nitroglycerin.register( 'OF2Node', OF2Node );
 
   return inherit( Node, OF2Node );
 } );

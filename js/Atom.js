@@ -12,6 +12,7 @@ define( function( require ) {
   // modules
   var inherit = require( 'PHET_CORE/inherit' );
   var Element = require( 'NITROGLYCERIN/Element' );
+  var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
 
   var idCounter = 1;
 
@@ -28,6 +29,8 @@ define( function( require ) {
     this.reference = (idCounter++).toString( 16 );
     this.id = this.symbol + '_' + this.reference;
   };
+
+  nitroglycerin.register( 'Atom', Atom );
 
   return inherit( Object, Atom, {
 

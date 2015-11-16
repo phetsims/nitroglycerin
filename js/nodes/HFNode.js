@@ -12,6 +12,7 @@ define( function( require ) {
   var Element = require( 'NITROGLYCERIN/Element' );
   var HorizontalMoleculeNode = require( 'NITROGLYCERIN/nodes/HorizontalMoleculeNode' );
   var inherit = require( 'PHET_CORE/inherit' );
+  var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
 
   /**
    * @param {Object} [options]
@@ -23,6 +24,8 @@ define( function( require ) {
     options.overlapPercent = 0.5;
     HorizontalMoleculeNode.call( this, [ Element.F, Element.H ], options );
   }
+
+  nitroglycerin.register( 'HFNode', HFNode );
 
   return inherit( HorizontalMoleculeNode, HFNode );
 } );

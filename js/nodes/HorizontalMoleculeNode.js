@@ -19,11 +19,14 @@ define( function( require ) {
   var inherit = require( 'PHET_CORE/inherit' );
   var Node = require( 'SCENERY/nodes/Node' );
   var Vector2 = require( 'DOT/Vector2' );
+  var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
 
-  /*
+  /**
    * @param {Array<Element>} elements
+   * @param {Object} [options]
+   * @constructor
    */
-  var HorizontalMoleculeNode = function HorizontalMoleculeNode( elements, options ) {
+  function HorizontalMoleculeNode( elements, options ) {
 
     options = _.extend( {
       atomOptions: {},
@@ -54,7 +57,9 @@ define( function( require ) {
       center: Vector2.ZERO // origin at geometric center
     } ) ];
     Node.call( this, options );
-  };
+  }
+
+  nitroglycerin.register( 'HorizontalMoleculeNode', HorizontalMoleculeNode );
 
   return inherit( Node, HorizontalMoleculeNode );
 } );

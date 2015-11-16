@@ -3,8 +3,11 @@
 /**
  * Miscellaneous chemistry functions.
  */
-define( function() {
+define( function( require ) {
   'use strict';
+
+  // modules
+  var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
 
   function ChemUtils() {}
 
@@ -154,6 +157,8 @@ define( function() {
     );
     return ChemUtils.createSymbol( sortedAtoms );
   };
+
+  nitroglycerin.register( 'ChemUtils', ChemUtils );
 
   return ChemUtils;
 } );
