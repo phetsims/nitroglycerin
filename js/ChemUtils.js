@@ -91,7 +91,7 @@ define( function( require ) {
    * carbon. See http://en.wikipedia.org/wiki/Hill_system
    *
    * @param {Element} element
-   * @return {Number} Value for sorting (lowest is first)
+   * @return {number} Value for sorting (lowest is first)
    * @public
    */
   ChemUtils.carbonHillSortValue = function( element ) {
