@@ -19,7 +19,7 @@ define( function( require ) {
    *    [H,H,O] becomes "H<sub>2</sub>O"
    *
    * @param {Element[]} elements
-   * @return {string}
+   * @returns {string}
    * @public
    */
   ChemUtils.createSymbol = function( elements ) {
@@ -34,7 +34,7 @@ define( function( require ) {
    *    [H,H,O] becomes "H2O"
    *
    * @param {Element[]} elements
-   * @return {string}
+   * @returns {string}
    * @public
    */
   ChemUtils.createSymbolWithoutSubscripts = function( elements ) {
@@ -73,7 +73,7 @@ define( function( require ) {
    * character (Br after B). See http://en.wikipedia.org/wiki/Hill_system, for without carbon
    *
    * @param {Element} element
-   * @return {number} Value for sorting
+   * @returns {number} Value for sorting
    * @public
    */
   ChemUtils.nonCarbonHillSortValue = function( element ) {
@@ -91,7 +91,7 @@ define( function( require ) {
    * carbon. See http://en.wikipedia.org/wiki/Hill_system
    *
    * @param {Element} element
-   * @return {number} Value for sorting (lowest is first)
+   * @returns {number} Value for sorting (lowest is first)
    * @public
    */
   ChemUtils.carbonHillSortValue = function( element ) {
@@ -112,7 +112,7 @@ define( function( require ) {
    * All numbers in a string are assumed to be part of a subscript, and will be enclosed in a <sub> tag.
    * For example, 'C2H4' becomes 'C<sub>2</sub>H<sub>4</sub>'.
    * @param {string} inString the input plaintext string
-   * @return {string} HTML fragment
+   * @returns {string} HTML fragment
    * @public
    */
   ChemUtils.toSubscript = function( inString ) {
@@ -145,7 +145,7 @@ define( function( require ) {
 
   /**
    * @param {Atom[]} atoms A collection of atoms in a molecule. NOTE: in Java, they were Element objects!
-   * @return {string} The molecular formula of the molecule in the Hill system. Returned as an HTML fragment. See
+   * @returns {string} The molecular formula of the molecule in the Hill system. Returned as an HTML fragment. See
    *         http://en.wikipedia.org/wiki/Hill_system for more information.
    * @public
    */
