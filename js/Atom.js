@@ -10,8 +10,8 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
   var Element = require( 'NITROGLYCERIN/Element' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
 
   var idCounter = 1;

@@ -10,10 +10,10 @@ define( function( require ) {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
-  var ShadedSphereNode = require( 'SCENERY_PHET/ShadedSphereNode' );
   var Element = require( 'NITROGLYCERIN/Element' );
+  var inherit = require( 'PHET_CORE/inherit' );
   var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
+  var ShadedSphereNode = require( 'SCENERY_PHET/ShadedSphereNode' );
 
   // constants
   var rateOfChange = 0.75; // >0 and <1, increase this to make small atoms appear smaller
