@@ -11,5 +11,8 @@
   },
   "phet": {
     "requirejsNamespace": "NITROGLYCERIN"
+  },
+  "eslintConfig": {
+    "extends": "../chipper/eslint/.eslintrc.js"
   }
 }
