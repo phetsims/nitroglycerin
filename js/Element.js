@@ -70,17 +70,17 @@ define( function( require ) {
   // @public @static
   Element.Ar = new Element( 'Ar', 97, 188, null, 39.948, '#FFAFAF' );
   Element.B = new Element( 'B', 85, 192, 2.04, 10.811, 'rgb(255,170,119)' ); // peach/salmon colored, CPK coloring
-  Element.Be = new Element( 'Be', 105, 153, 1.57, 9.012182, '#c2ff00' ); // beryllium
+  Element.Be = new Element( 'Be', 105, 153, 1.57, 9.012182, 'rgb(194,255,95)' ); // beryllium
   Element.Br = new Element( 'Br', 114, 185, 2.96, 79.904, 'rgb(190,30,20)' ); // brown
   Element.C = new Element( 'C', 77, 170, 2.55, 12.0107, 'rgb(178,178,178)' );
-  Element.Cl = new Element( 'Cl', 100, 175, 3.16, 35.4527, 'rgb(153,242,57)' );
-  Element.F = new Element( 'F', 72, 147, 3.98, 18.9984032, 'rgb(247,255,74)' );
+  Element.Cl = new Element( 'Cl', 100, 175, 3.16, 35.4527, 'rgb(136,242,21)' );
+  Element.F = new Element( 'F', 72, 147, 3.98, 18.9984032, 'rgb(245,255,36)' );
   Element.H = new Element( 'H', 37, 120, 2.20, 1.00794, '#ffffff' );
   Element.I = new Element( 'I', 133, 198, 2.66, 126.90447, '#940094' ); // dark violet, CPK coloring
   Element.N = new Element( 'N', 75, 155, 3.04, 14.00674, '#0000ff' );
   Element.Ne = new Element( 'Ne', 69, 154, null, 20.1797, '#1AFFFB' );
   Element.O = new Element( 'O', 73, 152, 3.44, 15.9994, PhetColorScheme.RED_COLORBLIND );
-  Element.P = new Element( 'P', 110, 180, 2.19, 30.973762, 'rgb(255,128,0)' );
+  Element.P = new Element( 'P', 110, 180, 2.19, 30.973762, 'rgb(255,154,0)' );
   Element.S = new Element( 'S', 103, 180, 2.58, 32.066, 'rgb(212,181,59)' );
   Element.Si = new Element( 'Si', 118, 210, 1.90, 28.0855, 'rgb(240,200,160)' ); // tan, Jmol coloring listed from https://secure.wikimedia.org/wikipedia/en/wiki/CPK_coloring
   Element.Sn = new Element( 'Sn', 145, 217, 1.96, 118.710, '#668080' ); // tin
