@@ -25,12 +25,12 @@ define( require => {
     options = _.extend( { atomOptions: {} }, options );
 
     // atoms
-    var centerNode = new AtomNode( Element.O, options.atomOptions );
-    var leftNode = new AtomNode( Element.F, _.extend( {
+    const centerNode = new AtomNode( Element.O, options.atomOptions );
+    const leftNode = new AtomNode( Element.F, _.extend( {
       centerX: centerNode.left,
       centerY: centerNode.centerY + ( 0.25 * centerNode.height )
     }, options.atomOptions ) );
-    var rightNode = new AtomNode( Element.F, _.extend( {
+    const rightNode = new AtomNode( Element.F, _.extend( {
       centerX: centerNode.right,
       centerY: centerNode.centerY + ( 0.25 * centerNode.height )
     }, options.atomOptions ) );

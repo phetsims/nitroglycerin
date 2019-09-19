@@ -35,13 +35,13 @@ define( require => {
     }, options );
 
     // add atoms from left to right, overlapping consistently
-    var children = [];
-    var previousNode = null;
+    const children = [];
+    let previousNode = null;
     _.each( elements, function( element ) {
-      var currentNode = new AtomNode( element, options.atomOptions );
+      const currentNode = new AtomNode( element, options.atomOptions );
       children.push( currentNode );
       if ( previousNode !== null ) {
-        var overlap = ( options.overlapPercent * currentNode.width );
+        const overlap = ( options.overlapPercent * currentNode.width );
         if ( options.direction === 'leftToRight' ) {
           currentNode.left = previousNode.right - overlap;
         }

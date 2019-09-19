@@ -16,20 +16,20 @@ define( require => {
   const ShadedSphereNode = require( 'SCENERY_PHET/ShadedSphereNode' );
 
   // constants
-  var rateOfChange = 0.75; // >0 and <1, increase this to make small atoms appear smaller
-  var maxRadius = Element.P.covalentRadius; // not actually the maximum, but this is a constant from the previous version
-  var modelToViewScale = 0.11;
+  const rateOfChange = 0.75; // >0 and <1, increase this to make small atoms appear smaller
+  const maxRadius = Element.P.covalentRadius; // not actually the maximum, but this is a constant from the previous version
+  const modelToViewScale = 0.11;
 
   /*
    * There is a large difference between the radii of the smallest and largest atoms.
    * This function adjusts scaling so that the difference is still noticeable, but not as large.
    */
   function radiusScalingFunction( radius ) {
-    var adjustedRadius = ( maxRadius - rateOfChange * ( maxRadius - radius ) );
+    const adjustedRadius = ( maxRadius - rateOfChange * ( maxRadius - radius ) );
     return modelToViewScale * adjustedRadius;
   }
 
-  var AtomNode = function AtomNode( element, options ) {
+  const AtomNode = function AtomNode( element, options ) {
     options = _.extend( {
       mainColor: element.color // passed to ShadedSphereNode
     }, options );

@@ -26,24 +26,24 @@ define( require => {
     options = _.extend( { atomOptions: {} }, options );
 
     // atoms
-    var centerNode = new AtomNode( Element.P, options.atomOptions );
-    var topNode = new AtomNode( Element.Cl, _.extend( {
+    const centerNode = new AtomNode( Element.P, options.atomOptions );
+    const topNode = new AtomNode( Element.Cl, _.extend( {
       centerX: centerNode.centerX,
       centerY: centerNode.top
     }, options.atomOptions ) );
-    var bottomNode = new AtomNode( Element.Cl, _.extend( {
+    const bottomNode = new AtomNode( Element.Cl, _.extend( {
       centerX: centerNode.centerX,
       centerY: centerNode.bottom
     }, options.atomOptions ) );
-    var rightNode = new AtomNode( Element.Cl, _.extend( {
+    const rightNode = new AtomNode( Element.Cl, _.extend( {
       centerX: centerNode.right,
       centerY: centerNode.centerY
     }, options.atomOptions ) );
-    var topLeftNode = new AtomNode( Element.Cl, _.extend( {
+    const topLeftNode = new AtomNode( Element.Cl, _.extend( {
       centerX: centerNode.left + ( 0.25 * centerNode.width ),
       centerY: centerNode.top + ( 0.25 * centerNode.height )
     }, options.atomOptions ) );
-    var bottomLeftNode = new AtomNode( Element.Cl, _.extend( {
+    const bottomLeftNode = new AtomNode( Element.Cl, _.extend( {
       centerX: centerNode.left + ( 0.1 * centerNode.width ),
       centerY: centerNode.bottom - ( 0.1 * centerNode.height )
     }, options.atomOptions ) );

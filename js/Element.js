@@ -27,7 +27,7 @@ define( require => {
    * @param color {Color|string} Color used in visual representations
    * @constructor
    */
-  var Element = function( symbol, covalentRadius, vanDerWaalsRadius, electronegativity, atomicWeight, color ) {
+  const Element = function( symbol, covalentRadius, vanDerWaalsRadius, electronegativity, atomicWeight, color ) {
     this.symbol = symbol;
     this.covalentRadius = covalentRadius;
     this.vanDerWaalsRadius = vanDerWaalsRadius;

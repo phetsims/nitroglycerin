@@ -25,21 +25,21 @@ define( require => {
     options = _.extend( { atomOptions: {} }, options );
 
     // atoms
-    var bigNode = new AtomNode( Element.C, options.atomOptions );
-    var smallOffset = 0.165 * bigNode.width;
-    var smallTopLeftNode = new AtomNode( Element.H, _.extend( {
+    const bigNode = new AtomNode( Element.C, options.atomOptions );
+    const smallOffset = 0.165 * bigNode.width;
+    const smallTopLeftNode = new AtomNode( Element.H, _.extend( {
       centerX: bigNode.left + smallOffset,
       centerY: bigNode.top + smallOffset
     }, options.atomOptions ) );
-    var smallTopRightNode = new AtomNode( Element.H, _.extend( {
+    const smallTopRightNode = new AtomNode( Element.H, _.extend( {
       centerX: bigNode.right - smallOffset,
       centerY: smallTopLeftNode.centerY
     }, options.atomOptions ) );
-    var smallBottomLeftNode = new AtomNode( Element.H, _.extend( {
+    const smallBottomLeftNode = new AtomNode( Element.H, _.extend( {
       centerX: smallTopLeftNode.centerX,
       centerY: bigNode.bottom - smallOffset
     }, options.atomOptions ) );
-    var smallBottomRightNode = new AtomNode( Element.H, _.extend( {
+    const smallBottomRightNode = new AtomNode( Element.H, _.extend( {
       centerX: smallTopRightNode.centerX,
       centerY: smallBottomLeftNode.centerY
     }, options.atomOptions ) );

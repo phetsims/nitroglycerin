@@ -25,25 +25,25 @@ define( require => {
     options = _.extend( { atomOptions: {} }, options );
 
     // atoms
-    var bigLeftNode = new AtomNode( Element.C, options.atomOptions );
-    var smallOffset = 0.165 * bigLeftNode.width;
-    var bigRightNode = new AtomNode( Element.C, _.extend( {
+    const bigLeftNode = new AtomNode( Element.C, options.atomOptions );
+    const smallOffset = 0.165 * bigLeftNode.width;
+    const bigRightNode = new AtomNode( Element.C, _.extend( {
       left: bigLeftNode.centerX + ( 0.25 * bigLeftNode.width ),
       centerY: bigLeftNode.centerY
     }, options.atomOptions ) );
-    var smallTopLeftNode = new AtomNode( Element.H, _.extend( {
+    const smallTopLeftNode = new AtomNode( Element.H, _.extend( {
       centerX: bigLeftNode.left + smallOffset,
       centerY: bigLeftNode.top + smallOffset
     }, options.atomOptions ) );
-    var smallTopRightNode = new AtomNode( Element.H, _.extend( {
+    const smallTopRightNode = new AtomNode( Element.H, _.extend( {
       centerX: bigRightNode.right - smallOffset,
       centerY: bigRightNode.top + smallOffset
     }, options.atomOptions ) );
-    var smallBottomLeftNode = new AtomNode( Element.H, _.extend( {
+    const smallBottomLeftNode = new AtomNode( Element.H, _.extend( {
       centerX: bigLeftNode.left + smallOffset,
       centerY: bigLeftNode.bottom - smallOffset
     }, options.atomOptions ) );
-    var smallBottomRightNode = new AtomNode( Element.H, _.extend( {
+    const smallBottomRightNode = new AtomNode( Element.H, _.extend( {
       centerX: bigRightNode.right - smallOffset,
       centerY: bigRightNode.bottom - smallOffset
     }, options.atomOptions ) );

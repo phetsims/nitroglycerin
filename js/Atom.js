@@ -14,9 +14,9 @@ define( require => {
   const inherit = require( 'PHET_CORE/inherit' );
   const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
 
-  var idCounter = 1;
+  let idCounter = 1;
 
-  var Atom = function( element ) {
+  const Atom = function( element ) {
     this.element = element;
     this.symbol = element.symbol;
     this.covalentRadius = element.covalentRadius;
