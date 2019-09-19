@@ -3,11 +3,11 @@
 /**
  * Miscellaneous chemistry functions.
  */
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
+  const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
 
   function ChemUtils() {}
 

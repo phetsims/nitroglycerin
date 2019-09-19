@@ -6,13 +6,13 @@
  * @author Jonathan Olson <jonathan.olson@colorado.edu>
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var inherit = require( 'PHET_CORE/inherit' );
-  var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
-  var PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
+  const PhetColorScheme = require( 'SCENERY_PHET/PhetColorScheme' );
 
   /**
    * @param symbol {string}

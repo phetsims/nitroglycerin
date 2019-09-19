@@ -11,15 +11,15 @@
  * @author Jonathan Olson <jonathan.olson@colorado.edu>
  */
 
-define( function( require ) {
+define( require => {
   'use strict';
 
   // modules
-  var AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
-  var inherit = require( 'PHET_CORE/inherit' );
-  var nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
-  var Node = require( 'SCENERY/nodes/Node' );
-  var Vector2 = require( 'DOT/Vector2' );
+  const AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
+  const inherit = require( 'PHET_CORE/inherit' );
+  const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
+  const Node = require( 'SCENERY/nodes/Node' );
+  const Vector2 = require( 'DOT/Vector2' );
 
   /**
    * @param {Array<Element>} elements
