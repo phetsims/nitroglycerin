@@ -12,6 +12,7 @@ define( require => {
   // modules
   const Element = require( 'NITROGLYCERIN/Element' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
   const ShadedSphereNode = require( 'SCENERY_PHET/ShadedSphereNode' );
 
@@ -30,7 +31,7 @@ define( require => {
   }
 
   const AtomNode = function AtomNode( element, options ) {
-    options = _.extend( {
+    options = merge( {
       mainColor: element.color // passed to ShadedSphereNode
     }, options );
 

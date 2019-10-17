@@ -12,6 +12,7 @@ define( require => {
   const AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
   const Element = require( 'NITROGLYCERIN/Element' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Vector2 = require( 'DOT/Vector2' );
@@ -22,24 +23,24 @@ define( require => {
    */
   function CH4Node( options ) {
 
-    options = _.extend( { atomOptions: {} }, options );
+    options = merge( { atomOptions: {} }, options );
 
     // atoms
     const bigNode = new AtomNode( Element.C, options.atomOptions );
     const smallOffset = 0.165 * bigNode.width;
-    const smallTopLeftNode = new AtomNode( Element.H, _.extend( {
+    const smallTopLeftNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.left + smallOffset,
       centerY: bigNode.top + smallOffset
     }, options.atomOptions ) );
-    const smallTopRightNode = new AtomNode( Element.H, _.extend( {
+    const smallTopRightNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.right - smallOffset,
       centerY: smallTopLeftNode.centerY
     }, options.atomOptions ) );
-    const smallBottomLeftNode = new AtomNode( Element.H, _.extend( {
+    const smallBottomLeftNode = new AtomNode( Element.H, merge( {
       centerX: smallTopLeftNode.centerX,
       centerY: bigNode.bottom - smallOffset
     }, options.atomOptions ) );
-    const smallBottomRightNode = new AtomNode( Element.H, _.extend( {
+    const smallBottomRightNode = new AtomNode( Element.H, merge( {
       centerX: smallTopRightNode.centerX,
       centerY: smallBottomLeftNode.centerY
     }, options.atomOptions ) );

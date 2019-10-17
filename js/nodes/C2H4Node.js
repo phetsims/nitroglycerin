@@ -12,6 +12,7 @@ define( require => {
   const AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
   const Element = require( 'NITROGLYCERIN/Element' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Vector2 = require( 'DOT/Vector2' );
@@ -22,28 +23,28 @@ define( require => {
    */
   function C2H4Node( options ) {
 
-    options = _.extend( { atomOptions: {} }, options );
+    options = merge( { atomOptions: {} }, options );
 
     // atoms
     const bigLeftNode = new AtomNode( Element.C, options.atomOptions );
     const smallOffset = 0.165 * bigLeftNode.width;
-    const bigRightNode = new AtomNode( Element.C, _.extend( {
+    const bigRightNode = new AtomNode( Element.C, merge( {
       left: bigLeftNode.centerX + ( 0.25 * bigLeftNode.width ),
       centerY: bigLeftNode.centerY
     }, options.atomOptions ) );
-    const smallTopLeftNode = new AtomNode( Element.H, _.extend( {
+    const smallTopLeftNode = new AtomNode( Element.H, merge( {
       centerX: bigLeftNode.left + smallOffset,
       centerY: bigLeftNode.top + smallOffset
     }, options.atomOptions ) );
-    const smallTopRightNode = new AtomNode( Element.H, _.extend( {
+    const smallTopRightNode = new AtomNode( Element.H, merge( {
       centerX: bigRightNode.right - smallOffset,
       centerY: bigRightNode.top + smallOffset
     }, options.atomOptions ) );
-    const smallBottomLeftNode = new AtomNode( Element.H, _.extend( {
+    const smallBottomLeftNode = new AtomNode( Element.H, merge( {
       centerX: bigLeftNode.left + smallOffset,
       centerY: bigLeftNode.bottom - smallOffset
     }, options.atomOptions ) );
-    const smallBottomRightNode = new AtomNode( Element.H, _.extend( {
+    const smallBottomRightNode = new AtomNode( Element.H, merge( {
       centerX: bigRightNode.right - smallOffset,
       centerY: bigRightNode.bottom - smallOffset
     }, options.atomOptions ) );

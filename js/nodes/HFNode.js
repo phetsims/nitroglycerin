@@ -12,6 +12,7 @@ define( require => {
   const Element = require( 'NITROGLYCERIN/Element' );
   const HorizontalMoleculeNode = require( 'NITROGLYCERIN/nodes/HorizontalMoleculeNode' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
 
   /**
@@ -19,7 +20,7 @@ define( require => {
    * @constructor
    */
   function HFNode( options ) {
-    options = _.extend( {}, options );
+    options = merge( {}, options );
     options.direction = 'rightToLeft';
     options.overlapPercent = 0.5;
     HorizontalMoleculeNode.call( this, [ Element.F, Element.H ], options );

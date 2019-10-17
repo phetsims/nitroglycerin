@@ -12,6 +12,7 @@ define( require => {
   const AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
   const Element = require( 'NITROGLYCERIN/Element' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Vector2 = require( 'DOT/Vector2' );
@@ -22,19 +23,19 @@ define( require => {
    */
   function PCl3Node( options ) {
 
-    options = _.extend( { atomOptions: {} }, options );
+    options = merge( { atomOptions: {} }, options );
 
     // atoms
     const centerNode = new AtomNode( Element.P, options.atomOptions );
-    const leftNode = new AtomNode( Element.Cl, _.extend( {
+    const leftNode = new AtomNode( Element.Cl, merge( {
       centerX: centerNode.left,
       centerY: centerNode.bottom - ( 0.25 * centerNode.height )
     }, options.atomOptions ) );
-    const rightNode = new AtomNode( Element.Cl, _.extend( {
+    const rightNode = new AtomNode( Element.Cl, merge( {
       centerX: centerNode.right,
       centerY: leftNode.centerY
     }, options.atomOptions ) );
-    const bottomNode = new AtomNode( Element.Cl, _.extend( {
+    const bottomNode = new AtomNode( Element.Cl, merge( {
       centerX: centerNode.centerX,
       centerY: centerNode.bottom
     }, options.atomOptions ) );

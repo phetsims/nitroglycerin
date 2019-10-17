@@ -13,6 +13,7 @@ define( require => {
   const AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
   const Element = require( 'NITROGLYCERIN/Element' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Vector2 = require( 'DOT/Vector2' );
@@ -23,35 +24,35 @@ define( require => {
    */
   function C2H5ClNode( options ) {
 
-    options = _.extend( { atomOptions: {} }, options );
+    options = merge( { atomOptions: {} }, options );
 
     // atoms
     const leftNode = new AtomNode( Element.C, options.atomOptions );
-    const centerNode = new AtomNode( Element.C, _.extend( {
+    const centerNode = new AtomNode( Element.C, merge( {
       centerX: leftNode.right + ( 0.25 * leftNode.width ),
       centerY: leftNode.centerY
     }, options.atomOptions ) );
-    const smallTopLeftNode = new AtomNode( Element.H, _.extend( {
+    const smallTopLeftNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.centerX,
       centerY: leftNode.top
     }, options.atomOptions ) );
-    const smallBottomLeftNode = new AtomNode( Element.H, _.extend( {
+    const smallBottomLeftNode = new AtomNode( Element.H, merge( {
       centerX: smallTopLeftNode.centerX,
       centerY: leftNode.bottom
     }, options.atomOptions ) );
-    const smallLeftNode = new AtomNode( Element.H, _.extend( {
+    const smallLeftNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.left,
       centerY: leftNode.centerY
     }, options.atomOptions ) );
-    const smallTopRightNode = new AtomNode( Element.H, _.extend( {
+    const smallTopRightNode = new AtomNode( Element.H, merge( {
       centerX: centerNode.centerX,
       centerY: centerNode.top
     }, options.atomOptions ) );
-    const smallBottomRightNode = new AtomNode( Element.H, _.extend( {
+    const smallBottomRightNode = new AtomNode( Element.H, merge( {
       centerX: centerNode.centerX,
       centerY: centerNode.bottom
     }, options.atomOptions ) );
-    const rightNode = new AtomNode( Element.Cl, _.extend( {
+    const rightNode = new AtomNode( Element.Cl, merge( {
       left: centerNode.centerX + ( 0.11 * leftNode.width ),
       centerY: centerNode.centerY
     }, options.atomOptions ) );

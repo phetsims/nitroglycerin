@@ -17,6 +17,7 @@ define( require => {
   // modules
   const AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
   const inherit = require( 'PHET_CORE/inherit' );
+  const merge = require( 'PHET_CORE/merge' );
   const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
   const Node = require( 'SCENERY/nodes/Node' );
   const Vector2 = require( 'DOT/Vector2' );
@@ -28,7 +29,7 @@ define( require => {
    */
   function HorizontalMoleculeNode( elements, options ) {
 
-    options = _.extend( {
+    options = merge( {
       atomOptions: {},
       direction: 'leftToRight', // {string} direction of overlap, leftToRight or rightToLeft
       overlapPercent: 0.25 // {number} amount of overlap between atoms
