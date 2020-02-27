@@ -11,56 +11,52 @@
  * @author Jonathan Olson <jonathan.olson@colorado.edu>
  */
 
-define( require => {
-  'use strict';
+import Vector2 from '../../../dot/js/Vector2.js';
+import inherit from '../../../phet-core/js/inherit.js';
+import merge from '../../../phet-core/js/merge.js';
+import Node from '../../../scenery/js/nodes/Node.js';
+import nitroglycerin from '../nitroglycerin.js';
+import AtomNode from './AtomNode.js';
 
-  // modules
-  const AtomNode = require( 'NITROGLYCERIN/nodes/AtomNode' );
-  const inherit = require( 'PHET_CORE/inherit' );
-  const merge = require( 'PHET_CORE/merge' );
-  const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
-  const Node = require( 'SCENERY/nodes/Node' );
-  const Vector2 = require( 'DOT/Vector2' );
+/**
+ * @param {Array<Element>} elements
+ * @param {Object} [options]
+ * @constructor
+ */
+function HorizontalMoleculeNode( elements, options ) {
 
-  /**
-   * @param {Array<Element>} elements
-   * @param {Object} [options]
-   * @constructor
-   */
-  function HorizontalMoleculeNode( elements, options ) {
+  options = merge( {
+    atomOptions: {},
+    direction: 'leftToRight', // {string} direction of overlap, leftToRight or rightToLeft
+    overlapPercent: 0.25 // {number} amount of overlap between atoms
+  }, options );
 
-    options = merge( {
-      atomOptions: {},
-      direction: 'leftToRight', // {string} direction of overlap, leftToRight or rightToLeft
-      overlapPercent: 0.25 // {number} amount of overlap between atoms
-    }, options );
-
-    // add atoms from left to right, overlapping consistently
-    const children = [];
-    let previousNode = null;
-    _.each( elements, function( element ) {
-      const currentNode = new AtomNode( element, options.atomOptions );
-      children.push( currentNode );
-      if ( previousNode !== null ) {
-        const overlap = ( options.overlapPercent * currentNode.width );
-        if ( options.direction === 'leftToRight' ) {
-          currentNode.left = previousNode.right - overlap;
-        }
-        else {
-          currentNode.right = previousNode.left + overlap;
-        }
+  // add atoms from left to right, overlapping consistently
+  const children = [];
+  let previousNode = null;
+  _.each( elements, function( element ) {
+    const currentNode = new AtomNode( element, options.atomOptions );
+    children.push( currentNode );
+    if ( previousNode !== null ) {
+      const overlap = ( options.overlapPercent * currentNode.width );
+      if ( options.direction === 'leftToRight' ) {
+        currentNode.left = previousNode.right - overlap;
       }
-      previousNode = currentNode;
-    } );
+      else {
+        currentNode.right = previousNode.left + overlap;
+      }
+    }
+    previousNode = currentNode;
+  } );
 
-    options.children = [ new Node( {
-      children: children,
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
-    Node.call( this, options );
-  }
+  options.children = [ new Node( {
+    children: children,
+    center: Vector2.ZERO // origin at geometric center
+  } ) ];
+  Node.call( this, options );
+}
 
-  nitroglycerin.register( 'HorizontalMoleculeNode', HorizontalMoleculeNode );
+nitroglycerin.register( 'HorizontalMoleculeNode', HorizontalMoleculeNode );
 
-  return inherit( Node, HorizontalMoleculeNode );
-} );
+inherit( Node, HorizontalMoleculeNode );
+export default HorizontalMoleculeNode;

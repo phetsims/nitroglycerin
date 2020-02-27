@@ -5,24 +5,21 @@
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
-define( require => {
-  'use strict';
 
-  // modules
-  const Element = require( 'NITROGLYCERIN/Element' );
-  const HorizontalMoleculeNode = require( 'NITROGLYCERIN/nodes/HorizontalMoleculeNode' );
-  const inherit = require( 'PHET_CORE/inherit' );
-  const nitroglycerin = require( 'NITROGLYCERIN/nitroglycerin' );
+import inherit from '../../../phet-core/js/inherit.js';
+import Element from '../Element.js';
+import nitroglycerin from '../nitroglycerin.js';
+import HorizontalMoleculeNode from './HorizontalMoleculeNode.js';
 
-  /**
-   * @param {Object} [options]
-   * @constructor
-   */
-  function Cl2Node( options ) {
-    HorizontalMoleculeNode.call( this, [ Element.Cl, Element.Cl ], options );
-  }
+/**
+ * @param {Object} [options]
+ * @constructor
+ */
+function Cl2Node( options ) {
+  HorizontalMoleculeNode.call( this, [ Element.Cl, Element.Cl ], options );
+}
 
-  nitroglycerin.register( 'Cl2Node', Cl2Node );
+nitroglycerin.register( 'Cl2Node', Cl2Node );
 
-  return inherit( HorizontalMoleculeNode, Cl2Node );
-} );
+inherit( HorizontalMoleculeNode, Cl2Node );
+export default Cl2Node;
