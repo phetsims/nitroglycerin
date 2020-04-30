@@ -28,7 +28,7 @@ const Atom = function( element ) {
 
 nitroglycerin.register( 'Atom', Atom );
 
-export default inherit( Object, Atom, {
+inherit( Object, Atom, {
 
   // @public
   hasSameElement: function( atom ) {
@@ -61,3 +61,5 @@ export default inherit( Object, Atom, {
     return new Atom( Element.getElementBySymbol( symbol ) );
   }
 } );
+
+export default Atom;
