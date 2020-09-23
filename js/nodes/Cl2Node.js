@@ -6,20 +6,19 @@
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import inherit from '../../../phet-core/js/inherit.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
 import HorizontalMoleculeNode from './HorizontalMoleculeNode.js';
 
-/**
- * @param {Object} [options]
- * @constructor
- */
-function Cl2Node( options ) {
-  HorizontalMoleculeNode.call( this, [ Element.Cl, Element.Cl ], options );
+class Cl2Node extends HorizontalMoleculeNode {
+
+  /**
+   * @param {Object} [options]
+   */
+  constructor( options ) {
+    super( [ Element.Cl, Element.Cl ], options );
+  }
 }
 
 nitroglycerin.register( 'Cl2Node', Cl2Node );
-
-inherit( HorizontalMoleculeNode, Cl2Node );
 export default Cl2Node;
