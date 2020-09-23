@@ -6,60 +6,70 @@
  * @author Jonathan Olson <jonathan.olson@colorado.edu>
  */
 
-import inherit from '../../phet-core/js/inherit.js';
 import Element from './Element.js';
 import nitroglycerin from './nitroglycerin.js';
 
 let idCounter = 1;
 
-const Atom = function( element ) {
-  this.element = element;
-  this.symbol = element.symbol;
-  this.covalentRadius = element.covalentRadius;
-  this.covalentDiameter = element.covalentRadius * 2;
-  this.electronegativity = element.electronegativity;
-  this.atomicWeight = element.atomicWeight;
-  this.color = element.color;
+class Atom {
 
-  // IDs for uniqueness and fast lookups
-  this.reference = ( idCounter++ ).toString( 16 );
-  this.id = this.symbol + '_' + this.reference;
-};
+  /**
+   * @param {Element} element
+   */
+  constructor( element ) {
 
-nitroglycerin.register( 'Atom', Atom );
+    // @public (read-only)
+    this.element = element;
+    this.symbol = element.symbol;
+    this.covalentRadius = element.covalentRadius;
+    this.covalentDiameter = element.covalentRadius * 2;
+    this.electronegativity = element.electronegativity;
+    this.atomicWeight = element.atomicWeight;
+    this.color = element.color;
 
-inherit( Object, Atom, {
-
-  // @public
-  hasSameElement: function( atom ) {
-    return this.element.isSameElement( atom.element );
-  },
-
-  // @public
-  isHydrogen: function() {
-    return this.element.isHydrogen();
-  },
-
-  // @public
-  isCarbon: function() {
-    return this.element.isCarbon();
-  },
-
-  // @public
-  isOxygen: function() {
-    return this.element.isOxygen();
-  },
-
-  // @public
-  toString: function() {
-    return this.symbol;
+    // IDs for uniqueness and fast lookups
+    this.reference = ( idCounter++ ).toString( 16 );
+    this.id = this.symbol + '_' + this.reference;
   }
-}, {
 
-  // @public @static
-  createAtomFromSymbol: function( symbol ) {
+  /**
+   * @param {string} symbol
+   * @returns {Atom}
+   * @public
+   */
+  static createAtomFromSymbol( symbol ) {
     return new Atom( Element.getElementBySymbol( symbol ) );
   }
-} );
 
+  /**
+   * @param {Atom} atom
+   * @returns {boolean}
+   * @public
+   */
+  hasSameElement( atom ) {
+    return this.element.isSameElement( atom.element );
+  }
+
+  // @public
+  isHydrogen() {
+    return this.element.isHydrogen();
+  }
+
+  // @public
+  isCarbon() {
+    return this.element.isCarbon();
+  }
+
+  // @public
+  isOxygen() {
+    return this.element.isOxygen();
+  }
+
+  // @public
+  toString() {
+    return this.symbol;
+  }
+}
+
+nitroglycerin.register( 'Atom', Atom );
 export default Atom;
