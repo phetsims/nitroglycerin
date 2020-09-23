@@ -6,62 +6,71 @@
  * @author Jonathan Olson <jonathan.olson@colorado.edu>
  */
 
-import inherit from '../../phet-core/js/inherit.js';
 import PhetColorScheme from '../../scenery-phet/js/PhetColorScheme.js';
 import nitroglycerin from './nitroglycerin.js';
 
-/**
- * @param symbol {string}
- * @param covalentRadius {number} Covalent radius, in picometers. For a quick chart,
- *        see http://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)
- * @param vanDerWaalsRadius {number} Van der Waals radius, in picometers. See chart at
- *        http://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)
- * @param electronegativity {number|null} in Pauling units, see
- *        https://secure.wikimedia.org/wikipedia/en/wiki/Electronegativity, is null when undefined for an element
- *        (as is the case for noble gasses)
- * @param atomicWeight {number} In atomic mass units (u). from http://www.webelements.com/periodicity/atomic_weight/
- * @param color {Color|string} Color used in visual representations
- * @constructor
- */
-const Element = function( symbol, covalentRadius, vanDerWaalsRadius, electronegativity, atomicWeight, color ) {
-  this.symbol = symbol;
-  this.covalentRadius = covalentRadius;
-  this.vanDerWaalsRadius = vanDerWaalsRadius;
-  this.electronegativity = electronegativity;
-  this.atomicWeight = atomicWeight;
-  this.color = color;
-};
+class Element {
 
-nitroglycerin.register( 'Element', Element );
+  /**
+   * @param symbol {string}
+   * @param covalentRadius {number} Covalent radius, in picometers. For a quick chart,
+   *        see http://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)
+   * @param vanDerWaalsRadius {number} Van der Waals radius, in picometers. See chart at
+   *        http://en.wikipedia.org/wiki/Atomic_radii_of_the_elements_(data_page)
+   * @param electronegativity {number|null} in Pauling units, see
+   *        https://secure.wikimedia.org/wikipedia/en/wiki/Electronegativity, is null when undefined for an element
+   *        (as is the case for noble gasses)
+   * @param atomicWeight {number} In atomic mass units (u). from http://www.webelements.com/periodicity/atomic_weight/
+   * @param color {Color|string} Color used in visual representations
+   */
+  constructor( symbol, covalentRadius, vanDerWaalsRadius, electronegativity, atomicWeight, color ) {
 
-inherit( Object, Element, {
-
-  // @public
-  isSameElement: function( element ) {
-    return element.symbol === this.symbol;
-  },
-
-  // @public
-  isHydrogen: function() {
-    return this.isSameElement( Element.H );
-  },
-
-  // @public
-  isCarbon: function() {
-    return this.isSameElement( Element.C );
-  },
-
-  // @public
-  isOxygen: function() {
-    return this.isSameElement( Element.O );
-  },
-
-  // @public
-  toString: function() {
-    return this.symbol;
+    // @public (read-only)
+    this.symbol = symbol;
+    this.covalentRadius = covalentRadius;
+    this.vanDerWaalsRadius = vanDerWaalsRadius;
+    this.electronegativity = electronegativity;
+    this.atomicWeight = atomicWeight;
+    this.color = color;
   }
 
-} );
+  /**
+   * @param {string} symbol
+   * @returns {Element}
+   * @public
+   */
+  static getElementBySymbol( symbol ) {
+    assert && assert( Element.elementMap[ symbol ], 'Element not found: ' + symbol );
+    return Element.elementMap[ symbol ];
+  }
+
+  // @public
+  isSameElement( element ) {
+    return element.symbol === this.symbol;
+  }
+
+  // @public
+  isHydrogen() {
+    return this.isSameElement( Element.H );
+  }
+
+  // @public
+  isCarbon() {
+    return this.isSameElement( Element.C );
+  }
+
+  // @public
+  isOxygen() {
+    return this.isSameElement( Element.O );
+  }
+
+  // @public
+  toString() {
+    return this.symbol;
+  }
+}
+
+nitroglycerin.register( 'Element', Element );
 
 // @public @static
 Element.Ar = new Element( 'Ar', 97, 188, null, 39.948, '#FFAFAF' );
@@ -93,11 +102,5 @@ Element.elementMap = {};
 _.each( Element.elements, function( element ) {
   Element.elementMap[ element.symbol ] = element;
 } );
-
-// @public @static
-Element.getElementBySymbol = function( symbol ) {
-  assert && assert( Element.elementMap[ symbol ], 'Element not found: ' + symbol );
-  return Element.elementMap[ symbol ];
-};
 
 export default Element;
