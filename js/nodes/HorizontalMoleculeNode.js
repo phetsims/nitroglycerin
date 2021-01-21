@@ -19,7 +19,7 @@ import AtomNode from './AtomNode.js';
 
 class HorizontalMoleculeNode extends Node {
   /**
-   * @param {Array<Element>} elements
+   * @param {Array.<Element>} elements
    * @param {Object} [options]
    */
   constructor( elements, options ) {
