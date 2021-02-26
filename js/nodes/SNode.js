@@ -10,7 +10,7 @@ import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
 import HorizontalMoleculeNode from './HorizontalMoleculeNode.js';
 
-class SNode extends  HorizontalMoleculeNode {
+class SNode extends HorizontalMoleculeNode {
 
   /**
    * @param {Object} [options]
