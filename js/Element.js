@@ -40,7 +40,7 @@ class Element {
    * @public
    */
   static getElementBySymbol( symbol ) {
-    assert && assert( Element.elementMap[ symbol ], 'Element not found: ' + symbol );
+    assert && assert( Element.elementMap[ symbol ], `Element not found: ${symbol}` );
     return Element.elementMap[ symbol ];
   }
 

@@ -29,7 +29,7 @@ class Atom {
 
     // IDs for uniqueness and fast lookups
     this.reference = ( idCounter++ ).toString( 16 );
-    this.id = this.symbol + '_' + this.reference;
+    this.id = `${this.symbol}_${this.reference}`;
   }
 
   /**
