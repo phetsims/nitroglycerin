@@ -99,7 +99,7 @@ Element.elements = [
 
 // @public @static maps symbol => element
 Element.elementMap = {};
-_.each( Element.elements, function( element ) {
+_.each( Element.elements, element => {
   Element.elementMap[ element.symbol ] = element;
 } );
 

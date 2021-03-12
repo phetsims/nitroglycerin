@@ -147,7 +147,7 @@ const ChemUtils = {
    * @public
    */
   hillOrderedSymbol: function( atoms ) {
-    const containsCarbon = _.some( atoms, function( atom ) { return atom.isCarbon(); } );
+    const containsCarbon = _.some( atoms, atom => atom.isCarbon() );
     const sortedAtoms = _.sortBy( atoms, containsCarbon ?
                                          ChemUtils.carbonHillSortValue :  // carbon first, then hydrogen, then others alphabetically
                                          ChemUtils.nonCarbonHillSortValue // compare alphabetically since there is no carbon

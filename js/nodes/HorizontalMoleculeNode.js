@@ -33,7 +33,7 @@ class HorizontalMoleculeNode extends Node {
     // add atoms from left to right, overlapping consistently
     const children = [];
     let previousNode = null;
-    _.each( elements, function( element ) {
+    _.each( elements, element => {
       const currentNode = new AtomNode( element, options.atomOptions );
       children.push( currentNode );
       if ( previousNode !== null ) {
