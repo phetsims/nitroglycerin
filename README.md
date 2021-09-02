@@ -2,7 +2,7 @@ Chemistry library for PhET Simulations
 ======================================
 
 By PhET Interactive Simulations
-http://phet.colorado.edu/
+https://phet.colorado.edu/
 
 NOTE: This repository has dependencies on other repositories. Those repositories
 much be checked out as siblings to this repository in your directory structure.
