@@ -8,7 +8,7 @@
 
 import Vector2 from '../../../dot/js/Vector2.js';
 import merge from '../../../phet-core/js/merge.js';
-import Node from '../../../scenery/js/nodes/Node.js';
+import { Node } from '../../../scenery/js/imports.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
 import AtomNode from './AtomNode.js';
