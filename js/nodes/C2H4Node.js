@@ -20,31 +20,31 @@ class C2H4Node extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const bigLeftNode = new AtomNode( Element.C, options.atomOptions );
+    const bigLeftNode = new AtomNode( Element.C, options.atomNodeOptions );
     const smallOffset = 0.165 * bigLeftNode.width;
     const bigRightNode = new AtomNode( Element.C, merge( {
       left: bigLeftNode.centerX + ( 0.25 * bigLeftNode.width ),
       centerY: bigLeftNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallTopLeftNode = new AtomNode( Element.H, merge( {
       centerX: bigLeftNode.left + smallOffset,
       centerY: bigLeftNode.top + smallOffset
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallTopRightNode = new AtomNode( Element.H, merge( {
       centerX: bigRightNode.right - smallOffset,
       centerY: bigRightNode.top + smallOffset
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallBottomLeftNode = new AtomNode( Element.H, merge( {
       centerX: bigLeftNode.left + smallOffset,
       centerY: bigLeftNode.bottom - smallOffset
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallBottomRightNode = new AtomNode( Element.H, merge( {
       centerX: bigRightNode.right - smallOffset,
       centerY: bigRightNode.bottom - smallOffset
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'C2H4Node sets children' );
     options.children = [ new Node( {

@@ -22,7 +22,7 @@ import Element from '../Element.js';
 type SelfOptions = {
 
   // options propagated to each AtomNode
-  atomOptions?: AtomNodeOptions;
+  atomNodeOptions?: AtomNodeOptions;
 
   // direction of overlap, leftToRight or rightToLeft
   direction?: 'leftToRight' | 'rightToLeft';
@@ -37,7 +37,7 @@ export default class HorizontalMoleculeNode extends Node {
 
   protected constructor( elements: Element[], providedOptions?: HorizontalMoleculeNodeOptions ) {
 
-    const options = optionize<HorizontalMoleculeNodeOptions, StrictOmit<SelfOptions, 'atomOptions'>, NodeOptions>()( {
+    const options = optionize<HorizontalMoleculeNodeOptions, StrictOmit<SelfOptions, 'atomNodeOptions'>, NodeOptions>()( {
       direction: 'leftToRight',
       overlapPercent: 0.25
     }, providedOptions );
@@ -46,7 +46,7 @@ export default class HorizontalMoleculeNode extends Node {
     const atomNodes: AtomNode[] = [];
     let previousNode: Node | null = null;
     elements.forEach( element => {
-      const currentNode = new AtomNode( element, options.atomOptions );
+      const currentNode = new AtomNode( element, options.atomNodeOptions );
       atomNodes.push( currentNode );
       if ( previousNode !== null ) {
         const overlap = ( options.overlapPercent * currentNode.width );

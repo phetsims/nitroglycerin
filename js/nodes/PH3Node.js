@@ -20,22 +20,22 @@ class PH3Node extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const bigNode = new AtomNode( Element.P, options.atomOptions );
+    const bigNode = new AtomNode( Element.P, options.atomNodeOptions );
     const smallLeftNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.left,
       centerY: bigNode.bottom - ( 0.25 * bigNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallRightNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.right,
       centerY: smallLeftNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallBottomNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.centerX,
       centerY: bigNode.bottom
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'PH3Node sets children' );
     options.children = [ new Node( {

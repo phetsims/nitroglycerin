@@ -20,22 +20,22 @@ class SO3Node extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const centerNode = new AtomNode( Element.S, options.atomOptions );
+    const centerNode = new AtomNode( Element.S, options.atomNodeOptions );
     const leftNode = new AtomNode( Element.O, merge( {
       centerX: centerNode.left,
       centerY: centerNode.centerY + ( 0.2 * centerNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const rightNode = new AtomNode( Element.O, merge( {
       centerX: centerNode.right,
       centerY: centerNode.centerY + ( 0.2 * centerNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const topNode = new AtomNode( Element.O, merge( {
       centerX: centerNode.centerX + ( 0.08 * centerNode.width ),
       centerY: centerNode.left + ( 0.08 * centerNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'SO3Node sets children' );
     options.children = [ new Node( {

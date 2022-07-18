@@ -20,18 +20,18 @@ class H2ONode extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const bigNode = new AtomNode( Element.O, options.atomOptions );
+    const bigNode = new AtomNode( Element.O, options.atomNodeOptions );
     const smallLeftNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.left,
       centerY: bigNode.bottom - ( 0.25 * bigNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallRightNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.right,
       centerY: smallLeftNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'H2ONode sets children' );
     options.children = [ new Node( {

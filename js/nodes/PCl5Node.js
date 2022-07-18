@@ -21,30 +21,30 @@ class PCl5Node extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const centerNode = new AtomNode( Element.P, options.atomOptions );
+    const centerNode = new AtomNode( Element.P, options.atomNodeOptions );
     const topNode = new AtomNode( Element.Cl, merge( {
       centerX: centerNode.centerX,
       centerY: centerNode.top
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const bottomNode = new AtomNode( Element.Cl, merge( {
       centerX: centerNode.centerX,
       centerY: centerNode.bottom
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const rightNode = new AtomNode( Element.Cl, merge( {
       centerX: centerNode.right,
       centerY: centerNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const topLeftNode = new AtomNode( Element.Cl, merge( {
       centerX: centerNode.left + ( 0.25 * centerNode.width ),
       centerY: centerNode.top + ( 0.25 * centerNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const bottomLeftNode = new AtomNode( Element.Cl, merge( {
       centerX: centerNode.left + ( 0.1 * centerNode.width ),
       centerY: centerNode.bottom - ( 0.1 * centerNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'PCl5Node sets children' );
     options.children = [ new Node( {

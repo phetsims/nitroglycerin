@@ -20,18 +20,18 @@ class OF2Node extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const centerNode = new AtomNode( Element.O, options.atomOptions );
+    const centerNode = new AtomNode( Element.O, options.atomNodeOptions );
     const leftNode = new AtomNode( Element.F, merge( {
       centerX: centerNode.left,
       centerY: centerNode.centerY + ( 0.25 * centerNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const rightNode = new AtomNode( Element.F, merge( {
       centerX: centerNode.right,
       centerY: centerNode.centerY + ( 0.25 * centerNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'OF2Node sets children' );
     options.children = [ new Node( {

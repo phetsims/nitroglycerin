@@ -20,30 +20,30 @@ class CH3OHNode extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const leftNode = new AtomNode( Element.C, options.atomOptions );
+    const leftNode = new AtomNode( Element.C, options.atomNodeOptions );
     const smallTopNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.centerX,
       centerY: leftNode.top
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallBottomNode = new AtomNode( Element.H, merge( {
       centerX: smallTopNode.centerX,
       centerY: leftNode.bottom
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallLeftNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.left,
       centerY: leftNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const rightNode = new AtomNode( Element.O, merge( {
       centerX: leftNode.right + ( 0.25 * leftNode.width ),
       centerY: leftNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallRightNode = new AtomNode( Element.H, merge( {
       centerX: rightNode.right,
       centerY: rightNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'CH3OHNode sets children' );
     options.children = [ new Node( {

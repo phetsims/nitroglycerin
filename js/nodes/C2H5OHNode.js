@@ -21,42 +21,42 @@ class C2H5OHNode extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const leftNode = new AtomNode( Element.C, options.atomOptions );
+    const leftNode = new AtomNode( Element.C, options.atomNodeOptions );
     const centerNode = new AtomNode( Element.C, merge( {
       centerX: leftNode.right + ( 0.25 * leftNode.width ),
       centerY: leftNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallTopLeftNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.centerX,
       centerY: leftNode.top
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallBottomLeftNode = new AtomNode( Element.H, merge( {
       centerX: smallTopLeftNode.centerX,
       centerY: leftNode.bottom
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallLeftNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.left,
       centerY: leftNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallTopRightNode = new AtomNode( Element.H, merge( {
       centerX: centerNode.centerX,
       centerY: centerNode.top
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallBottomRightNode = new AtomNode( Element.H, merge( {
       centerX: centerNode.centerX,
       centerY: centerNode.bottom
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const rightNode = new AtomNode( Element.O, merge( {
       centerX: centerNode.right,
       centerY: centerNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallRightNode = new AtomNode( Element.H, merge( {
       centerX: rightNode.right,
       centerY: rightNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'C2H5OHNode sets children' );
     options.children = [ new Node( {

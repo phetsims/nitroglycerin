@@ -19,18 +19,18 @@ class NO2Node extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const centerNode = new AtomNode( Element.N, options.atomOptions );
+    const centerNode = new AtomNode( Element.N, options.atomNodeOptions );
     const leftNode = new AtomNode( Element.O, merge( {
       centerX: centerNode.left,
       centerY: centerNode.centerY + ( 0.25 * centerNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const rightNode = new AtomNode( Element.O, merge( {
       centerX: centerNode.right,
       centerY: leftNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'NO2Node sets children' );
     options.children = [ new Node( {

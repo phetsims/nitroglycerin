@@ -20,18 +20,18 @@ class SO2Node extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const centerNode = new AtomNode( Element.S, options.atomOptions );
+    const centerNode = new AtomNode( Element.S, options.atomNodeOptions );
     const leftNode = new AtomNode( Element.O, merge( {
       centerX: centerNode.left,
       centerY: centerNode.centerY + ( 0.2 * centerNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const rightNode = new AtomNode( Element.O, merge( {
       centerX: centerNode.right,
       centerY: centerNode.centerY + ( 0.2 * centerNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'SO2Node sets children' );
     options.children = [ new Node( {

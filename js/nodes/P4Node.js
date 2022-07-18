@@ -21,22 +21,22 @@ class P4Node extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const topNode = new AtomNode( Element.P, options.atomOptions );
+    const topNode = new AtomNode( Element.P, options.atomNodeOptions );
     const bottomLeftNode = new AtomNode( Element.P, merge( {
       centerX: topNode.left + ( 0.3 * topNode.width ),
       centerY: topNode.bottom + ( 0.2 * topNode.width )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const bottomRightNode = new AtomNode( Element.P, merge( {
       centerX: topNode.right,
       centerY: topNode.bottom
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const bottomBackNode = new AtomNode( Element.P, merge( {
       centerX: topNode.left,
       centerY: topNode.centerY + ( 0.2 * topNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'P4Node sets children' );
     options.children = [ new Node( {

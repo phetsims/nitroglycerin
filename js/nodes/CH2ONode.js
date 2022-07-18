@@ -20,23 +20,23 @@ class CH2ONode extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const leftNode = new AtomNode( Element.C, options.atomOptions );
+    const leftNode = new AtomNode( Element.C, options.atomNodeOptions );
     const smallOffset = 0.165 * leftNode.width;
     const rightNode = new AtomNode( Element.O, merge( {
       centerX: leftNode.right + ( 0.25 * leftNode.width ),
       centerY: leftNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallTopNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.left + smallOffset,
       centerY: leftNode.top + smallOffset
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const smallBottomNode = new AtomNode( Element.H, merge( {
       centerX: smallTopNode.centerX,
       centerY: leftNode.bottom - smallOffset
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'CH2ONode sets children' );
     options.children = [ new Node( {

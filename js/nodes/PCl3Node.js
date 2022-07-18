@@ -20,22 +20,22 @@ class PCl3Node extends Node {
    */
   constructor( options ) {
 
-    options = merge( { atomOptions: {} }, options );
+    options = merge( { atomNodeOptions: {} }, options );
 
     // atoms
-    const centerNode = new AtomNode( Element.P, options.atomOptions );
+    const centerNode = new AtomNode( Element.P, options.atomNodeOptions );
     const leftNode = new AtomNode( Element.Cl, merge( {
       centerX: centerNode.left,
       centerY: centerNode.bottom - ( 0.25 * centerNode.height )
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const rightNode = new AtomNode( Element.Cl, merge( {
       centerX: centerNode.right,
       centerY: leftNode.centerY
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
     const bottomNode = new AtomNode( Element.Cl, merge( {
       centerX: centerNode.centerX,
       centerY: centerNode.bottom
-    }, options.atomOptions ) );
+    }, options.atomNodeOptions ) );
 
     assert && assert( !options.children, 'PCl3Node sets children' );
     options.children = [ new Node( {
