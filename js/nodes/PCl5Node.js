@@ -1,5 +1,6 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
+// @ts-nocheck
 /**
  * PCl5 Molecule
  * Structure has 2 H's on the vertical axis, and 3 H's arranged in a triangle in the horizontal plane.
