@@ -4,25 +4,21 @@
  * Base class for molecules with N atoms aligned on the horizontal axis, for N > 0.
  * Note that here is technically no such thing as a single-atom molecule,
  * but allowing N=1 simplifies the Equation model.
- * <p/>
+ *
  * Origin is at geometric center of the node's bounding rectangle.
  *
  * @author Chris Malley (PixelZoom, Inc.)
  * @author Jonathan Olson <jonathan.olson@colorado.edu>
  */
 
-import Vector2 from '../../../dot/js/Vector2.js';
 import optionize from '../../../phet-core/js/optionize.js';
-import StrictOmit from '../../../phet-core/js/types/StrictOmit.js';
-import { Node, NodeOptions } from '../../../scenery/js/imports.js';
+import { Node } from '../../../scenery/js/imports.js';
 import nitroglycerin from '../nitroglycerin.js';
-import AtomNode, { AtomNodeOptions } from './AtomNode.js';
+import AtomNode from './AtomNode.js';
 import Element from '../Element.js';
+import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
 type SelfOptions = {
-
-  // options propagated to each AtomNode
-  atomNodeOptions?: AtomNodeOptions;
 
   // direction of overlap, leftToRight or rightToLeft
   direction?: 'leftToRight' | 'rightToLeft';
@@ -31,13 +27,13 @@ type SelfOptions = {
   overlapPercent?: number;
 };
 
-export type HorizontalMoleculeNodeOptions = SelfOptions & StrictOmit<NodeOptions, 'children'>;
+export type HorizontalMoleculeNodeOptions = SelfOptions & MoleculeNodeOptions;
 
-export default class HorizontalMoleculeNode extends Node {
+export default class HorizontalMoleculeNode extends MoleculeNode {
 
   protected constructor( elements: Element[], providedOptions?: HorizontalMoleculeNodeOptions ) {
 
-    const options = optionize<HorizontalMoleculeNodeOptions, StrictOmit<SelfOptions, 'atomNodeOptions'>, NodeOptions>()( {
+    const options = optionize<HorizontalMoleculeNodeOptions, SelfOptions, MoleculeNodeOptions>()( {
       direction: 'leftToRight',
       overlapPercent: 0.25
     }, providedOptions );
@@ -60,12 +56,7 @@ export default class HorizontalMoleculeNode extends Node {
       previousNode = currentNode;
     } );
 
-    options.children = [ new Node( {
-      children: atomNodes,
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
-
-    super( options );
+    super( atomNodes, options );
   }
 }
 
