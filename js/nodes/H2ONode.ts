@@ -20,18 +20,18 @@ class H2ONode extends MoleculeNode {
 
   public constructor( providedOptions?: H2ONodeOptions ) {
 
-    const atomOptions = providedOptions?.atomNodeOptions;
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const bigNode = new AtomNode( Element.O, atomOptions );
+    const bigNode = new AtomNode( Element.O, atomNodeOptions );
     const smallLeftNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.left,
       centerY: bigNode.bottom - ( 0.25 * bigNode.height )
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallRightNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.right,
       centerY: smallLeftNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
 
     const atomNodes = [ bigNode, smallLeftNode, smallRightNode ];
 

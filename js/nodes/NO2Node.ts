@@ -1,47 +1,42 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * NO2 Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import Vector2 from '../../../dot/js/Vector2.js';
-import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
+import { combineOptions } from '../../../phet-core/js/optionize.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import AtomNode from './AtomNode.js';
+import AtomNode, { AtomNodeOptions } from './AtomNode.js';
+import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
-class NO2Node extends Node {
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+type SelfOptions = EmptyObjectType;
+export type NO2NodeOptions = SelfOptions & MoleculeNodeOptions;
 
-    options = merge( { atomNodeOptions: {} }, options );
+export default class NO2Node extends MoleculeNode {
+
+  public constructor( providedOptions?: NO2NodeOptions ) {
+
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const centerNode = new AtomNode( Element.N, options.atomNodeOptions );
-    const leftNode = new AtomNode( Element.O, merge( {
+    const centerNode = new AtomNode( Element.N, atomNodeOptions );
+    const leftNode = new AtomNode( Element.O, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.left,
       centerY: centerNode.centerY + ( 0.25 * centerNode.height )
-    }, options.atomNodeOptions ) );
-    const rightNode = new AtomNode( Element.O, merge( {
+    }, atomNodeOptions ) );
+    const rightNode = new AtomNode( Element.O, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.right,
       centerY: leftNode.centerY
-    }, options.atomNodeOptions ) );
+    }, atomNodeOptions ) );
 
-    assert && assert( !options.children, 'NO2Node sets children' );
-    options.children = [ new Node( {
-      children: [ leftNode, centerNode, rightNode ],
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
+    const atomNodes = [ leftNode, centerNode, rightNode ];
 
-    super( options );
+    super( atomNodes, providedOptions );
   }
 }
 
 nitroglycerin.register( 'NO2Node', NO2Node );
-export default NO2Node;

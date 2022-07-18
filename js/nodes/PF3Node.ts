@@ -1,52 +1,46 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * PF3 Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import Vector2 from '../../../dot/js/Vector2.js';
-import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
+import { combineOptions } from '../../../phet-core/js/optionize.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import AtomNode from './AtomNode.js';
+import AtomNode, { AtomNodeOptions } from './AtomNode.js';
+import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
-class PF3Node extends Node {
+type SelfOptions = EmptyObjectType;
+export type PF3NodeOptions = SelfOptions & MoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+export default class PF3Node extends MoleculeNode {
 
-    options = merge( { atomNodeOptions: {} }, options );
+  public constructor( providedOptions?: PF3NodeOptions ) {
+
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const centerNode = new AtomNode( Element.P, options.atomNodeOptions );
-    const leftNode = new AtomNode( Element.F, merge( {
+    const centerNode = new AtomNode( Element.P, atomNodeOptions );
+    const leftNode = new AtomNode( Element.F, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.left,
       centerY: centerNode.bottom - ( 0.25 * centerNode.height )
-    }, options.atomNodeOptions ) );
-    const rightNode = new AtomNode( Element.F, merge( {
+    }, atomNodeOptions ) );
+    const rightNode = new AtomNode( Element.F, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.right,
       centerY: leftNode.centerY
-    }, options.atomNodeOptions ) );
-    const bottomNode = new AtomNode( Element.F, merge( {
+    }, atomNodeOptions ) );
+    const bottomNode = new AtomNode( Element.F, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.centerX,
       centerY: centerNode.bottom
-    }, options.atomNodeOptions ) );
+    }, atomNodeOptions ) );
 
-    assert && assert( !options.children, 'PF3Node sets children' );
-    options.children = [ new Node( {
-      children: [ leftNode, rightNode, centerNode, bottomNode ],
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
+    const atomNodes = [ leftNode, rightNode, centerNode, bottomNode ];
 
-    super( options );
+    super( atomNodes, providedOptions );
   }
 }
 
 nitroglycerin.register( 'PF3Node', PF3Node );
-export default PF3Node;

@@ -21,42 +21,42 @@ export default class C2H5OHNode extends MoleculeNode {
 
   public constructor( providedOptions?: C2H5OHNodeOptions ) {
 
-    const atomOptions = providedOptions?.atomNodeOptions;
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const leftNode = new AtomNode( Element.C, atomOptions );
+    const leftNode = new AtomNode( Element.C, atomNodeOptions );
     const centerNode = new AtomNode( Element.C, combineOptions<AtomNodeOptions>( {
       centerX: leftNode.right + ( 0.25 * leftNode.width ),
       centerY: leftNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallTopLeftNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: leftNode.centerX,
       centerY: leftNode.top
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallBottomLeftNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: smallTopLeftNode.centerX,
       centerY: leftNode.bottom
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallLeftNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: leftNode.left,
       centerY: leftNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallTopRightNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.centerX,
       centerY: centerNode.top
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallBottomRightNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.centerX,
       centerY: centerNode.bottom
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const rightNode = new AtomNode( Element.O, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.right,
       centerY: centerNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallRightNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: rightNode.right,
       centerY: rightNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
 
     const atomNodes = [
       smallBottomRightNode, smallTopRightNode, centerNode, smallRightNode, rightNode,

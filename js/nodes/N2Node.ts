@@ -1,25 +1,24 @@
 // Copyright 2013-2020, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * N2 Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import HorizontalMoleculeNode from './HorizontalMoleculeNode.js';
+import HorizontalMoleculeNode, { HorizontalMoleculeNodeOptions } from './HorizontalMoleculeNode.js';
 
-class N2Node extends HorizontalMoleculeNode {
+type SelfOptions = EmptyObjectType;
+export type N2NodeOptions = SelfOptions & HorizontalMoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
-    super( [ Element.N, Element.N ], options );
+export default class N2Node extends HorizontalMoleculeNode {
+
+  public constructor( providedOptions?: N2NodeOptions ) {
+    super( [ Element.N, Element.N ], providedOptions );
   }
 }
 
 nitroglycerin.register( 'N2Node', N2Node );
-export default N2Node;

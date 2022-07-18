@@ -20,30 +20,30 @@ export default class CH3OHNode extends MoleculeNode {
 
   public constructor( providedOptions?: CH3OHNodeOptions ) {
 
-    const atomOptions = providedOptions?.atomNodeOptions;
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const leftNode = new AtomNode( Element.C, atomOptions );
+    const leftNode = new AtomNode( Element.C, atomNodeOptions );
     const smallTopNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.centerX,
       centerY: leftNode.top
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallBottomNode = new AtomNode( Element.H, merge( {
       centerX: smallTopNode.centerX,
       centerY: leftNode.bottom
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallLeftNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.left,
       centerY: leftNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const rightNode = new AtomNode( Element.O, merge( {
       centerX: leftNode.right + ( 0.25 * leftNode.width ),
       centerY: leftNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallRightNode = new AtomNode( Element.H, merge( {
       centerX: rightNode.right,
       centerY: rightNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
 
     const atomNodes = [ smallBottomNode, smallTopNode, leftNode, smallLeftNode, smallRightNode, rightNode ];
 

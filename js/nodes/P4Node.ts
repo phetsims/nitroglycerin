@@ -1,6 +1,5 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * P4 Molecule
  * Structure is tetrahedral
@@ -8,46 +7,41 @@
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import Vector2 from '../../../dot/js/Vector2.js';
-import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
+import { combineOptions } from '../../../phet-core/js/optionize.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import AtomNode from './AtomNode.js';
+import AtomNode, { AtomNodeOptions } from './AtomNode.js';
+import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
-class P4Node extends Node {
+type SelfOptions = EmptyObjectType;
+export type P4NodeOptions = SelfOptions & MoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+export default class P4Node extends MoleculeNode {
 
-    options = merge( { atomNodeOptions: {} }, options );
+  public constructor( providedOptions?: P4NodeOptions ) {
+
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const topNode = new AtomNode( Element.P, options.atomNodeOptions );
-    const bottomLeftNode = new AtomNode( Element.P, merge( {
+    const topNode = new AtomNode( Element.P, atomNodeOptions );
+    const bottomLeftNode = new AtomNode( Element.P, combineOptions<AtomNodeOptions>( {
       centerX: topNode.left + ( 0.3 * topNode.width ),
       centerY: topNode.bottom + ( 0.2 * topNode.width )
-    }, options.atomNodeOptions ) );
-    const bottomRightNode = new AtomNode( Element.P, merge( {
+    }, atomNodeOptions ) );
+    const bottomRightNode = new AtomNode( Element.P, combineOptions<AtomNodeOptions>( {
       centerX: topNode.right,
       centerY: topNode.bottom
-    }, options.atomNodeOptions ) );
-    const bottomBackNode = new AtomNode( Element.P, merge( {
+    }, atomNodeOptions ) );
+    const bottomBackNode = new AtomNode( Element.P, combineOptions<AtomNodeOptions>( {
       centerX: topNode.left,
       centerY: topNode.centerY + ( 0.2 * topNode.height )
-    }, options.atomNodeOptions ) );
+    }, atomNodeOptions ) );
 
-    assert && assert( !options.children, 'P4Node sets children' );
-    options.children = [ new Node( {
-      children: [ bottomBackNode, bottomRightNode, bottomLeftNode, topNode ],
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
+    const atomNodes = [ bottomBackNode, bottomRightNode, bottomLeftNode, topNode ];
 
-    super( options );
+    super( atomNodes, providedOptions );
   }
 }
 
 nitroglycerin.register( 'P4Node', P4Node );
-export default P4Node;

@@ -20,27 +20,27 @@ export default class CH4Node extends MoleculeNode {
 
   public constructor( providedOptions?: CH4NodeOptions ) {
 
-    const atomOptions = providedOptions?.atomNodeOptions;
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const bigNode = new AtomNode( Element.C, atomOptions );
+    const bigNode = new AtomNode( Element.C, atomNodeOptions );
     const smallOffset = 0.165 * bigNode.width;
     const smallTopLeftNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.left + smallOffset,
       centerY: bigNode.top + smallOffset
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallTopRightNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.right - smallOffset,
       centerY: smallTopLeftNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallBottomLeftNode = new AtomNode( Element.H, merge( {
       centerX: smallTopLeftNode.centerX,
       centerY: bigNode.bottom - smallOffset
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallBottomRightNode = new AtomNode( Element.H, merge( {
       centerX: smallTopRightNode.centerX,
       centerY: smallBottomLeftNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
 
     const atomNodes = [ smallTopRightNode, smallBottomLeftNode, bigNode, smallTopLeftNode, smallBottomRightNode ];
 

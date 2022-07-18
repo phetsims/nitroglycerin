@@ -20,38 +20,38 @@ export default class C2H6Node extends MoleculeNode {
 
   public constructor( providedOptions?: C2H6NodeOptions ) {
 
-    const atomOptions = providedOptions?.atomNodeOptions;
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const leftNode = new AtomNode( Element.C, atomOptions );
+    const leftNode = new AtomNode( Element.C, atomNodeOptions );
     const rightNode = new AtomNode( Element.C, merge( {
       centerX: leftNode.right + ( 0.25 * leftNode.width ),
       centerY: leftNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallTopLeftNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.centerX,
       centerY: leftNode.top
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallBottomLeftNode = new AtomNode( Element.H, merge( {
       centerX: smallTopLeftNode.centerX,
       centerY: leftNode.bottom
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallLeftNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.left,
       centerY: leftNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallTopRightNode = new AtomNode( Element.H, merge( {
       centerX: rightNode.centerX,
       centerY: rightNode.top
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallBottomRightNode = new AtomNode( Element.H, merge( {
       centerX: rightNode.centerX,
       centerY: rightNode.bottom
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallRightNode = new AtomNode( Element.H, merge( {
       centerX: rightNode.right,
       centerY: rightNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
 
     const atomNodes = [
       smallBottomRightNode, smallTopRightNode, rightNode, smallRightNode,

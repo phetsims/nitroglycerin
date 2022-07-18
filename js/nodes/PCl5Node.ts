@@ -1,6 +1,5 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * PCl5 Molecule
  * Structure has 2 H's on the vertical axis, and 3 H's arranged in a triangle in the horizontal plane.
@@ -8,54 +7,49 @@
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import Vector2 from '../../../dot/js/Vector2.js';
-import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
+import { combineOptions } from '../../../phet-core/js/optionize.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import AtomNode from './AtomNode.js';
+import AtomNode, { AtomNodeOptions } from './AtomNode.js';
+import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
-class PCl5Node extends Node {
+type SelfOptions = EmptyObjectType;
+export type PCl5NodeOptions = SelfOptions & MoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+export default class PCl5Node extends MoleculeNode {
 
-    options = merge( { atomNodeOptions: {} }, options );
+  public constructor( providedOptions?: PCl5NodeOptions ) {
+
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const centerNode = new AtomNode( Element.P, options.atomNodeOptions );
-    const topNode = new AtomNode( Element.Cl, merge( {
+    const centerNode = new AtomNode( Element.P, atomNodeOptions );
+    const topNode = new AtomNode( Element.Cl, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.centerX,
       centerY: centerNode.top
-    }, options.atomNodeOptions ) );
-    const bottomNode = new AtomNode( Element.Cl, merge( {
+    }, atomNodeOptions ) );
+    const bottomNode = new AtomNode( Element.Cl, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.centerX,
       centerY: centerNode.bottom
-    }, options.atomNodeOptions ) );
-    const rightNode = new AtomNode( Element.Cl, merge( {
+    }, atomNodeOptions ) );
+    const rightNode = new AtomNode( Element.Cl, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.right,
       centerY: centerNode.centerY
-    }, options.atomNodeOptions ) );
-    const topLeftNode = new AtomNode( Element.Cl, merge( {
+    }, atomNodeOptions ) );
+    const topLeftNode = new AtomNode( Element.Cl, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.left + ( 0.25 * centerNode.width ),
       centerY: centerNode.top + ( 0.25 * centerNode.height )
-    }, options.atomNodeOptions ) );
-    const bottomLeftNode = new AtomNode( Element.Cl, merge( {
+    }, atomNodeOptions ) );
+    const bottomLeftNode = new AtomNode( Element.Cl, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.left + ( 0.1 * centerNode.width ),
       centerY: centerNode.bottom - ( 0.1 * centerNode.height )
-    }, options.atomNodeOptions ) );
+    }, atomNodeOptions ) );
 
-    assert && assert( !options.children, 'PCl5Node sets children' );
-    options.children = [ new Node( {
-      children: [ rightNode, bottomNode, topLeftNode, centerNode, topNode, bottomLeftNode ],
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
+    const atomNodes = [ rightNode, bottomNode, topLeftNode, centerNode, topNode, bottomLeftNode ];
 
-    super( options );
+    super( atomNodes, providedOptions );
   }
 }
 
 nitroglycerin.register( 'PCl5Node', PCl5Node );
-export default PCl5Node;

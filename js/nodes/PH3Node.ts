@@ -1,52 +1,46 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * PH3 Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import Vector2 from '../../../dot/js/Vector2.js';
-import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
+import { combineOptions } from '../../../phet-core/js/optionize.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import AtomNode from './AtomNode.js';
+import AtomNode, { AtomNodeOptions } from './AtomNode.js';
+import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
-class PH3Node extends Node {
+type SelfOptions = EmptyObjectType;
+export type PH3NodeOptions = SelfOptions & MoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+export default class PH3Node extends MoleculeNode {
 
-    options = merge( { atomNodeOptions: {} }, options );
+  public constructor( providedOptions?: PH3NodeOptions ) {
+
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const bigNode = new AtomNode( Element.P, options.atomNodeOptions );
-    const smallLeftNode = new AtomNode( Element.H, merge( {
+    const bigNode = new AtomNode( Element.P, atomNodeOptions );
+    const smallLeftNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: bigNode.left,
       centerY: bigNode.bottom - ( 0.25 * bigNode.height )
-    }, options.atomNodeOptions ) );
-    const smallRightNode = new AtomNode( Element.H, merge( {
+    }, atomNodeOptions ) );
+    const smallRightNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: bigNode.right,
       centerY: smallLeftNode.centerY
-    }, options.atomNodeOptions ) );
-    const smallBottomNode = new AtomNode( Element.H, merge( {
+    }, atomNodeOptions ) );
+    const smallBottomNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: bigNode.centerX,
       centerY: bigNode.bottom
-    }, options.atomNodeOptions ) );
+    }, atomNodeOptions ) );
 
-    assert && assert( !options.children, 'PH3Node sets children' );
-    options.children = [ new Node( {
-      children: [ smallLeftNode, smallRightNode, bigNode, smallBottomNode ],
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
+    const atomNodes = [ smallLeftNode, smallRightNode, bigNode, smallBottomNode ];
 
-    super( options );
+    super( atomNodes, providedOptions );
   }
 }
 
 nitroglycerin.register( 'PH3Node', PH3Node );
-export default PH3Node;

@@ -1,52 +1,46 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * SO3 Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import Vector2 from '../../../dot/js/Vector2.js';
-import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import AtomNode from './AtomNode.js';
+import AtomNode, { AtomNodeOptions } from './AtomNode.js';
+import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
+import { combineOptions } from '../../../phet-core/js/optionize.js';
 
-class SO3Node extends Node {
+type SelfOptions = EmptyObjectType;
+export type SO3NodeOptions = SelfOptions & MoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+export default class SO3Node extends MoleculeNode {
 
-    options = merge( { atomNodeOptions: {} }, options );
+  public constructor( providedOptions?: SO3NodeOptions ) {
+
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const centerNode = new AtomNode( Element.S, options.atomNodeOptions );
-    const leftNode = new AtomNode( Element.O, merge( {
+    const centerNode = new AtomNode( Element.S, atomNodeOptions );
+    const leftNode = new AtomNode( Element.O, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.left,
       centerY: centerNode.centerY + ( 0.2 * centerNode.height )
-    }, options.atomNodeOptions ) );
-    const rightNode = new AtomNode( Element.O, merge( {
+    }, atomNodeOptions ) );
+    const rightNode = new AtomNode( Element.O, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.right,
       centerY: centerNode.centerY + ( 0.2 * centerNode.height )
-    }, options.atomNodeOptions ) );
-    const topNode = new AtomNode( Element.O, merge( {
+    }, atomNodeOptions ) );
+    const topNode = new AtomNode( Element.O, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.centerX + ( 0.08 * centerNode.width ),
       centerY: centerNode.left + ( 0.08 * centerNode.height )
-    }, options.atomNodeOptions ) );
+    }, atomNodeOptions ) );
 
-    assert && assert( !options.children, 'SO3Node sets children' );
-    options.children = [ new Node( {
-      children: [ topNode, leftNode, centerNode, rightNode ],
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
+    const atomNodes = [ topNode, leftNode, centerNode, rightNode ];
 
-    super( options );
+    super( atomNodes, providedOptions );
   }
 }
 
 nitroglycerin.register( 'SO3Node', SO3Node );
-export default SO3Node;

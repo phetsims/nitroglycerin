@@ -1,25 +1,24 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * S Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import HorizontalMoleculeNode from './HorizontalMoleculeNode.js';
+import HorizontalMoleculeNode, { HorizontalMoleculeNodeOptions } from './HorizontalMoleculeNode.js';
 
-class SNode extends HorizontalMoleculeNode {
+type SelfOptions = EmptyObjectType;
+export type SNodeOptions = SelfOptions & HorizontalMoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
-    super( [ Element.S ], options );
+export default class SNode extends HorizontalMoleculeNode {
+
+  public constructor( providedOptions?: SNodeOptions ) {
+    super( [ Element.S ], providedOptions );
   }
 }
 
 nitroglycerin.register( 'SNode', SNode );
-export default SNode;

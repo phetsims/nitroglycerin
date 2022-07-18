@@ -20,23 +20,23 @@ export default class CH2ONode extends MoleculeNode {
 
   public constructor( providedOptions?: CH2ONodeOptions ) {
 
-    const atomOptions = providedOptions?.atomNodeOptions;
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const leftNode = new AtomNode( Element.C, atomOptions );
+    const leftNode = new AtomNode( Element.C, atomNodeOptions );
     const smallOffset = 0.165 * leftNode.width;
     const rightNode = new AtomNode( Element.O, merge( {
       centerX: leftNode.right + ( 0.25 * leftNode.width ),
       centerY: leftNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallTopNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.left + smallOffset,
       centerY: leftNode.top + smallOffset
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallBottomNode = new AtomNode( Element.H, merge( {
       centerX: smallTopNode.centerX,
       centerY: leftNode.bottom - smallOffset
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
 
     const atomNodes = [ smallTopNode, leftNode, rightNode, smallBottomNode ];
 

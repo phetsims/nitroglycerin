@@ -1,48 +1,42 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * OF2 Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import Vector2 from '../../../dot/js/Vector2.js';
-import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
+import { combineOptions } from '../../../phet-core/js/optionize.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import AtomNode from './AtomNode.js';
+import AtomNode, { AtomNodeOptions } from './AtomNode.js';
+import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
-class OF2Node extends Node {
+type SelfOptions = EmptyObjectType;
+export type OF2NodeOptions = SelfOptions & MoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+export default class OF2Node extends MoleculeNode {
 
-    options = merge( { atomNodeOptions: {} }, options );
+  public constructor( providedOptions?: OF2NodeOptions ) {
+
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const centerNode = new AtomNode( Element.O, options.atomNodeOptions );
-    const leftNode = new AtomNode( Element.F, merge( {
+    const centerNode = new AtomNode( Element.O, atomNodeOptions );
+    const leftNode = new AtomNode( Element.F, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.left,
       centerY: centerNode.centerY + ( 0.25 * centerNode.height )
-    }, options.atomNodeOptions ) );
-    const rightNode = new AtomNode( Element.F, merge( {
+    }, atomNodeOptions ) );
+    const rightNode = new AtomNode( Element.F, combineOptions<AtomNodeOptions>( {
       centerX: centerNode.right,
       centerY: centerNode.centerY + ( 0.25 * centerNode.height )
-    }, options.atomNodeOptions ) );
+    }, atomNodeOptions ) );
 
-    assert && assert( !options.children, 'OF2Node sets children' );
-    options.children = [ new Node( {
-      children: [ leftNode, centerNode, rightNode ],
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
+    const atomNodes = [ leftNode, centerNode, rightNode ];
 
-    super( options );
+    super( atomNodes, providedOptions );
   }
 }
 
 nitroglycerin.register( 'OF2Node', OF2Node );
-export default OF2Node;

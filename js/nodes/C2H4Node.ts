@@ -20,31 +20,31 @@ export default class C2H4Node extends MoleculeNode {
 
   public constructor( providedOptions?: C2H4NodeOptions ) {
 
-    const atomOptions = providedOptions?.atomNodeOptions;
+    const atomNodeOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const bigLeftNode = new AtomNode( Element.C, atomOptions );
+    const bigLeftNode = new AtomNode( Element.C, atomNodeOptions );
     const smallOffset = 0.165 * bigLeftNode.width;
     const bigRightNode = new AtomNode( Element.C, combineOptions<AtomNodeOptions>( {
       left: bigLeftNode.centerX + ( 0.25 * bigLeftNode.width ),
       centerY: bigLeftNode.centerY
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallTopLeftNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: bigLeftNode.left + smallOffset,
       centerY: bigLeftNode.top + smallOffset
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallTopRightNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: bigRightNode.right - smallOffset,
       centerY: bigRightNode.top + smallOffset
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallBottomLeftNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: bigLeftNode.left + smallOffset,
       centerY: bigLeftNode.bottom - smallOffset
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
     const smallBottomRightNode = new AtomNode( Element.H, combineOptions<AtomNodeOptions>( {
       centerX: bigRightNode.right - smallOffset,
       centerY: bigRightNode.bottom - smallOffset
-    }, atomOptions ) );
+    }, atomNodeOptions ) );
 
     const atomNodes = [
       smallTopRightNode, smallTopLeftNode,

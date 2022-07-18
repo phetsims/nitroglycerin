@@ -1,25 +1,24 @@
 // Copyright 2013-2020, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * NO Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import HorizontalMoleculeNode from './HorizontalMoleculeNode.js';
+import HorizontalMoleculeNode, { HorizontalMoleculeNodeOptions } from './HorizontalMoleculeNode.js';
 
-class NONode extends HorizontalMoleculeNode {
+type SelfOptions = EmptyObjectType;
+export type NONodeOptions = SelfOptions & HorizontalMoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
-    super( [ Element.N, Element.O ], options );
+export default class NONode extends HorizontalMoleculeNode {
+
+  public constructor( providedOptions?: NONodeOptions ) {
+    super( [ Element.N, Element.O ], providedOptions );
   }
 }
 
 nitroglycerin.register( 'NONode', NONode );
-export default NONode;
