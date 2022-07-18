@@ -1,53 +1,47 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * CH2O Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import Vector2 from '../../../dot/js/Vector2.js';
 import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
 import AtomNode from './AtomNode.js';
+import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
-class CH2ONode extends Node {
+type SelfOptions = EmptyObjectType;
+export type CH2ONodeOptions = SelfOptions & MoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+export default class CH2ONode extends MoleculeNode {
 
-    options = merge( { atomNodeOptions: {} }, options );
+  public constructor( providedOptions?: CH2ONodeOptions ) {
+
+    const atomOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const leftNode = new AtomNode( Element.C, options.atomNodeOptions );
+    const leftNode = new AtomNode( Element.C, atomOptions );
     const smallOffset = 0.165 * leftNode.width;
     const rightNode = new AtomNode( Element.O, merge( {
       centerX: leftNode.right + ( 0.25 * leftNode.width ),
       centerY: leftNode.centerY
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
     const smallTopNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.left + smallOffset,
       centerY: leftNode.top + smallOffset
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
     const smallBottomNode = new AtomNode( Element.H, merge( {
       centerX: smallTopNode.centerX,
       centerY: leftNode.bottom - smallOffset
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
 
-    assert && assert( !options.children, 'CH2ONode sets children' );
-    options.children = [ new Node( {
-      children: [ smallTopNode, leftNode, rightNode, smallBottomNode ],
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
+    const atomNodes = [ smallTopNode, leftNode, rightNode, smallBottomNode ];
 
-    super( options );
+    super( atomNodes, providedOptions );
   }
 }
 
 nitroglycerin.register( 'CH2ONode', CH2ONode );
-export default CH2ONode;

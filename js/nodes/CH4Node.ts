@@ -1,57 +1,51 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * CH4 Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import Vector2 from '../../../dot/js/Vector2.js';
 import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
 import AtomNode from './AtomNode.js';
+import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
-class CH4Node extends Node {
+type SelfOptions = EmptyObjectType;
+export type CH4NodeOptions = SelfOptions & MoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+export default class CH4Node extends MoleculeNode {
 
-    options = merge( { atomNodeOptions: {} }, options );
+  public constructor( providedOptions?: CH4NodeOptions ) {
+
+    const atomOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const bigNode = new AtomNode( Element.C, options.atomNodeOptions );
+    const bigNode = new AtomNode( Element.C, atomOptions );
     const smallOffset = 0.165 * bigNode.width;
     const smallTopLeftNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.left + smallOffset,
       centerY: bigNode.top + smallOffset
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
     const smallTopRightNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.right - smallOffset,
       centerY: smallTopLeftNode.centerY
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
     const smallBottomLeftNode = new AtomNode( Element.H, merge( {
       centerX: smallTopLeftNode.centerX,
       centerY: bigNode.bottom - smallOffset
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
     const smallBottomRightNode = new AtomNode( Element.H, merge( {
       centerX: smallTopRightNode.centerX,
       centerY: smallBottomLeftNode.centerY
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
 
-    assert && assert( !options.children, 'CH4Node sets children' );
-    options.children = [ new Node( {
-      children: [ smallTopRightNode, smallBottomLeftNode, bigNode, smallTopLeftNode, smallBottomRightNode ],
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
+    const atomNodes = [ smallTopRightNode, smallBottomLeftNode, bigNode, smallTopLeftNode, smallBottomRightNode ];
 
-    super( options );
+    super( atomNodes, providedOptions );
   }
 }
 
 nitroglycerin.register( 'CH4Node', CH4Node );
-export default CH4Node;

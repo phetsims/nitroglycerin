@@ -1,60 +1,54 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * CH3OH Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import Vector2 from '../../../dot/js/Vector2.js';
 import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
 import AtomNode from './AtomNode.js';
+import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
-class CH3OHNode extends Node {
+type SelfOptions = EmptyObjectType;
+export type CH3OHNodeOptions = SelfOptions & MoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+export default class CH3OHNode extends MoleculeNode {
 
-    options = merge( { atomNodeOptions: {} }, options );
+  public constructor( providedOptions?: CH3OHNodeOptions ) {
+
+    const atomOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const leftNode = new AtomNode( Element.C, options.atomNodeOptions );
+    const leftNode = new AtomNode( Element.C, atomOptions );
     const smallTopNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.centerX,
       centerY: leftNode.top
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
     const smallBottomNode = new AtomNode( Element.H, merge( {
       centerX: smallTopNode.centerX,
       centerY: leftNode.bottom
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
     const smallLeftNode = new AtomNode( Element.H, merge( {
       centerX: leftNode.left,
       centerY: leftNode.centerY
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
     const rightNode = new AtomNode( Element.O, merge( {
       centerX: leftNode.right + ( 0.25 * leftNode.width ),
       centerY: leftNode.centerY
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
     const smallRightNode = new AtomNode( Element.H, merge( {
       centerX: rightNode.right,
       centerY: rightNode.centerY
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
 
-    assert && assert( !options.children, 'CH3OHNode sets children' );
-    options.children = [ new Node( {
-      children: [ smallBottomNode, smallTopNode, leftNode, smallLeftNode, smallRightNode, rightNode ],
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
+    const atomNodes = [ smallBottomNode, smallTopNode, leftNode, smallLeftNode, smallRightNode, rightNode ];
 
-    super( options );
+    super( atomNodes, providedOptions );
   }
 }
 
 nitroglycerin.register( 'CH3OHNode', CH3OHNode );
-export default CH3OHNode;
