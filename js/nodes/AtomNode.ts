@@ -1,6 +1,5 @@
-// Copyright 2013-2020, University of Colorado Boulder
+// Copyright 2013-2022, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * Atoms look like shaded spheres.
  * Origin is at geometric center of bounding rectangle.
@@ -8,8 +7,9 @@
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import merge from '../../../phet-core/js/merge.js';
-import ShadedSphereNode from '../../../scenery-phet/js/ShadedSphereNode.js';
+import optionize from '../../../phet-core/js/optionize.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
+import ShadedSphereNode, { ShadedSphereNodeOptions } from '../../../scenery-phet/js/ShadedSphereNode.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
 
@@ -18,19 +18,18 @@ const RATE_OF_CHANGE = 0.75; // >0 and <1, increase this to make small atoms app
 const MAX_RADIUS = Element.P.covalentRadius; // not actually the maximum, but this is a constant from the previous version
 const MODEL_TO_VIEW_SCALE = 0.11;
 
-class AtomNode extends ShadedSphereNode {
+type SelfOptions = EmptyObjectType;
+export type AtomNodeOptions = SelfOptions & ShadedSphereNodeOptions;
 
-  /**
-   * @param {Element} element
-   * @param {Object} [options]
-   */
-  constructor( element, options ) {
+export default class AtomNode extends ShadedSphereNode {
 
-    options = merge( {
+  public constructor( element: Element, providedOptions?: AtomNodeOptions ) {
+
+    const options = optionize<AtomNodeOptions, SelfOptions, ShadedSphereNodeOptions>()( {
       mainColor: element.color
-    }, options );
+    }, providedOptions );
 
-    super( 2 * radiusScalingFunction( element.covalentRadius ), options );
+    super( 2 * scaleRadius( element.covalentRadius ), options );
   }
 }
 
@@ -38,10 +37,9 @@ class AtomNode extends ShadedSphereNode {
  * There is a large difference between the radii of the smallest and largest atoms.
  * This function adjusts scaling so that the difference is still noticeable, but not as large.
  */
-function radiusScalingFunction( radius ) {
+function scaleRadius( radius: number ): number {
   const adjustedRadius = ( MAX_RADIUS - RATE_OF_CHANGE * ( MAX_RADIUS - radius ) );
   return MODEL_TO_VIEW_SCALE * adjustedRadius;
 }
 
 nitroglycerin.register( 'AtomNode', AtomNode );
-export default AtomNode;
