@@ -11,6 +11,11 @@
   },
   "phet": {
     "requirejsNamespace": "NITROGLYCERIN",
+    "runnable": true,
+    "supportedBrands": [
+      "phet",
+      "adapted-from-phet"
+    ],
     "supportsOutputJS": true
   },
   "eslintConfig": {
