@@ -1,5 +1,6 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
+// @ts-nocheck
 /**
  * Base class for molecules with N atoms aligned on the horizontal axis, for N > 0.
  * Note that here is technically no such thing as a single-atom molecule,

@@ -1,5 +1,6 @@
 // Copyright 2013-2020, University of Colorado Boulder
 
+// @ts-nocheck
 /**
  * Atoms look like shaded spheres.
  * Origin is at geometric center of bounding rectangle.
