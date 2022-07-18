@@ -1,25 +1,24 @@
 // Copyright 2013-2020, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * C Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import HorizontalMoleculeNode from './HorizontalMoleculeNode.js';
+import HorizontalMoleculeNode, { HorizontalMoleculeNodeOptions } from './HorizontalMoleculeNode.js';
 
-class CNode extends HorizontalMoleculeNode {
+type SelfOptions = EmptyObjectType;
+export type CNodeOptions = SelfOptions & HorizontalMoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
-    super( [ Element.C ], options );
+export default class CNode extends HorizontalMoleculeNode {
+
+  public constructor( providedOptions?: CNodeOptions ) {
+    super( [ Element.C ], providedOptions );
   }
 }
 
 nitroglycerin.register( 'CNode', CNode );
-export default CNode;

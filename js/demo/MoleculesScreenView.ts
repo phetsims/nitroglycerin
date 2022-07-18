@@ -62,11 +62,11 @@ export default class MoleculesScreenView extends ScreenView {
       spacing: 20,
       rows: [
         [ new C2H2Node(), new C2H4Node(), new C2H5ClNode(), new C2H5OHNode(), new C2H6Node(), new CH2ONode() ],
-        [ new CH3OHNode(), new CH4Node(), new Cl2Node(), new CNode(), new CO2Node(), new CO2Node() ],
-        [ new CONode(), new CS2Node(), new F2Node(), new H2Node(), new H2ONode(), new H2SNode() ],
-        [ new HClNode(), new HFNode(), new N2Node(), new N2ONode(), new NH3Node(), new NO2Node() ],
-        [ new NONode(), new O2Node(), new OF2Node(), new P4Node(), new PCl3Node(), new PCl5Node() ],
-        [ new PF3Node(), new PH3Node(), new SNode(), new SO2Node(), new SO3Node() ]
+        [ new CH3OHNode(), new CH4Node(), new Cl2Node(), new CNode(), new CO2Node(), new CONode() ],
+        [ new CS2Node(), new F2Node(), new H2Node(), new H2ONode(), new H2SNode(), new HClNode() ],
+        [ new HFNode(), new N2Node(), new N2ONode(), new NH3Node(), new NO2Node(), new NONode() ],
+        [ new O2Node(), new OF2Node(), new P4Node(), new PCl3Node(), new PCl5Node(), new PF3Node() ],
+        [ new PH3Node(), new SNode(), new SO2Node(), new SO3Node() ]
       ],
       center: this.layoutBounds.center,
       scale: 1.5
