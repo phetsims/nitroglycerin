@@ -45,7 +45,7 @@ export default class Element {
   ];
 
   // Maps element.symbol to Element
-  public static readonly elementMap = createElementMap( Element.elements );
+  private static readonly elementMap: Map<string, Element> = createElementMap( Element.elements );
 
   /**
    * @param symbol
@@ -70,8 +70,9 @@ export default class Element {
   }
 
   public static getElementBySymbol( symbol: string ): Element {
-    assert && assert( Element.elementMap[ symbol ], `Element not found: ${symbol}` );
-    return Element.elementMap[ symbol ];
+    const element = Element.elementMap.get( symbol );
+    assert && assert( element, `Element not found for symbol=${symbol}` );
+    return element!;
   }
 
   public isSameElement( element: Element ): boolean {
@@ -95,12 +96,10 @@ export default class Element {
   }
 }
 
-function createElementMap( elements: Element[] ): Record<string, Element> {
-  const elementMap: Record<string, Element> = {};
-  _.each( elements, element => {
-    elementMap[ element.symbol ] = element;
-  } );
-  return elementMap;
+function createElementMap( elements: Element[] ): Map<string, Element> {
+  const map = new Map();
+  elements.forEach( element => map.set( element.symbol, element ) );
+  return map;
 }
 
 nitroglycerin.register( 'Element', Element );
