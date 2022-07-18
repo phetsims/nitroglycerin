@@ -28,7 +28,7 @@ type SelfOptions = {
   direction?: 'leftToRight' | 'rightToLeft';
 
   // amount of overlap between atoms
-  overlapPercent?: 0.25;
+  overlapPercent?: number;
 };
 
 export type HorizontalMoleculeNodeOptions = SelfOptions & StrictOmit<NodeOptions, 'children'>;

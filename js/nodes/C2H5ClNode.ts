@@ -1,6 +1,5 @@
-// Copyright 2013-2021, University of Colorado Boulder
+// Copyright 2013-2022, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * C2H5Cl Molecule
  * Structure is similar to C2H6, but with Cl replacing one of the H's.
@@ -10,19 +9,26 @@
 
 import Vector2 from '../../../dot/js/Vector2.js';
 import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
+import optionize from '../../../phet-core/js/optionize.js';
+import StrictOmit from '../../../phet-core/js/types/StrictOmit.js';
+import { Node, NodeOptions } from '../../../scenery/js/imports.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import AtomNode from './AtomNode.js';
+import AtomNode, { AtomNodeOptions } from './AtomNode.js';
 
-class C2H5ClNode extends Node {
+type SelfOptions = {
+  atomNodeOptions?: AtomNodeOptions;
+};
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+export type C2H5ClNodeOptions = SelfOptions & StrictOmit<NodeOptions, 'children'>;
 
-    options = merge( { atomNodeOptions: {} }, options );
+export default class C2H5ClNode extends Node {
+
+  public constructor( providedOptions?: C2H5ClNodeOptions ) {
+
+    const options = optionize<C2H5ClNodeOptions, StrictOmit<SelfOptions, 'atomNodeOptions'>, NodeOptions>()( {
+      // No defaults, but we set options.children below.
+    }, providedOptions );
 
     // atoms
     const leftNode = new AtomNode( Element.C, options.atomNodeOptions );
@@ -55,7 +61,6 @@ class C2H5ClNode extends Node {
       centerY: centerNode.centerY
     }, options.atomNodeOptions ) );
 
-    assert && assert( !options.children, 'C2H5ClNode sets children' );
     options.children = [ new Node( {
       children: [
         smallBottomRightNode, smallTopRightNode, centerNode, rightNode,
@@ -69,4 +74,3 @@ class C2H5ClNode extends Node {
 }
 
 nitroglycerin.register( 'C2H5ClNode', C2H5ClNode );
-export default C2H5ClNode;

@@ -1,6 +1,5 @@
-// Copyright 2013-2021, University of Colorado Boulder
+// Copyright 2013-2022, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * C2H4 Molecule
  *
@@ -9,19 +8,26 @@
 
 import Vector2 from '../../../dot/js/Vector2.js';
 import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
+import optionize from '../../../phet-core/js/optionize.js';
+import StrictOmit from '../../../phet-core/js/types/StrictOmit.js';
+import { Node, NodeOptions } from '../../../scenery/js/imports.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import AtomNode from './AtomNode.js';
+import AtomNode, { AtomNodeOptions } from './AtomNode.js';
 
-class C2H4Node extends Node {
+type SelfOptions = {
+  atomNodeOptions?: AtomNodeOptions;
+};
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+export type C2H4NodeOptions = SelfOptions & StrictOmit<NodeOptions, 'children'>;
 
-    options = merge( { atomNodeOptions: {} }, options );
+export default class C2H4Node extends Node {
+
+  public constructor( providedOptions?: C2H4NodeOptions ) {
+
+    const options = optionize<C2H4NodeOptions, StrictOmit<SelfOptions, 'atomNodeOptions'>, NodeOptions>()( {
+      // No defaults, but we set options.children below.
+    }, providedOptions );
 
     // atoms
     const bigLeftNode = new AtomNode( Element.C, options.atomNodeOptions );
@@ -47,7 +53,6 @@ class C2H4Node extends Node {
       centerY: bigRightNode.bottom - smallOffset
     }, options.atomNodeOptions ) );
 
-    assert && assert( !options.children, 'C2H4Node sets children' );
     options.children = [ new Node( {
       children: [ smallTopRightNode, smallTopLeftNode, bigLeftNode, bigRightNode, smallBottomLeftNode, smallBottomRightNode ],
       center: Vector2.ZERO // origin at geometric center
@@ -58,4 +63,3 @@ class C2H4Node extends Node {
 }
 
 nitroglycerin.register( 'C2H4Node', C2H4Node );
-export default C2H4Node;

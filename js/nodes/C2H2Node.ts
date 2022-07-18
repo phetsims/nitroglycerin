@@ -1,28 +1,31 @@
-// Copyright 2013-2020, University of Colorado Boulder
+// Copyright 2013-2022, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * C2H2 Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import merge from '../../../phet-core/js/merge.js';
+import optionize from '../../../phet-core/js/optionize.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
+import StrictOmit from '../../../phet-core/js/types/StrictOmit.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import HorizontalMoleculeNode from './HorizontalMoleculeNode.js';
+import HorizontalMoleculeNode, { HorizontalMoleculeNodeOptions } from './HorizontalMoleculeNode.js';
 
-class C2H2Node extends HorizontalMoleculeNode {
+type SelfOptions = EmptyObjectType;
+export type C2H2NodeOptions = SelfOptions & StrictOmit<HorizontalMoleculeNodeOptions, 'overlapPercent'>;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
-    options = merge( {}, options );
-    options.overlapPercent = 0.35;
-    super( [ Element.H, Element.C, Element.C, Element.H ], options );
+export default class C2H2Node extends HorizontalMoleculeNode {
+
+  public constructor( providedOptions?: C2H2NodeOptions ) {
+    super(
+      [ Element.H, Element.C, Element.C, Element.H ],
+      optionize<C2H2NodeOptions, SelfOptions, HorizontalMoleculeNodeOptions>()( {
+        overlapPercent: 0.35
+      }, providedOptions )
+    );
   }
 }
 
 nitroglycerin.register( 'C2H2Node', C2H2Node );
-export default C2H2Node;
