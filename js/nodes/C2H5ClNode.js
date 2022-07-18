@@ -1,5 +1,6 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
+// @ts-nocheck
 /**
  * C2H5Cl Molecule
  * Structure is similar to C2H6, but with Cl replacing one of the H's.

@@ -1,5 +1,6 @@
 // Copyright 2013-2020, University of Colorado Boulder
 
+// @ts-nocheck
 /**
  * C2H2 Molecule
  *
