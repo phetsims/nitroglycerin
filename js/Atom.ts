@@ -1,26 +1,38 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * Object for actual element properties (symbol, radius, etc.)
  *
  * @author Jonathan Olson <jonathan.olson@colorado.edu>
  */
 
+import { Color } from '../../scenery/js/imports.js';
 import Element from './Element.js';
 import nitroglycerin from './nitroglycerin.js';
 
 let idCounter = 1;
 
-class Atom {
+export default class Atom {
 
-  /**
-   * @param {Element} element
-   */
-  constructor( element ) {
+  public readonly element: Element;
 
-    // @public (read-only)
+  // These are field of Element, unpacked here for convenience. See Element for documentation of these fields.
+  public readonly symbol: string;
+  public readonly covalentRadius: number;
+  public readonly covalentDiameter: number;
+  public readonly electronegativity: number | null;
+  public readonly atomicWeight: number;
+  public readonly color: Color | string;
+
+  // IDs for uniqueness and fast lookups
+  public readonly reference: string;
+  public readonly id: string;
+
+  public constructor( element: Element ) {
+
     this.element = element;
+
+    // Unpack Element, for convenience.
     this.symbol = element.symbol;
     this.covalentRadius = element.covalentRadius;
     this.covalentDiameter = element.covalentRadius * 2;
@@ -28,49 +40,33 @@ class Atom {
     this.atomicWeight = element.atomicWeight;
     this.color = element.color;
 
-    // IDs for uniqueness and fast lookups
     this.reference = ( idCounter++ ).toString( 16 );
     this.id = `${this.symbol}_${this.reference}`;
   }
 
-  /**
-   * @param {string} symbol
-   * @returns {Atom}
-   * @public
-   */
-  static createAtomFromSymbol( symbol ) {
+  public static createAtomFromSymbol( symbol: string ): Atom {
     return new Atom( Element.getElementBySymbol( symbol ) );
   }
 
-  /**
-   * @param {Atom} atom
-   * @returns {boolean}
-   * @public
-   */
-  hasSameElement( atom ) {
+  public hasSameElement( atom: Atom ): boolean {
     return this.element.isSameElement( atom.element );
   }
 
-  // @public
-  isHydrogen() {
+  public isHydrogen(): boolean {
     return this.element.isHydrogen();
   }
 
-  // @public
-  isCarbon() {
+  public isCarbon(): boolean {
     return this.element.isCarbon();
   }
 
-  // @public
-  isOxygen() {
+  public isOxygen(): boolean {
     return this.element.isOxygen();
   }
 
-  // @public
-  toString() {
+  public toString(): string {
     return this.symbol;
   }
 }
 
 nitroglycerin.register( 'Atom', Atom );
-export default Atom;
