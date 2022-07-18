@@ -1,11 +1,11 @@
-// Copyright 2013-2021, University of Colorado Boulder
+// Copyright 2013-2022, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * Miscellaneous chemistry functions.
  */
 
 import nitroglycerin from './nitroglycerin.js';
+import Element from './Element.js';
 
 const ChemUtils = {
 
@@ -15,12 +15,8 @@ const ChemUtils = {
    * Examples:
    *    [C,C,H,H,H,H] becomes "C<sub>2</sub>H<sub>4</sub>"
    *    [H,H,O] becomes "H<sub>2</sub>O"
-   *
-   * @param {Element[]} elements
-   * @returns {string}
-   * @public
    */
-  createSymbol: function( elements ) {
+  createSymbol: function( elements: Element[] ): string {
     return ChemUtils.toSubscript( ChemUtils.createSymbolWithoutSubscripts( elements ) );
   },
 
@@ -30,12 +26,8 @@ const ChemUtils = {
    * Examples:
    *    [C,C,H,H,H,H] becomes "C2H4"
    *    [H,H,O] becomes "H2O"
-   *
-   * @param {Element[]} elements
-   * @returns {string}
-   * @public
    */
-  createSymbolWithoutSubscripts: function( elements ) {
+  createSymbolWithoutSubscripts: function( elements: Element[] ): string {
     let result = '';
     let atomCount = 1;
     const length = elements.length;
@@ -69,12 +61,8 @@ const ChemUtils = {
    * Return an integer that can be used for sorting atom symbols alphabetically. Lower values will be returned for
    * symbols that should go first. Two-letter symbols will come after a one-letter symbol with the same first
    * character (Br after B). See http://en.wikipedia.org/wiki/Hill_system, for without carbon
-   *
-   * @param {Element} element
-   * @returns {number} Value for sorting
-   * @public
    */
-  nonCarbonHillSortValue: function( element ) {
+  nonCarbonHillSortValue: function( element: Element ): number {
     // TODO: if it's a performance issue, we should put these in Element itself
     // yes, will totally fail if our Unicode code point of the 2nd character is >1000. Agile coding? We like to live on the edge
     let value = 1000 * element.symbol.charCodeAt( 0 );
@@ -86,13 +74,9 @@ const ChemUtils = {
 
   /**
    * Returns an integer that can be used for sorting atom symbols for the Hill system when the molecule contains
-   * carbon. See http://en.wikipedia.org/wiki/Hill_system
-   *
-   * @param {Element} element
-   * @returns {number} Value for sorting (lowest is first)
-   * @public
+   * carbon. Lowest value is first. See http://en.wikipedia.org/wiki/Hill_system
    */
-  carbonHillSortValue: function( element ) {
+  carbonHillSortValue: function( element: Element ): number {
     // TODO: if it's a performance issue, we should put these in Element itself
     if ( element.isCarbon() ) {
       return 0;
@@ -109,31 +93,31 @@ const ChemUtils = {
    * Handles HTML subscript formatting for molecule symbols.
    * All numbers in a string are assumed to be part of a subscript, and will be enclosed in a <sub> tag.
    * For example, 'C2H4' becomes 'C<sub>2</sub>H<sub>4</sub>'.
-   * @param {string} inString the input plaintext string
-   * @returns {string} HTML fragment
-   * @public
+   * @param inputString - the input plaintext string
+   * @returns - the HTML fragment
    */
-  toSubscript: function( inString ) {
+  toSubscript: function( inputString: string ): string {
     let outString = '';
     let sub = false; // are we in a <sub> tag?
-    const isDigit = function( c ) {
-      return ( c >= '0' && c <= '9' );
-    };
-    for ( let i = 0; i < inString.length; i++ ) {
-      const c = inString.charAt( i );
+    const isDigit = ( c: string ) => ( c >= '0' && c <= '9' );
+    for ( let i = 0; i < inputString.length; i++ ) {
+      const c = inputString.charAt( i );
       if ( !sub && isDigit( c ) ) {
+
         // start the subscript tag when a digit is found
         outString += '<sub>';
         sub = true;
       }
       else if ( sub && !isDigit( c ) ) {
+
         // end the subscript tag when a non-digit is found
         outString += '</sub>';
         sub = false;
       }
       outString += c;
     }
-    // end the subscript tag if inString ends with a digit
+
+    // end the subscript tag if inputString ends with a digit
     if ( sub ) {
       outString += '</sub>';
       sub = false;
@@ -142,18 +126,17 @@ const ChemUtils = {
   },
 
   /**
-   * @param {Atom[]} atoms A collection of atoms in a molecule. NOTE: in Java, they were Element objects!
-   * @returns {string} The molecular formula of the molecule in the Hill system. Returned as an HTML fragment. See
-   *         http://en.wikipedia.org/wiki/Hill_system for more information.
-   * @public
+   * @param elements - a collection of elements in a molecule
+   * @returns The molecular formula of the molecule in the Hill system. Returned as an HTML fragment.
+   *          See http://en.wikipedia.org/wiki/Hill_system for more information.
    */
-  hillOrderedSymbol: function( atoms ) {
-    const containsCarbon = _.some( atoms, atom => atom.isCarbon() );
-    const sortedAtoms = _.sortBy( atoms, containsCarbon ?
-                                         ChemUtils.carbonHillSortValue :  // carbon first, then hydrogen, then others alphabetically
-                                         ChemUtils.nonCarbonHillSortValue // compare alphabetically since there is no carbon
-    );
-    return ChemUtils.createSymbol( sortedAtoms );
+  hillOrderedSymbol: function( elements: Element[] ): string {
+    const containsCarbon = _.some( elements, element => element.isCarbon() );
+    const sortFunction = containsCarbon ?
+                         ChemUtils.carbonHillSortValue :  // carbon first, then hydrogen, then others alphabetically
+                         ChemUtils.nonCarbonHillSortValue; // compare alphabetically since there is no carbon
+    const sortedElements = _.sortBy( elements, sortFunction );
+    return ChemUtils.createSymbol( sortedElements );
   }
 };
 
