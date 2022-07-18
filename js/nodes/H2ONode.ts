@@ -1,46 +1,41 @@
 // Copyright 2013-2021, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * H2O Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import Vector2 from '../../../dot/js/Vector2.js';
 import merge from '../../../phet-core/js/merge.js';
-import { Node } from '../../../scenery/js/imports.js';
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
 import AtomNode from './AtomNode.js';
+import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
-class H2ONode extends Node {
+type SelfOptions = EmptyObjectType;
+export type H2ONodeOptions = SelfOptions & MoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
+class H2ONode extends MoleculeNode {
 
-    options = merge( { atomNodeOptions: {} }, options );
+  public constructor( providedOptions?: H2ONodeOptions ) {
+
+    const atomOptions = providedOptions?.atomNodeOptions;
 
     // atoms
-    const bigNode = new AtomNode( Element.O, options.atomNodeOptions );
+    const bigNode = new AtomNode( Element.O, atomOptions );
     const smallLeftNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.left,
       centerY: bigNode.bottom - ( 0.25 * bigNode.height )
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
     const smallRightNode = new AtomNode( Element.H, merge( {
       centerX: bigNode.right,
       centerY: smallLeftNode.centerY
-    }, options.atomNodeOptions ) );
+    }, atomOptions ) );
 
-    assert && assert( !options.children, 'H2ONode sets children' );
-    options.children = [ new Node( {
-      children: [ bigNode, smallLeftNode, smallRightNode ],
-      center: Vector2.ZERO // origin at geometric center
-    } ) ];
+    const atomNodes = [ bigNode, smallLeftNode, smallRightNode ];
 
-    super( options );
+    super( atomNodes, providedOptions );
   }
 }
 

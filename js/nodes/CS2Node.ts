@@ -1,25 +1,24 @@
 // Copyright 2013-2020, University of Colorado Boulder
 
-// @ts-nocheck
 /**
  * CS2 Molecule
  *
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
+import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
-import HorizontalMoleculeNode from './HorizontalMoleculeNode.js';
+import HorizontalMoleculeNode, { HorizontalMoleculeNodeOptions } from './HorizontalMoleculeNode.js';
 
-class CS2Node extends HorizontalMoleculeNode {
+type SelfOptions = EmptyObjectType;
+export type CS2NodeOptions = SelfOptions & HorizontalMoleculeNodeOptions;
 
-  /**
-   * @param {Object} [options]
-   */
-  constructor( options ) {
-    super( [ Element.S, Element.C, Element.S ], options );
+export default class CS2Node extends HorizontalMoleculeNode {
+
+  public constructor( providedOptions?: CS2NodeOptions ) {
+    super( [ Element.S, Element.C, Element.S ], providedOptions );
   }
 }
 
 nitroglycerin.register( 'CS2Node', CS2Node );
-export default CS2Node;
