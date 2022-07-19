@@ -14,8 +14,8 @@ import { Color } from '../../scenery/js/imports.js';
 import Tandem from '../../tandem/js/Tandem.js';
 import MoleculesScreenView from './demo/MoleculesScreenView.js';
 
-function createEmptyModel() {
-  return {};
+class Model {
+  public step(): void { /* no stepping here */ }
 }
 
 simLauncher.launch( () => {
@@ -24,7 +24,7 @@ simLauncher.launch( () => {
 
   const screens = [
     new Screen(
-      createEmptyModel,
+      () => new Model(),
       () => new MoleculesScreenView(), {
         name: 'Molecules',
         backgroundColorProperty: new Property( Color.grayColor( 90 ) ),
