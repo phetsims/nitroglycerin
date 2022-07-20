@@ -6,12 +6,12 @@
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
+import { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
 import HorizontalMoleculeNode, { HorizontalMoleculeNodeOptions } from './HorizontalMoleculeNode.js';
 
-type SelfOptions = EmptyObjectType;
+type SelfOptions = EmptySelfOptions;
 export type N2NodeOptions = SelfOptions & HorizontalMoleculeNodeOptions;
 
 export default class N2Node extends HorizontalMoleculeNode {

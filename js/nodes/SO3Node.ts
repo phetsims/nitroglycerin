@@ -10,10 +10,10 @@ import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
 import AtomNode, { AtomNodeOptions } from './AtomNode.js';
 import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
-import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
+import { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import { combineOptions } from '../../../phet-core/js/optionize.js';
 
-type SelfOptions = EmptyObjectType;
+type SelfOptions = EmptySelfOptions;
 export type SO3NodeOptions = SelfOptions & MoleculeNodeOptions;
 
 export default class SO3Node extends MoleculeNode {

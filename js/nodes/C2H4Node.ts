@@ -7,13 +7,13 @@
  */
 
 import { combineOptions } from '../../../phet-core/js/optionize.js';
-import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
+import { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
 import AtomNode, { AtomNodeOptions } from './AtomNode.js';
 import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
-type SelfOptions = EmptyObjectType;
+type SelfOptions = EmptySelfOptions;
 export type C2H4NodeOptions = SelfOptions & MoleculeNodeOptions;
 
 export default class C2H4Node extends MoleculeNode {

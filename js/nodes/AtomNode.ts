@@ -8,7 +8,7 @@
  */
 
 import optionize from '../../../phet-core/js/optionize.js';
-import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
+import { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import ShadedSphereNode, { ShadedSphereNodeOptions } from '../../../scenery-phet/js/ShadedSphereNode.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
@@ -18,7 +18,7 @@ const RATE_OF_CHANGE = 0.75; // >0 and <1, increase this to make small atoms app
 const MAX_RADIUS = Element.P.covalentRadius; // not actually the maximum, but this is a constant from the previous version
 const MODEL_TO_VIEW_SCALE = 0.11;
 
-type SelfOptions = EmptyObjectType;
+type SelfOptions = EmptySelfOptions;
 export type AtomNodeOptions = SelfOptions & ShadedSphereNodeOptions;
 
 export default class AtomNode extends ShadedSphereNode {

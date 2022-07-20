@@ -7,13 +7,13 @@
  */
 
 import optionize from '../../../phet-core/js/optionize.js';
-import EmptyObjectType from '../../../phet-core/js/types/EmptyObjectType.js';
+import { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import StrictOmit from '../../../phet-core/js/types/StrictOmit.js';
 import Element from '../Element.js';
 import nitroglycerin from '../nitroglycerin.js';
 import HorizontalMoleculeNode, { HorizontalMoleculeNodeOptions } from './HorizontalMoleculeNode.js';
 
-type SelfOptions = EmptyObjectType;
+type SelfOptions = EmptySelfOptions;
 export type C2H2NodeOptions = SelfOptions & StrictOmit<HorizontalMoleculeNodeOptions, 'overlapPercent'>;
 
 export default class C2H2Node extends HorizontalMoleculeNode {
