@@ -13,14 +13,15 @@ import simLauncher from '../../joist/js/simLauncher.js';
 import { Color } from '../../scenery/js/imports.js';
 import Tandem from '../../tandem/js/Tandem.js';
 import MoleculesScreenView from './demo/MoleculesScreenView.js';
+import nitroglycerinStrings from './nitroglycerinStrings.js';
+
+const title = nitroglycerinStrings[ 'nitroglycerin' ].title;
 
 class Model {
   public step(): void { /* no stepping here */ }
 }
 
 simLauncher.launch( () => {
-
-  const title = 'nitroglycerin';
 
   const screens = [
     new Screen(
