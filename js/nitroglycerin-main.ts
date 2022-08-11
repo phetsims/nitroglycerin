@@ -15,7 +15,7 @@ import Tandem from '../../tandem/js/Tandem.js';
 import MoleculesScreenView from './demo/MoleculesScreenView.js';
 import nitroglycerinStrings from './nitroglycerinStrings.js';
 
-const title = nitroglycerinStrings[ 'nitroglycerin' ].title;
+const title = nitroglycerinStrings.nitroglycerin.title;
 
 class Model {
   public step(): void { /* no stepping here */ }
