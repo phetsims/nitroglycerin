@@ -11,7 +11,7 @@ import nitroglycerin from './nitroglycerin.js';
 type StringsType = {
   'nitroglycerin': {
     'title': string;
-    'titleProperty': TReadOnlyProperty<string>;
+    'titleStringProperty': TReadOnlyProperty<string>;
   }
 };
 
