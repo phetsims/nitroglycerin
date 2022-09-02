@@ -15,7 +15,7 @@ import Tandem from '../../tandem/js/Tandem.js';
 import MoleculesScreenView from './demo/MoleculesScreenView.js';
 import nitroglycerinStrings from './nitroglycerinStrings.js';
 
-const title = nitroglycerinStrings.nitroglycerin.title;
+const titleStringProperty = nitroglycerinStrings.nitroglycerin.titleStringProperty;
 
 class Model {
   public step(): void { /* no stepping here */ }
@@ -38,6 +38,6 @@ simLauncher.launch( () => {
     }
   };
 
-  const sim = new Sim( title, screens, simOptions );
+  const sim = new Sim( titleStringProperty, screens, simOptions );
   sim.start();
 } );
