@@ -13,9 +13,9 @@ import simLauncher from '../../joist/js/simLauncher.js';
 import { Color } from '../../scenery/js/imports.js';
 import Tandem from '../../tandem/js/Tandem.js';
 import MoleculesScreenView from './demo/MoleculesScreenView.js';
-import nitroglycerinStrings from './nitroglycerinStrings.js';
+import NitroglycerinStrings from './NitroglycerinStrings.js';
 
-const titleStringProperty = nitroglycerinStrings.nitroglycerin.titleStringProperty;
+const titleStringProperty = NitroglycerinStrings.nitroglycerin.titleStringProperty;
 
 class Model {
   public step(): void { /* no stepping here */ }
