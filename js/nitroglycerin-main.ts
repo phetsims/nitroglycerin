@@ -27,7 +27,7 @@ simLauncher.launch( () => {
     new Screen(
       () => new Model(),
       () => new MoleculesScreenView(), {
-        name: 'Molecules',
+        name: new Property( 'Molecules' ),
         backgroundColorProperty: new Property( Color.grayColor( 90 ) ),
         tandem: Tandem.OPT_OUT
       } ) ];
