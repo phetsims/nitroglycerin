@@ -18,7 +18,7 @@ import NitroglycerinStrings from './NitroglycerinStrings.js';
 const titleStringProperty = NitroglycerinStrings.nitroglycerin.titleStringProperty;
 
 class Model {
-  public step(): void { /* no stepping here */ }
+  public reset(): void { /* nothing to do */ }
 }
 
 simLauncher.launch( () => {
