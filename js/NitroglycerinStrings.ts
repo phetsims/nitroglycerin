@@ -10,7 +10,6 @@ import nitroglycerin from './nitroglycerin.js';
 
 type StringsType = {
   'nitroglycerin': {
-    'title': string;
     'titleStringProperty': LinkableProperty<string>;
   }
 };
