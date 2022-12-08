@@ -45,6 +45,7 @@ import PH3Node from '../nodes/PH3Node.js';
 import SNode from '../nodes/SNode.js';
 import SO2Node from '../nodes/SO2Node.js';
 import SO3Node from '../nodes/SO3Node.js';
+import nitroglycerin from '../nitroglycerin.js';
 
 type SelfOptions = EmptySelfOptions;
 export type MoleculesScreenViewOptions = SelfOptions & StrictOmit<ScreenViewOptions, 'children'>;
@@ -74,3 +75,5 @@ export default class MoleculesScreenView extends ScreenView {
     this.children = [ gridBox ];
   }
 }
+
+nitroglycerin.register( 'MoleculesScreenView', MoleculesScreenView );

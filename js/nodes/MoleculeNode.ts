@@ -11,6 +11,7 @@ import optionize from '../../../phet-core/js/optionize.js';
 import StrictOmit from '../../../phet-core/js/types/StrictOmit.js';
 import { Node, NodeOptions } from '../../../scenery/js/imports.js';
 import AtomNode, { AtomNodeOptions } from './AtomNode.js';
+import nitroglycerin from '../nitroglycerin.js';
 
 type SelfOptions = {
 
@@ -34,3 +35,5 @@ export default class MoleculeNode extends Node {
     super( options );
   }
 }
+
+nitroglycerin.register( 'MoleculeNode', MoleculeNode );
