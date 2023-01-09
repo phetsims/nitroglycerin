@@ -9,6 +9,7 @@
 import ScreenView, { ScreenViewOptions } from '../../../joist/js/ScreenView.js';
 import optionize, { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import StrictOmit from '../../../phet-core/js/types/StrictOmit.js';
+import WithOptional from '../../../phet-core/js/types/WithOptional.js';
 import { GridBox } from '../../../scenery/js/imports.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import C2H2Node from '../nodes/C2H2Node.js';
@@ -48,7 +49,7 @@ import SO3Node from '../nodes/SO3Node.js';
 import nitroglycerin from '../nitroglycerin.js';
 
 type SelfOptions = EmptySelfOptions;
-export type MoleculesScreenViewOptions = SelfOptions & StrictOmit<ScreenViewOptions, 'children'>;
+export type MoleculesScreenViewOptions = SelfOptions & WithOptional<StrictOmit<ScreenViewOptions, 'children'>, 'tandem'>;
 
 export default class MoleculesScreenView extends ScreenView {
 
