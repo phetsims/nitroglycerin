@@ -63,7 +63,7 @@ const ChemUtils = {
    * character (Br after B). See http://en.wikipedia.org/wiki/Hill_system, for without carbon
    */
   nonCarbonHillSortValue: function( element: Element ): number {
-    // TODO: if it's a performance issue, we should put these in Element itself
+    // TODO: if it's a performance issue, we should put these in Element itself, https://github.com/phetsims/nitroglycerin/issues/14
     // yes, will totally fail if our Unicode code point of the 2nd character is >1000. Agile coding? We like to live on the edge
     let value = 1000 * element.symbol.charCodeAt( 0 );
     if ( element.symbol.length > 1 ) {
@@ -77,7 +77,7 @@ const ChemUtils = {
    * carbon. Lowest value is first. See http://en.wikipedia.org/wiki/Hill_system
    */
   carbonHillSortValue: function( element: Element ): number {
-    // TODO: if it's a performance issue, we should put these in Element itself
+    // TODO: if it's a performance issue, we should put these in Element itself, https://github.com/phetsims/nitroglycerin/issues/14
     if ( element.isCarbon() ) {
       return 0;
     }
