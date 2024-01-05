@@ -2,6 +2,8 @@
 
 /**
  * Miscellaneous chemistry functions.
+ *
+ * @author Chris Malley (PixelZoom, Inc.)
  */
 
 import nitroglycerin from './nitroglycerin.js';

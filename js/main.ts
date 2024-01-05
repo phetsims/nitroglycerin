@@ -1,5 +1,9 @@
 // Copyright 2022, University of Colorado Boulder
 
+/**
+ * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ */
+
 import nitroglycerin from './nitroglycerin.js';
 import './nodes/AtomNode.js';
 import './nodes/C2H2Node.js';
