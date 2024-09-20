@@ -30,7 +30,7 @@
         ],
         "parserOptions": {
           "project": [
-            "../nitroglycerin/tsconfig.json"
+            "../chipper/tsconfig/eslint-all/tsconfig.json"
           ]
         }
       }
