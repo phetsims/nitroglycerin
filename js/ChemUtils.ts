@@ -6,8 +6,8 @@
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import nitroglycerin from './nitroglycerin.js';
 import Element from './Element.js';
+import nitroglycerin from './nitroglycerin.js';
 
 const ChemUtils = {
 
