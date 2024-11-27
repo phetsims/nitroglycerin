@@ -10,8 +10,8 @@ import Vector2 from '../../../dot/js/Vector2.js';
 import optionize from '../../../phet-core/js/optionize.js';
 import StrictOmit from '../../../phet-core/js/types/StrictOmit.js';
 import { Node, NodeOptions } from '../../../scenery/js/imports.js';
-import AtomNode, { AtomNodeOptions } from './AtomNode.js';
 import nitroglycerin from '../nitroglycerin.js';
+import AtomNode, { AtomNodeOptions } from './AtomNode.js';
 
 type SelfOptions = {
 

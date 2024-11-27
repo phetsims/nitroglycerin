@@ -12,6 +12,7 @@ import StrictOmit from '../../../phet-core/js/types/StrictOmit.js';
 import WithOptional from '../../../phet-core/js/types/WithOptional.js';
 import { GridBox } from '../../../scenery/js/imports.js';
 import Tandem from '../../../tandem/js/Tandem.js';
+import nitroglycerin from '../nitroglycerin.js';
 import C2H2Node from '../nodes/C2H2Node.js';
 import C2H4Node from '../nodes/C2H4Node.js';
 import C2H5ClNode from '../nodes/C2H5ClNode.js';
@@ -46,7 +47,6 @@ import PH3Node from '../nodes/PH3Node.js';
 import SNode from '../nodes/SNode.js';
 import SO2Node from '../nodes/SO2Node.js';
 import SO3Node from '../nodes/SO3Node.js';
-import nitroglycerin from '../nitroglycerin.js';
 
 type SelfOptions = EmptySelfOptions;
 export type MoleculesScreenViewOptions = SelfOptions & WithOptional<StrictOmit<ScreenViewOptions, 'children'>, 'tandem'>;
