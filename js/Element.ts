@@ -7,7 +7,7 @@
  */
 
 import PhetColorScheme from '../../scenery-phet/js/PhetColorScheme.js';
-import { Color } from '../../scenery/js/imports.js';
+import Color from '../../scenery/js/util/Color.js';
 import nitroglycerin from './nitroglycerin.js';
 
 export default class Element {

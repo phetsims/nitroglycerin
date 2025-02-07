@@ -10,7 +10,7 @@ import ScreenView, { ScreenViewOptions } from '../../../joist/js/ScreenView.js';
 import optionize, { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import StrictOmit from '../../../phet-core/js/types/StrictOmit.js';
 import WithOptional from '../../../phet-core/js/types/WithOptional.js';
-import { GridBox } from '../../../scenery/js/imports.js';
+import GridBox from '../../../scenery/js/layout/nodes/GridBox.js';
 import Tandem from '../../../tandem/js/Tandem.js';
 import nitroglycerin from '../nitroglycerin.js';
 import C2H2Node from '../nodes/C2H2Node.js';
