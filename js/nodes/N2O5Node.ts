@@ -23,28 +23,30 @@ export default class N2O5Node extends MoleculeNode {
 
     const atomNodeOptions = providedOptions?.atomNodeOptions;
 
-    const atom1Node = new AtomNode( Element.O, atomNodeOptions );
-    const atom2Node = new AtomNode( Element.O, atomNodeOptions );
-    const atom3Node = new AtomNode( Element.O, atomNodeOptions );
-    const atom4Node = new AtomNode( Element.O, atomNodeOptions );
-    const atom5Node = new AtomNode( Element.O, atomNodeOptions );
-    const atom6Node = new AtomNode( Element.N, atomNodeOptions );
-    const atom7Node = new AtomNode( Element.N, atomNodeOptions );
+    // Atoms, from left to right, top to bottom ...
+    const ONode1 = new AtomNode( Element.O, atomNodeOptions );
+    const ONode2 = new AtomNode( Element.O, atomNodeOptions );
+    const ONode3 = new AtomNode( Element.O, atomNodeOptions );
+    const ONode4 = new AtomNode( Element.O, atomNodeOptions );
+    const ONode5 = new AtomNode( Element.O, atomNodeOptions );
+    const NNode1 = new AtomNode( Element.N, atomNodeOptions );
+    const NNode2 = new AtomNode( Element.N, atomNodeOptions );
 
-    atom2Node.left = atom1Node.right;
-    atom2Node.top = atom1Node.top;
-    atom3Node.left = atom2Node.right;
-    atom3Node.top = atom2Node.top;
-    atom4Node.centerX = atom1Node.right;
-    atom4Node.top = atom1Node.bottom;
-    atom5Node.centerX = atom2Node.right;
-    atom5Node.top = atom4Node.top;
-    atom6Node.centerX = atom4Node.centerX;
-    atom6Node.centerY = atom4Node.top;
-    atom7Node.centerX = atom5Node.centerX;
-    atom7Node.centerY = atom5Node.top;
+    ONode2.left = ONode1.right;
+    ONode2.top = ONode1.top;
+    ONode3.left = ONode2.right;
+    ONode3.top = ONode2.top;
+    ONode4.centerX = ONode1.right;
+    ONode4.top = ONode1.bottom;
+    ONode5.centerX = ONode2.right;
+    ONode5.top = ONode4.top;
+    NNode1.centerX = ONode4.centerX;
+    NNode1.centerY = ONode4.top;
+    NNode2.centerX = ONode5.centerX;
+    NNode2.centerY = ONode5.top;
 
-    super( [ atom1Node, atom2Node, atom3Node, atom4Node, atom5Node, atom6Node, atom7Node ], providedOptions );
+    // super( [ atom4Node, atom5Node, atom1Node, atom6Node, atom2Node, atom7Node, atom3Node ], providedOptions );
+    super( [ ONode5, ONode1, NNode1, ONode2, NNode2, ONode3, ONode4 ], providedOptions );
   }
 }
 
