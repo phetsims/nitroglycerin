@@ -1,6 +1,5 @@
 // Copyright 2025, University of Colorado Boulder
 
-//TODO https://github.com/phetsims/balancing-chemical-equations/issues/170 Structure has not been reviewed.
 /**
  * H2O2 Molecule
  *
