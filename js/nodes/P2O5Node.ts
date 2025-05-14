@@ -35,10 +35,13 @@ export default class P2O5Node extends MoleculeNode {
     // Layout is relative to P1, the leftmost P atom.
     P2.left = P1.right - 5;
     P2.centerY = P1.centerY - 5;
+
     O1.centerX = P1.left;
     O1.centerY = P1.centerY;
+
     O2.centerX = P1.centerX - 5;
     O2.centerY = P1.top;
+
     O3.centerX = P1.right;
     O3.top = P1.top;
 
@@ -47,7 +50,6 @@ export default class P2O5Node extends MoleculeNode {
 
     O5.centerX = P2.right;
     O5.centerY = P2.top + 5;
-
 
     super( atomNodes, providedOptions );
   }
