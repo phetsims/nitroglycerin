@@ -6,12 +6,8 @@
  * @author Chris Malley (PixelZoom, Inc.)
  */
 
-import ScreenView, { ScreenViewOptions } from '../../../joist/js/ScreenView.js';
-import optionize, { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
-import StrictOmit from '../../../phet-core/js/types/StrictOmit.js';
-import WithOptional from '../../../phet-core/js/types/WithOptional.js';
+import ScreenView from '../../../joist/js/ScreenView.js';
 import GridBox from '../../../scenery/js/layout/nodes/GridBox.js';
-import Tandem from '../../../tandem/js/Tandem.js';
 import nitroglycerin from '../nitroglycerin.js';
 import C2H2Node from '../nodes/C2H2Node.js';
 import C2H4Node from '../nodes/C2H4Node.js';
@@ -51,29 +47,68 @@ import P2O5Node from '../nodes/P2O5Node.js';
 import N2O5Node from '../nodes/N2O5Node.js';
 import H2O2Node from '../nodes/H2O2Node.js';
 import PNode from '../nodes/PNode.js';
-
-type SelfOptions = EmptySelfOptions;
-export type MoleculesScreenViewOptions = SelfOptions & WithOptional<StrictOmit<ScreenViewOptions, 'children'>, 'tandem'>;
+import TColor from '../../../scenery/js/util/TColor.js';
 
 export default class MoleculesScreenView extends ScreenView {
 
-  public constructor( providedOptions?: MoleculesScreenViewOptions ) {
+  public constructor( atomsStroke: TColor ) {
 
-    super( optionize<MoleculesScreenViewOptions, SelfOptions, ScreenViewOptions>()( {
-      tandem: Tandem.OPT_OUT
-    }, providedOptions ) );
+    super();
 
+    const moleculeNodeOptions = {
+      atomNodeOptions: {
+        stroke: atomsStroke,
+        lineWidth: 0.5
+      }
+    };
+
+    // MoleculeNode instances, in alphabetical order.
+    const moleculeNodes = [
+      new CNode( moleculeNodeOptions ),
+      new C2H2Node( moleculeNodeOptions ),
+      new C2H4Node( moleculeNodeOptions ),
+      new C2H5ClNode( moleculeNodeOptions ),
+      new C2H5OHNode( moleculeNodeOptions ),
+      new C2H6Node( moleculeNodeOptions ),
+      new CH2ONode( moleculeNodeOptions ),
+      new CH3OHNode( moleculeNodeOptions ),
+      new CH4Node( moleculeNodeOptions ),
+      new Cl2Node( moleculeNodeOptions ),
+      new CONode( moleculeNodeOptions ),
+      new CO2Node( moleculeNodeOptions ),
+      new CS2Node( moleculeNodeOptions ),
+      new F2Node( moleculeNodeOptions ),
+      new H2Node( moleculeNodeOptions ),
+      new H2ONode( moleculeNodeOptions ),
+      new H2O2Node( moleculeNodeOptions ),
+      new H2SNode( moleculeNodeOptions ),
+      new HClNode( moleculeNodeOptions ),
+      new HFNode( moleculeNodeOptions ),
+      new N2Node( moleculeNodeOptions ),
+      new N2ONode( moleculeNodeOptions ),
+      new N2O5Node( moleculeNodeOptions ),
+      new NH3Node( moleculeNodeOptions ),
+      new NONode( moleculeNodeOptions ),
+      new NO2Node( moleculeNodeOptions ),
+      new O2Node( moleculeNodeOptions ),
+      new OF2Node( moleculeNodeOptions ),
+      new PNode( moleculeNodeOptions ),
+      new P2O5Node( moleculeNodeOptions ),
+      new P4Node( moleculeNodeOptions ),
+      new PCl3Node( moleculeNodeOptions ),
+      new PCl5Node( moleculeNodeOptions ),
+      new PF3Node( moleculeNodeOptions ),
+      new PH3Node( moleculeNodeOptions ),
+      new SNode( moleculeNodeOptions ),
+      new SO2Node( moleculeNodeOptions ),
+      new SO3Node( moleculeNodeOptions )
+    ];
+
+    // Layout in a grid
     const gridBox = new GridBox( {
       spacing: 20,
-      rows: [
-        [ new C2H2Node(), new C2H4Node(), new C2H5ClNode(), new C2H5OHNode(), new C2H6Node(), new CH2ONode() ],
-        [ new CH3OHNode(), new CH4Node(), new Cl2Node(), new CNode(), new CO2Node(), new CONode() ],
-        [ new CS2Node(), new F2Node(), new H2Node(), new H2ONode(), new H2SNode(), new HClNode() ],
-        [ new HFNode(), new N2Node(), new N2ONode(), new NH3Node(), new NO2Node(), new NONode() ],
-        [ new O2Node(), new OF2Node(), new P4Node(), new PCl3Node(), new PCl5Node(), new PF3Node() ],
-        [ new PH3Node(), new SNode(), new SO2Node(), new SO3Node(), new P2O5Node(), new N2O5Node() ],
-        [ new H2O2Node(), new PNode() ]
-      ],
+      autoColumns: 7,
+      children: moleculeNodes,
       center: this.layoutBounds.center,
       scale: 1.5
     } );
