@@ -47,6 +47,10 @@ import PH3Node from '../nodes/PH3Node.js';
 import SNode from '../nodes/SNode.js';
 import SO2Node from '../nodes/SO2Node.js';
 import SO3Node from '../nodes/SO3Node.js';
+import P2O5Node from '../nodes/P2O5Node.js';
+import N2O5Node from '../nodes/N2O5Node.js';
+import H2O2Node from '../nodes/H2O2Node.js';
+import PNode from '../nodes/PNode.js';
 
 type SelfOptions = EmptySelfOptions;
 export type MoleculesScreenViewOptions = SelfOptions & WithOptional<StrictOmit<ScreenViewOptions, 'children'>, 'tandem'>;
@@ -67,7 +71,8 @@ export default class MoleculesScreenView extends ScreenView {
         [ new CS2Node(), new F2Node(), new H2Node(), new H2ONode(), new H2SNode(), new HClNode() ],
         [ new HFNode(), new N2Node(), new N2ONode(), new NH3Node(), new NO2Node(), new NONode() ],
         [ new O2Node(), new OF2Node(), new P4Node(), new PCl3Node(), new PCl5Node(), new PF3Node() ],
-        [ new PH3Node(), new SNode(), new SO2Node(), new SO3Node() ]
+        [ new PH3Node(), new SNode(), new SO2Node(), new SO3Node(), new P2O5Node(), new N2O5Node() ],
+        [ new H2O2Node(), new PNode() ]
       ],
       center: this.layoutBounds.center,
       scale: 1.5
