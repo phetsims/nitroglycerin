@@ -30,7 +30,7 @@ export default class P2O5Node extends MoleculeNode {
     const P1 = new AtomNode( Element.P, atomNodeOptions );
     const P2 = new AtomNode( Element.P, atomNodeOptions );
 
-    const atomNodes = [ O4, P2, O5, O2, P1, O3, O1 ];
+    const atomNodes = [ O4, P2, O5, O2, O3, P1, O1 ];
 
     // Layout is relative to P1, the leftmost P atom.
     P2.left = P1.right - 5;
