@@ -3,7 +3,7 @@
 /**
  * Object for actual element properties (symbol, radius, etc.)
  *
- * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ * @author Jonathan Olson (PhET Interactive Simulations)
  */
 
 import Color from '../../scenery/js/util/Color.js';

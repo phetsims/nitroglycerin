@@ -8,7 +8,7 @@
  * Origin is at geometric center of the node's bounding rectangle.
  *
  * @author Chris Malley (PixelZoom, Inc.)
- * @author Jonathan Olson <jonathan.olson@colorado.edu>
+ * @author Jonathan Olson (PhET Interactive Simulations)
  */
 
 import optionize from '../../../phet-core/js/optionize.js';
