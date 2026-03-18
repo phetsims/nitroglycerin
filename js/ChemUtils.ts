@@ -94,7 +94,7 @@ const ChemUtils = {
   /**
    * Handles HTML subscript formatting for molecule symbols.
    * All numbers in a string are assumed to be part of a subscript, and will be enclosed in a <sub> tag.
-   * For example, 'C2H4' becomes 'C<sub>2</sub>H<sub>4</sub>'.
+   * For example, 'C2H4' becomes 'C<sub>2</sub>H<sub>4</sub>' and it's properly handled in right-to-left locales.
    * @param inputString - the input plaintext string
    * @returns - the HTML fragment
    */
@@ -124,7 +124,11 @@ const ChemUtils = {
       outString += '</sub>';
       sub = false;
     }
-    return outString;
+
+    // embedding in a span with dir="ltr" to prevent the
+    // subscript from being rendered in the wrong direction when the locale is right-to-left
+    return `<span dir="ltr">${outString}</span>`;
+
   },
 
   /**
