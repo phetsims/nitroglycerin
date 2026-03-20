@@ -19,6 +19,4 @@ type StringsType = {
 
 const NitroglycerinStrings = getStringModule( 'NITROGLYCERIN' ) as StringsType;
 
-nitroglycerin.register( 'NitroglycerinStrings', NitroglycerinStrings );
-
 export default NitroglycerinStrings;

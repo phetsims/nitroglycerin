@@ -8,7 +8,6 @@
 
 import ScreenView from '../../../joist/js/ScreenView.js';
 import GridBox from '../../../scenery/js/layout/nodes/GridBox.js';
-import nitroglycerin from '../nitroglycerin.js';
 import C2H2Node from '../nodes/C2H2Node.js';
 import C2H4Node from '../nodes/C2H4Node.js';
 import C2H5ClNode from '../nodes/C2H5ClNode.js';
@@ -116,5 +115,3 @@ export default class MoleculesScreenView extends ScreenView {
     this.children = [ gridBox ];
   }
 }
-
-nitroglycerin.register( 'MoleculesScreenView', MoleculesScreenView );

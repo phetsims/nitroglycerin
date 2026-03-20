@@ -8,7 +8,6 @@
 
 import { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import Element from '../Element.js';
-import nitroglycerin from '../nitroglycerin.js';
 import HorizontalMoleculeNode, { HorizontalMoleculeNodeOptions } from './HorizontalMoleculeNode.js';
 
 type SelfOptions = EmptySelfOptions;
@@ -20,5 +19,3 @@ export default class Cl2Node extends HorizontalMoleculeNode {
     super( [ Element.Cl, Element.Cl ], providedOptions );
   }
 }
-
-nitroglycerin.register( 'Cl2Node', Cl2Node );

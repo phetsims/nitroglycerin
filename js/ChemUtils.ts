@@ -7,7 +7,6 @@
  */
 
 import Element from './Element.js';
-import nitroglycerin from './nitroglycerin.js';
 
 const ChemUtils = {
 
@@ -146,5 +145,4 @@ const ChemUtils = {
   }
 };
 
-nitroglycerin.register( 'ChemUtils', ChemUtils );
 export default ChemUtils;

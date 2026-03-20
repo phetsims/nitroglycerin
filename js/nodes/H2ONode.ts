@@ -9,7 +9,6 @@
 import merge from '../../../phet-core/js/merge.js';
 import { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import Element from '../Element.js';
-import nitroglycerin from '../nitroglycerin.js';
 import AtomNode from './AtomNode.js';
 import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
@@ -39,5 +38,4 @@ class H2ONode extends MoleculeNode {
   }
 }
 
-nitroglycerin.register( 'H2ONode', H2ONode );
 export default H2ONode;

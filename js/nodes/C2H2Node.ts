@@ -9,7 +9,6 @@
 import optionize, { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import StrictOmit from '../../../phet-core/js/types/StrictOmit.js';
 import Element from '../Element.js';
-import nitroglycerin from '../nitroglycerin.js';
 import HorizontalMoleculeNode, { HorizontalMoleculeNodeOptions } from './HorizontalMoleculeNode.js';
 
 type SelfOptions = EmptySelfOptions;
@@ -26,5 +25,3 @@ export default class C2H2Node extends HorizontalMoleculeNode {
     );
   }
 }
-
-nitroglycerin.register( 'C2H2Node', C2H2Node );

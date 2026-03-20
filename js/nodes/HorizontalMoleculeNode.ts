@@ -14,7 +14,6 @@
 import optionize from '../../../phet-core/js/optionize.js';
 import Node from '../../../scenery/js/nodes/Node.js';
 import Element from '../Element.js';
-import nitroglycerin from '../nitroglycerin.js';
 import AtomNode from './AtomNode.js';
 import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
@@ -59,5 +58,3 @@ export default class HorizontalMoleculeNode extends MoleculeNode {
     super( atomNodes, options );
   }
 }
-
-nitroglycerin.register( 'HorizontalMoleculeNode', HorizontalMoleculeNode );

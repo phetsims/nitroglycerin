@@ -10,7 +10,6 @@
 import optionize, { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import ShadedSphereNode, { ShadedSphereNodeOptions } from '../../../scenery-phet/js/ShadedSphereNode.js';
 import Element from '../Element.js';
-import nitroglycerin from '../nitroglycerin.js';
 
 // constants
 const RATE_OF_CHANGE = 0.75; // >0 and <1, increase this to make small atoms appear smaller
@@ -40,5 +39,3 @@ function scaleRadius( radius: number ): number {
   const adjustedRadius = ( MAX_RADIUS - RATE_OF_CHANGE * ( MAX_RADIUS - radius ) );
   return MODEL_TO_VIEW_SCALE * adjustedRadius;
 }
-
-nitroglycerin.register( 'AtomNode', AtomNode );

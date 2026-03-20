@@ -8,7 +8,6 @@
 
 import PhetColorScheme from '../../scenery-phet/js/PhetColorScheme.js';
 import Color from '../../scenery/js/util/Color.js';
-import nitroglycerin from './nitroglycerin.js';
 
 export default class Element {
 
@@ -101,5 +100,3 @@ function createElementMap( elements: Element[] ): Map<string, Element> {
   elements.forEach( element => map.set( element.symbol, element ) );
   return map;
 }
-
-nitroglycerin.register( 'Element', Element );

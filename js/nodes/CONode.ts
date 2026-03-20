@@ -8,7 +8,6 @@
 
 import { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import Element from '../Element.js';
-import nitroglycerin from '../nitroglycerin.js';
 import HorizontalMoleculeNode, { HorizontalMoleculeNodeOptions } from './HorizontalMoleculeNode.js';
 
 type SelfOptions = EmptySelfOptions;
@@ -21,5 +20,4 @@ class CONode extends HorizontalMoleculeNode {
   }
 }
 
-nitroglycerin.register( 'CONode', CONode );
 export default CONode;

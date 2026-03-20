@@ -8,7 +8,6 @@
 
 import Color from '../../scenery/js/util/Color.js';
 import Element from './Element.js';
-import nitroglycerin from './nitroglycerin.js';
 
 let idCounter = 1;
 
@@ -68,5 +67,3 @@ export default class Atom {
     return this.symbol;
   }
 }
-
-nitroglycerin.register( 'Atom', Atom );

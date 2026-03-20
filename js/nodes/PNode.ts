@@ -8,7 +8,6 @@
 
 import { EmptySelfOptions } from '../../../phet-core/js/optionize.js';
 import Element from '../Element.js';
-import nitroglycerin from '../nitroglycerin.js';
 import AtomNode from './AtomNode.js';
 import MoleculeNode, { MoleculeNodeOptions } from './MoleculeNode.js';
 
@@ -21,5 +20,3 @@ export default class PNode extends MoleculeNode {
     super( [ new AtomNode( Element.P, providedOptions?.atomNodeOptions ) ], providedOptions );
   }
 }
-
-nitroglycerin.register( 'PNode', PNode );
